@@ -55,7 +55,6 @@ void tworzTablice()
     cout << "Podaj plaintext: ";
     for (int i=0;i<n;++i)
     scanf("%d", &wejscie.bajt[i]);
-    message=wejscie;
 
 	cout<< "Podaj ilosc pamieci: ";
 	scanf("%d",&m);
@@ -115,7 +114,7 @@ void menuKlucza()
 {
     int dobre=0;
     float procent;
-    printf("\nPlaintext to %d %d", message.bajt[1], message.bajt[0]);
+    printf("\nPlaintext to %d %d", wejscie.bajt[1], wejscie.bajt[0]);
     slowo klucz(n);
     //printf("Podaj klucz jaki mamy sprawdzic: ");
     //scanf("%d %d", klucz.bajt, klucz.bajt+1);
@@ -157,7 +156,7 @@ bool szukajKlucza(slowo klucz)
     for (int i=1;i<t-1;++i)
     {
         //printf("\n%d\n",m);
-        szyfrowanie(message, elementpop, element, prime);
+        szyfrowanie(wejscie, elementpop, element, prime);
         elementpop=element;
         pozycja=Szukanie(element,0,m-1);
         if (pozycja!=-1)
@@ -174,7 +173,7 @@ bool szukajKlucza(slowo klucz)
             odtwarzanie[0]=tablica[pozycja].SP;
             for (int j=1;j<t;++j)
             {
-                szyfrowanie(message,odtwarzanie[j-1],odtwarzanie[j],prime);
+                szyfrowanie(wejscie,odtwarzanie[j-1],odtwarzanie[j],prime);
                 //printf("%d : %d %d\n", j, odtwarzanie[j].bajt[0],odtwarzanie[j].bajt[1]);
             }
             if (test(odtwarzanie[t-i], klucz ))
