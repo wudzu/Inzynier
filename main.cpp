@@ -8,7 +8,7 @@ struct EPSP;
 redukcja currentRedukcja(n);
 std::vector<EPSP> tablica;
 unsigned int t;
-slowo message(n);
+slowo wejscie(n);
 unsigned int m;
 
 unsigned char sBox01(unsigned char wejscie);
