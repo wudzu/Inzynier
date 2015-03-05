@@ -41,9 +41,9 @@ void permutacja(slowo & mes)
     }
 }
 
-void szyfrowanie(slowo & message, slowo & klucz, slowo & wyjscie, int* prime)
+void szyfrowanie(slowo & wejscie, slowo & klucz, slowo & wyjscie, int* prime)
 {
-    slowo m=message;
+    slowo m=wejscie;
     slowo kluczrundowy=klucz;
     for (int i=0;i<8;++i)
     {
