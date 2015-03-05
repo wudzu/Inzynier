@@ -1,0 +1,68 @@
+# depslib dependency file v1.0
+1418475097 source:d:\projekty\inz\1\test1\main.cpp
+	"szyfrowanie.h"
+
+1418475156 d:\projekty\inz\1\test1\szyfrowanie.h
+	<iostream>
+	<cstdio>
+	<cstdlib>
+	<vector>
+	<math.h>
+	"globals.h"
+
+1418470230 source:d:\projekty\inz\1\test1\szyfrowanie.cpp
+	"szyfrowanie.h"
+
+1418477557 source:d:\projekty\inz\1\test1\menu.cpp
+	"szyfrowanie.h"
+
+1418474872 d:\projekty\inz\1\test1\globals.h
+	"szyfrowanie.h"
+
+1418475097 source:c:\users\jêdrzej\desktop\kryptoanaliza\test1  2014-12-13 z zapisem\test1\main.cpp
+	"szyfrowanie.h"
+
+1418508901 c:\users\jêdrzej\desktop\kryptoanaliza\test1  2014-12-13 z zapisem\test1\szyfrowanie.h
+	<iostream>
+	<cstdio>
+	<cstdlib>
+	<vector>
+	<math.h>
+	"globals.h"
+
+1418474872 c:\users\jêdrzej\desktop\kryptoanaliza\test1  2014-12-13 z zapisem\test1\globals.h
+	"szyfrowanie.h"
+
+1418494375 source:c:\users\jêdrzej\desktop\kryptoanaliza\test1  2014-12-13 z zapisem\test1\szyfrowanie.cpp
+	"szyfrowanie.h"
+
+1418509485 source:c:\users\jêdrzej\desktop\kryptoanaliza\test1  2014-12-13 z zapisem\test1\menu.cpp
+	"szyfrowanie.h"
+
+1422311823 source:d:\projekty\jedrzej\test1  2014-12-13 z zapisem\test1\main.cpp
+	"szyfrowanie.h"
+
+1422311654 d:\projekty\jedrzej\test1  2014-12-13 z zapisem\test1\szyfrowanie.h
+	<iostream>
+	<cstdio>
+	<cstdlib>
+	<vector>
+	<math.h>
+	"globals.h"
+	"redukcja.h"
+
+1422311823 d:\projekty\jedrzej\test1  2014-12-13 z zapisem\test1\globals.h
+	"szyfrowanie.h"
+
+1422311836 source:d:\projekty\jedrzej\test1  2014-12-13 z zapisem\test1\szyfrowanie.cpp
+	"szyfrowanie.h"
+
+1422312744 source:d:\projekty\jedrzej\test1  2014-12-13 z zapisem\test1\menu.cpp
+	"szyfrowanie.h"
+
+1422312966 d:\projekty\jedrzej\test1  2014-12-13 z zapisem\test1\redukcja.h
+	"szyfrowanie.h"
+
+1422312955 source:d:\projekty\jedrzej\test1  2014-12-13 z zapisem\test1\redukcja.cpp
+	"szyfrowanie.h"
+
