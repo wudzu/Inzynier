@@ -41,10 +41,10 @@ void tworzTablice()
 
     printf("Podaj ile bajtow ma slowo:  ");
     scanf("%d", &n);
-    slowo wejscie(n);
+    slowo P(n);
     slowo klucz(n);
-    slowo wyjscie(n);
-	slowo cypher(n);
+    slowo C(n);
+
 	tablica.clear();
 
 
@@ -54,8 +54,7 @@ void tworzTablice()
 
     cout << "Podaj plaintext: ";
     for (int i=0;i<n;++i)
-    scanf("%d", &wejscie.bajt[i]);
-    message=wejscie;
+    scanf("%d", &P.bajt[i]);
 
 	cout<< "Podaj ilosc pamieci: ";
 	scanf("%d",&m);
@@ -97,8 +96,8 @@ void tworzTablice()
 
             for (int k=0;k<t;++k)
             {
-                szyfrowanie (wejscie, klucz, wyjscie, prime);
-                klucz=wyjscie;
+                szyfrowanie (P, klucz, C, prime);
+                klucz=C;
             }
 
             pom1.EP=klucz;
@@ -115,7 +114,7 @@ void menuKlucza()
 {
     int dobre=0;
     float procent;
-    printf("\nPlaintext to %d %d", message.bajt[1], message.bajt[0]);
+    printf("\nPlaintext to %d %d", P.bajt[1], P.bajt[0]);
     slowo klucz(n);
     //printf("Podaj klucz jaki mamy sprawdzic: ");
     //scanf("%d %d", klucz.bajt, klucz.bajt+1);
@@ -157,7 +156,7 @@ bool szukajKlucza(slowo klucz)
     for (int i=1;i<t-1;++i)
     {
         //printf("\n%d\n",m);
-        szyfrowanie(message, elementpop, element, prime);
+        szyfrowanie(P, elementpop, element, prime);
         elementpop=element;
         pozycja=Szukanie(element,0,m-1);
         if (pozycja!=-1)
@@ -174,7 +173,7 @@ bool szukajKlucza(slowo klucz)
             odtwarzanie[0]=tablica[pozycja].SP;
             for (int j=1;j<t;++j)
             {
-                szyfrowanie(message,odtwarzanie[j-1],odtwarzanie[j],prime);
+                szyfrowanie(P,odtwarzanie[j-1],odtwarzanie[j],prime);
                 //printf("%d : %d %d\n", j, odtwarzanie[j].bajt[0],odtwarzanie[j].bajt[1]);
             }
             if (test(odtwarzanie[t-i], klucz ))
@@ -262,18 +261,17 @@ void zapisTablicy()
 {
     int* prime=liczbypierwsze();
 
-    slowo wejscie(n);
+    slowo P(n);
     slowo klucz(n);
-    slowo wyjscie(n);
-	slowo cypher(n);
+    slowo C(n);
 
 	unsigned int t; //ilosc szyfrowan
 	unsigned int m; //przydzial pamieci
     unsigned int pom0;
 		plik=fopen("chains.txt", "w");
     cout << "Podaj plaintext: ";
-    scanf("%d %d", wejscie.bajt, (wejscie.bajt+1));
-	fprintf(plik,"%d\t%d\n",wejscie.bajt[0],wejscie.bajt[1]);
+    scanf("%d %d", P.bajt, (P.bajt+1));
+	fprintf(plik,"%d\t%d\n",P.bajt[0],P.bajt[1]);
 	cout<< "Podaj ilosc pamieci(2 do x): ";
 	scanf("%d",&m);pom0=1;
 	for (int i=0;i<m;i++)
@@ -310,8 +308,8 @@ void zapisTablicy()
             for (int k=0;k<t;++k)
             {
 
-                szyfrowanie (wejscie, klucz, wyjscie, prime);
-                klucz=wyjscie;
+                szyfrowanie (P, klucz, C, prime);
+                klucz=C;
                 for (int k=n-1;k>=0;--k)
                     fprintf(plik,"%d\t", klucz.bajt[k]);
             }
