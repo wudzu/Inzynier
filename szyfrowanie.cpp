@@ -54,7 +54,7 @@ void szyfrowanie(slowo & P, slowo & klucz, slowo & C, int* prime)
         permutacja(m);
 
     }
-    currentRedukcja.f(m);
+    //currentRedukcja.f(m);  Przenosze to poza szyfrowanie, potem bedziemy tego potrzebowac
     C=m;
 
 }
@@ -173,7 +173,7 @@ slowo & slowo::operator ^(const slowo & b)
 int slowo::liczba()
 {
     int a=0;
-    int b=0;
+    //int b=0;
     for (int i=n-1;i>=0;--i)
     {
         a*=256;

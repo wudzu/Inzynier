@@ -31,6 +31,10 @@ void menu()
     case 3:
         testowanie();
     break;
+    case 4:
+        hellman hel;
+        hel.menuHellman();
+        break;
 
     }
 }
@@ -97,6 +101,7 @@ void tworzTablice()
             for (int k=0;k<t;++k)
             {
                 szyfrowanie (P, klucz, C, prime);
+                currentRedukcja.f(C);
                 klucz=C;
             }
 
@@ -157,6 +162,7 @@ bool szukajKlucza(slowo klucz)
     {
         //printf("\n%d\n",m);
         szyfrowanie(P, elementpop, element, prime);
+        currentRedukcja.f(element);
         elementpop=element;
         pozycja=Szukanie(element,0,m-1);
         if (pozycja!=-1)
@@ -174,6 +180,7 @@ bool szukajKlucza(slowo klucz)
             for (int j=1;j<t;++j)
             {
                 szyfrowanie(P,odtwarzanie[j-1],odtwarzanie[j],prime);
+                currentRedukcja.f(odtwarzanie[j]);
                 //printf("%d : %d %d\n", j, odtwarzanie[j].bajt[0],odtwarzanie[j].bajt[1]);
             }
             if (test(odtwarzanie[t-i], klucz ))
@@ -309,6 +316,7 @@ void zapisTablicy()
             {
 
                 szyfrowanie (P, klucz, C, prime);
+                currentRedukcja.f(C);
                 klucz=C;
                 for (int k=n-1;k>=0;--k)
                     fprintf(plik,"%d\t", klucz.bajt[k]);
