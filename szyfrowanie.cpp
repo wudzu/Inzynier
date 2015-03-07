@@ -3,14 +3,14 @@
 unsigned char sBox0[16]={0x9A,0x39,0x5F,0x00,0x18,0xA1,0x27,0xFE,0xB2,0x63,0xCD,0xE6,0x84,0x4C,0x7B,0xD5};
 unsigned char sBox1[16]={0x30,0x4C,0x21,0xF2,0x07,0x19,0x8A,0x74,0x53,0xC8,0xA6,0xEF,0xBB,0x6D,0xD5,0x9E};
 
-unsigned char sBox01( unsigned char wejscie)
+unsigned char sBox01( unsigned char P)
 {
-    return (0xF0&(sBox0[wejscie >> 4])) | (0x0F&(sBox0[wejscie &(0x0F)]));
+    return (0xF0&(sBox0[P >> 4])) | (0x0F&(sBox0[P &(0x0F)]));
 }
 
-unsigned char sBox23( unsigned char wejscie)
+unsigned char sBox23( unsigned char P)
 {
-    return (0xF0&(sBox1[wejscie >> 4])) | (0x0F&(sBox1[wejscie &(0x0F)]));
+    return (0xF0&(sBox1[P >> 4])) | (0x0F&(sBox1[P &(0x0F)]));
 }
 
 void sBoxy( slowo & mes)
@@ -41,13 +41,13 @@ void permutacja(slowo & mes)
     }
 }
 
-void szyfrowanie(slowo & message, slowo & klucz, slowo & wyjscie, int* prime)
+void szyfrowanie(slowo & P, slowo & klucz, slowo & C, int* prime)
 {
-    slowo m=message;
+    slowo m=P;
     slowo kluczrundowy=klucz;
     for (int i=0;i<8;++i)
     {
-        przesuniecielewo(kluczrundowy,prime[i]);
+        przesuniecieprawo(kluczrundowy,prime[i]);
         m^=kluczrundowy;
         kluczrundowy=klucz;
         sBoxy(m);
@@ -55,7 +55,7 @@ void szyfrowanie(slowo & message, slowo & klucz, slowo & wyjscie, int* prime)
 
     }
     currentRedukcja.f(m);
-    wyjscie=m;
+    C=m;
 
 }
 /*
@@ -64,7 +64,7 @@ void R(slowo & mes)
 
 }
 */
-void przesuniecielewo (slowo & klucz, unsigned char przes)
+void przesuniecieprawo (slowo & klucz, unsigned char przes)
 {
     przes%=8;
 	unsigned char pom0,pom1,pom2;
