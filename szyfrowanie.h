@@ -37,7 +37,7 @@ struct EPSP
 };
 
 
-void szyfrowanie(slowo & message, slowo & klucz, slowo & wyjscie, int* prime);
+void szyfrowanie(slowo & P, slowo & klucz, slowo & C, int* prime);
 void sBoxy(slowo & mes);
 void permutacja(slowo & mes);
 void przesuniecielewo(slowo & klucz, unsigned char przes);
