@@ -6,7 +6,7 @@
 extern	FILE* plik;
 struct slowo;
 struct redukcja;
-extern slowo message;
+extern slowo P;
 extern unsigned char n;
 extern unsigned int m;
 extern unsigned int t;
