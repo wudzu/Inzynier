@@ -24,7 +24,7 @@ void hellman::tworz()
     {
         pom1.wypelnij(plaintext, n, t, m);
         tablica.push_back(pom1);
-        printf("Tablica %d -ta stworzona",i);
+        printf("Tablica %d -ta stworzona\n",i);
     }
 
 }
@@ -33,19 +33,20 @@ bool hellman::testuj(slowo& klucz)
 {
     int* prime=liczbypierwsze();
     slowo C0;
-    bool jest=0;
+    //bool jest=0;
     szyfrowanie (plaintext, klucz, C0, prime);
     for (int i=0;i<r;++i)
     {
-        if (tablica[i].sprawdz(C0))
+        if (tablica[i].sprawdz(C0, klucz))
         {
-            jest=1;
+            delete [] prime;
+            return 1;
             break;
         }
     }
 
     delete [] prime;
-    return jest;
+    return 0;
 }
 
 int hellman::statystyka()

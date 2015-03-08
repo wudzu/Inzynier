@@ -42,7 +42,7 @@ struct EPSP
 
 struct tablicaH
 {
-    public:
+    private:
     slowo plaintext;
     std::vector<EPSP> tablica;
     redukcja funkcjaRedukcji;
@@ -57,9 +57,10 @@ struct tablicaH
     void wypelnij(slowo& daneMessage, unsigned char& daneN, unsigned int& daneT, unsigned int& daneM);
     //void ustawGlowne();
     void sortowanie(int left, int right);
-    bool sprawdz(slowo& C0);
+    bool sprawdz(slowo C0, slowo klucz);
     int szukanie(slowo szukana, int left, int right);
     void pozostale(int& pocz, int& kon);
+    void wypisz();
 };
 
 struct hellman

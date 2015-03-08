@@ -6,7 +6,7 @@ tablicaH::tablicaH(): funkcjaRedukcji(1)
 
 }
 
-tablicaH::tablicaH(int n): funkcjaRedukcji(n*8)
+tablicaH::tablicaH(int n): funkcjaRedukcji(n)
 {
 
 }
@@ -25,8 +25,7 @@ void tablicaH::wypelnij(slowo& daneMessage, unsigned char& daneN, unsigned int& 
     n=daneN;
     t=daneT;
     m=daneM;
-    for (int k=0;k<n;++k)
-        printf("%d ",plaintext.bajt[k]);
+
     //slowo P(n);
     slowo klucz(n);
     slowo C(n);
@@ -52,32 +51,21 @@ void tablicaH::wypelnij(slowo& daneMessage, unsigned char& daneN, unsigned int& 
             }
 
             pom1.EP=klucz;
-            printf( "pom1 jest rowne ");
-            for (int k=0;k<n;++k)
-                printf("%d ",pom1.EP.bajt[k]);
-            printf("\nCala macierz: \n");
 
 
 
         tablica.push_back(pom1);
 
-        for (int j=0;j<i;++j)
-        {
-            printf("%d\t",j);
-            for (int k=0;k<n;++k)
-                printf("%d ",(tablica[j].EP.bajt[k]));
-            printf("\n");
-        }
 
 	}
-	printf("\n\n%d ",tablica[m-1].EP.liczba());
+
 	sortowanie( 0,m-1);
 	delete [] prime;
 }
 
 void tablicaH::sortowanie(int left, int right)
 {
-    printf("l%d#%d",left,right);
+
     int i = left;
     int j = right;
     int x = tablica[(left+right)/2].EP.liczba();
@@ -129,7 +117,7 @@ void tablicaH::pozostale(int& pocz, int& kon)
 {
     int a=pocz;
     kon=pocz;
-    while(pocz-1)
+    while(pocz-1>0)
     {
         if (tablica[a].EP.liczba() == tablica[pocz-1].EP.liczba())
         {
@@ -149,7 +137,7 @@ void tablicaH::pozostale(int& pocz, int& kon)
     }
 }
 
-bool tablicaH::sprawdz(slowo& C0)
+bool tablicaH::sprawdz(slowo C0, slowo klucz)
 {
     int* prime=liczbypierwsze();
     int pozycja;
@@ -181,14 +169,15 @@ bool tablicaH::sprawdz(slowo& C0)
             odtwarzanie[0]=tablica[pozycja].SP;
             for (int j=1;j<t;++j)
             {
-                szyfrowanie(P,odtwarzanie[j-1],odtwarzanie[j],prime);
+                szyfrowanie(plaintext,odtwarzanie[j-1],odtwarzanie[j],prime);
                 funkcjaRedukcji.f(odtwarzanie[j]);
                 //printf("%d : %d %d\n", j, odtwarzanie[j].bajt[0],odtwarzanie[j].bajt[1]);
             }
-            if ((odtwarzanie[t-i+1]== C0 ))
+            if ((odtwarzanie[t-i+1]== C0)  && odtwarzanie[t-i]== klucz)
             {
-                for (int b=0;b<n;++b)
-                    printf("%d ", &(odtwarzanie[t-i].bajt[b]));
+                for (int b=n-1;b>=0;--b)
+                    printf("%d ", (odtwarzanie[t-i].bajt[b]));
+                printf("\n");
 
                 delete [] odtwarzanie;
                 delete [] prime;
@@ -206,6 +195,20 @@ bool tablicaH::sprawdz(slowo& C0)
     delete [] odtwarzanie;
     delete [] prime;
     return 0;
+}
+
+void tablicaH::wypisz()
+{
+    printf("\nSklad Tablicy:\nSP\nEP");
+    for (int i=0;i<m;++i)
+    {
+        printf("\n");
+        for (int j=n-1;j>=0;--j)
+            printf("%d ", tablica[i].SP.bajt[j]);
+        printf("\t");
+        for (int j=n-1;j>=0;--j)
+            printf("%d ", tablica[i].EP.bajt[j]);
+    }
 }
 
 //bool tablicaH::
