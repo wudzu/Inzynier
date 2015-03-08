@@ -69,7 +69,7 @@ int hellman::statystyka()
 void hellman::menuHellman()
 {
     tworz();
-    printf("Stworzono.");
+    printf("Stworzono.\n");
     printf("\n\n%d\n\n",statystyka());
 }
 
