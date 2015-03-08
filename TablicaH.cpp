@@ -102,8 +102,8 @@ void tablicaH::sortowanie(int left, int right)
 
     } while(i<=j);
 
-    if(left<j) Sortowanie(left,j);
-    if(right>i) Sortowanie(i,right);
+    if(left<j) sortowanie(left,j);
+    if(right>i) sortowanie(i,right);
 }
 
 int tablicaH::szukanie(slowo szukana, int left, int right)
