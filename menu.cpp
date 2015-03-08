@@ -13,7 +13,7 @@ void menu()
     }
     else
         printf("Brak tablicy w pamieci. ");
-    printf("Czego pragniesz ode mnie czlowiek? (0 - Tworz tablice, 1 - Szukaj klucza, 2 - Zapisz tabele do pliku\n");
+    printf("Co robic? \n 0 - Tworz jedna tablice\n 1 - Szukaj klucza\n 2 - Zapisz tabele do pliku\n 3 - Wiele tablic metoda Hellmana\n");
     scanf("%d", &wybor);
     switch (wybor)
     {
@@ -28,10 +28,10 @@ void menu()
     case 2:
         zapisTablicy();
     break;
+    //case 3:
+    //    testowanie();
+    //break;
     case 3:
-        testowanie();
-    break;
-    case 4:
         hellman hel;
         hel.menuHellman();
         break;
@@ -64,24 +64,12 @@ void tworzTablice()
 	scanf("%d",&m);
 	if (m%2)
         m++;
-	/*pom0=1;
-	for (int i=0;i<m;i++)
-    {
-        pom0*=2;
-    }
-    m=pom0;
-    */
+
 	cout << "Podaj dlugosc lancucha: ";
 	scanf("%d", &t);
 	if (t%2)
         t++;
-	/*
-	pom0=1;
-	for (int i=0;i<t;i++)
-    {
-        pom0*=2;
-    }
-	t=pom0;*/
+
 	cout << "Podaj seed liczb losowych: ";
 	int seed;
 	scanf("%d", &seed);
