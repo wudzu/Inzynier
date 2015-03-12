@@ -14,32 +14,20 @@ void hellman::tworz()
     printf("Podaj plaintext: ");
     for (int i=0;i<n;++i)
     scanf("%d", &(pom.bajt[i]));
-    printf("Podaj poczatkowy seed liczb losowych: ");
+    printf("Podaj seed liczb losowych: ");
     int a;
     scanf("%d", &a);
     srand(a);
-    printf("Podaj liczbe zestawow: ");
-    scanf("%d", &zestawy);
     plaintext=pom;
     tablicaH pom1(n);
-    
-    plik=fopen("dane.txt", "w");
-    for(int j=0; j<zestawy;++j)
+    for (int i=0;i<r;++i)
     {
-
-        for (int i=0;i<r;++i)
-        {
-            pom1.wypelnij(plaintext, n, t, m);
-            tablica.push_back(pom1);
-            printf("Tablica %d -ta stworzona\n",i);
-        }
-        a++;
-        srand(a);
-        fprintf(plik,"%d %d\n",statystyka(), pudla);
-        pudla=0;
+        pom1.wypelnij(plaintext, n, t, m);
+        tablica.push_back(pom1);
+        printf("Tablica %d -ta stworzona\n",i);
     }
-    fclose(plik);
     pudla=0;
+
 }
 
 bool hellman::testuj(slowo& klucz)
