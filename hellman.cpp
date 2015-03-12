@@ -26,6 +26,7 @@ void hellman::tworz()
         tablica.push_back(pom1);
         printf("Tablica %d -ta stworzona\n",i);
     }
+    pudla=0;
 
 }
 
@@ -63,6 +64,11 @@ int hellman::statystyka()
                 ++trafienia;
         }
     }
+    pudla=0;
+    for (int i=0;i<r;++i)
+    {
+        pudla+=tablica[i].getPudla();
+    }
     return trafienia;
 }
 
@@ -71,6 +77,7 @@ void hellman::menuHellman()
     tworz();
     printf("Stworzono.\n");
     printf("\n\n%d\n\n",statystyka());
+    printf("%d", pudla);
 }
 
 hellman::hellman()

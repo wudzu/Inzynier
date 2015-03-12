@@ -49,6 +49,7 @@ struct tablicaH
     unsigned char n;
     unsigned int t;
     unsigned int m;
+    unsigned int pudla;
 
     public:
     tablicaH();
@@ -61,6 +62,7 @@ struct tablicaH
     int szukanie(slowo szukana, int left, int right);
     void pozostale(int& pocz, int& kon);
     void wypisz();
+    unsigned int getPudla();
 };
 
 struct hellman
@@ -72,6 +74,7 @@ struct hellman
         unsigned int m;
         unsigned int r;
         slowo plaintext;
+        unsigned int pudla;
     public:
         hellman();
         ~hellman();

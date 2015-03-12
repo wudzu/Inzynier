@@ -2,7 +2,7 @@
 1425735763 source:d:\projekty\inz\inzynier\inzynier\main.cpp
 	"szyfrowanie.h"
 
-1425833355 d:\projekty\inz\inzynier\inzynier\szyfrowanie.h
+1426183735 d:\projekty\inz\inzynier\inzynier\szyfrowanie.h
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -22,7 +22,7 @@
 1425740175 d:\projekty\inz\inzynier\inzynier\tablicah.h
 	"szyfrowanie.h"
 
-1425752389 source:d:\projekty\inz\inzynier\inzynier\menu.cpp
+1426183360 source:d:\projekty\inz\inzynier\inzynier\menu.cpp
 	"szyfrowanie.h"
 
 1422312955 source:d:\projekty\inz\inzynier\inzynier\redukcja.cpp
@@ -34,7 +34,7 @@
 1425751697 d:\projekty\inz\inzynier\inzynier\hellman.h
 	"szyfrowanie.h"
 
-1425832979 source:d:\projekty\inz\inzynier\inzynier\tablicah.cpp
+1426183735 source:d:\projekty\inz\inzynier\inzynier\tablicah.cpp
 	"szyfrowanie.h"
 
 1425833245 source:d:\projekty\inz\inzynier\inzynier\hellman.cpp

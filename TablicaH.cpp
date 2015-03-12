@@ -16,10 +16,16 @@ tablicaH::~tablicaH()
 
 }
 
+unsigned int tablicaH::getPudla()
+{
+    return pudla;
+}
+
 void tablicaH::wypelnij(slowo& daneMessage, unsigned char& daneN, unsigned int& daneT, unsigned int& daneM)
 {
     int* prime=liczbypierwsze();
 
+    pudla=0;
     plaintext=daneMessage;
 
     n=daneN;
@@ -173,15 +179,24 @@ bool tablicaH::sprawdz(slowo C0, slowo klucz)
                 funkcjaRedukcji.f(odtwarzanie[j]);
                 //printf("%d : %d %d\n", j, odtwarzanie[j].bajt[0],odtwarzanie[j].bajt[1]);
             }
-            if ((odtwarzanie[t-i+1]== C0)  && odtwarzanie[t-i]== klucz)
+            if ((odtwarzanie[t-i+1]== C0) )
             {
-                for (int b=n-1;b>=0;--b)
-                    printf("%d ", (odtwarzanie[t-i].bajt[b]));
-                printf("\n");
+                if (odtwarzanie[t-i]== klucz)
+                {
 
-                delete [] odtwarzanie;
-                delete [] prime;
-                return 1;
+
+                    for (int b=n-1;b>=0;--b)
+                        printf("%d ", (odtwarzanie[t-i].bajt[b]));
+                    printf("\n");
+
+                    delete [] odtwarzanie;
+                    delete [] prime;
+                    return 1;
+                }
+                else
+                {
+                    ++pudla;
+                }
             }
         }
         }
