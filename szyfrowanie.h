@@ -73,7 +73,6 @@ struct hellman
         unsigned int t;
         unsigned int m;
         unsigned int r;
-        unsigned int zestawy;
         slowo plaintext;
         unsigned int pudla;
     public:
