@@ -125,7 +125,6 @@ void hellman::menuHellmanZapis()
     scanf("%d", &rodzaj);
     printf("O ile ma sie ostatecznie zwiekszyc?\n");
     scanf("%d", &wzrost);
-    wzrost+=pom[rodzaj];
     printf("Z jakim krokiem?\n");
     scanf("%d", &krok);
     printf("Ile testow na zestaw?\n");
@@ -138,6 +137,8 @@ void hellman::menuHellmanZapis()
         fprintf(output,"%d ",sl.bajt[i]);
     }
     fprintf(output,"\nSeed liczb losowych to %d\n", pom4);
+    fprintf(output,"\nLiczba zestawow to %d\n", wzrost);
+    wzrost+=pom[rodzaj];
     while(pom[rodzaj]<wzrost)
     {
         fprintf(output,"Zestaw %d, %d, %d, %d\n",pom[0],pom[1],pom[2],pom[3]);
