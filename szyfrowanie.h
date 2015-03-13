@@ -79,7 +79,9 @@ struct hellman
         hellman();
         ~hellman();
         void menuHellman();
+        void menuHellmanZapis();
         void tworz();
+        void tworz(unsigned char daneN, unsigned int daneT, unsigned int daneM, unsigned int daneR, slowo& plain);
         bool testuj(slowo& klucz);
         int statystyka();
 };
