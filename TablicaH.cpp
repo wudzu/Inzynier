@@ -156,7 +156,7 @@ bool tablicaH::sprawdz(slowo C0, slowo klucz)
     element=elementpop=C0;
 
 
-    for (int i=1;i<t-1;++i)
+    for (int i=1;i<t;++i)
     {
         //printf("\n%d\n",m);
 
