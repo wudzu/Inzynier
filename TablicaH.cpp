@@ -184,11 +184,11 @@ bool tablicaH::sprawdz(slowo C0, slowo klucz)
                 if (odtwarzanie[t-i]== klucz)
                 {
 
-
+                    /*
                     for (int b=n-1;b>=0;--b)
                         printf("%d ", (odtwarzanie[t-i].bajt[b]));
                     printf("\n");
-
+                    */
                     delete [] odtwarzanie;
                     delete [] prime;
                     return 1;

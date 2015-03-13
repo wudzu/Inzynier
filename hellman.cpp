@@ -6,6 +6,7 @@ void hellman::tworz()
     scanf("%d", &n);
     printf("\nPodaj t: ");
     scanf("%d", &t);
+    t+=2;
     printf("\nPodaj m: ");
     scanf("%d", &m);
     printf("\nPodaj r: ");
@@ -34,7 +35,7 @@ void hellman::tworz(unsigned char daneN, unsigned int daneT, unsigned int daneM,
 {
     tablica.clear();
     n=daneN;
-    t=daneT;
+    t=daneT+2;
     m=daneM;
     r=daneR;
 
@@ -100,7 +101,7 @@ void hellman::menuHellman()
 
 void hellman::menuHellmanZapis()
 {
-    unsigned int pom[4],pom4,rodzaj,wzrost,krok;
+    unsigned int pom[4],pom4,pom6,rodzaj,wzrost,krok;
 
     printf("\n\nPodaj n: ");
     scanf("%d", &pom[0]);
@@ -127,6 +128,8 @@ void hellman::menuHellmanZapis()
     wzrost+=pom[rodzaj];
     printf("Z jakim krokiem?\n");
     scanf("%d", &krok);
+    printf("Ile testow na zestaw?\n");
+    scanf("%d", &pom6);
     FILE* output;
     output=fopen("dane.txt","wt");
     fprintf(output,"Plaintext testu to ");
@@ -138,11 +141,14 @@ void hellman::menuHellmanZapis()
     while(pom[rodzaj]<wzrost)
     {
         fprintf(output,"Zestaw %d, %d, %d, %d\n",pom[0],pom[1],pom[2],pom[3]);
-        for (int i=0;i<10;i++)
+        printf("Zestaw %d, %d, %d, %d\n",pom[0],pom[1],pom[2],pom[3]);
+        for (int i=0;i<pom6;i++)
         {
             tworz(pom[0],pom[1],pom[2],pom[3],sl);
             fprintf(output,"%d\t",statystyka());
             fprintf(output,"%d\n",pudla);
+            printf("%d\t",statystyka());
+            printf("%d\n",pudla);
         }
         pom[rodzaj]+=krok;
     }

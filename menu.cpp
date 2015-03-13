@@ -13,7 +13,7 @@ void menu()
     }
     else
         printf("Brak tablicy w pamieci. ");
-    printf("Co robic? \n 0 - Tworz jedna tablice\n 1 - Szukaj klucza\n 2 - Zapisz tabele do pliku\n 3 - Wiele tablic metoda Hellmana\n");
+    printf("Co robic? \n 0 - Tworz jedna tablice\n 1 - Szukaj klucza\n 2 - Zapisz tabele do pliku\n 3 - Wiele tablic metoda Hellmana\n 4 - Statystyka wielu tablic Hellmana\n");
     scanf("%d", &wybor);
         hellman hel;
     switch (wybor)
