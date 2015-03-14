@@ -29,8 +29,8 @@ for i=1:zestawy
         sredniatrafien(i)=sredniatrafien(i)+dane(j-1);
         sredniapudel(i)=sredniapudel(i)+dane(j);
     end
-    sredniatrafien(i)=sredniatrafien(i)/m(i);
-    sredniapudel(i)=sredniapudel(i)/m(i);
+    sredniatrafien(i)=sredniatrafien(i)/testy_zestawow;
+    sredniapudel(i)=sredniapudel(i)/testy_zestawow;
     powtorzenia(i)=r(i)*t(i)*m(i)-sredniatrafien(i);
     prawdopodobienstwo(i)=sredniatrafien(i)/(2^16);
 end
