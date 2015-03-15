@@ -47,6 +47,19 @@ if modyfikowana=='n'
    
    figure('name','Prawdopodobienstwo trafienia','numbertitle','off')
    plot(n,prawdopodobienstwo,'-c');  
+   
+   figure('name','Suma wszystkich strachow','numbertitle','off')
+   plot(n,sredniatrafien,'-r');
+   hold on;
+   plot(n,sredniapudel,'-b');
+   hold on;
+   plot(n,powtorzenia,'-g');
+   hold on;
+   plot(n,prawdopodobienstwo,'-c');
+   hold on;
+   
+   legend('Srednia trafien','Srednia pudel','Powtorzenia','Prawdopodobienstwo trafienia');
+   
 elseif modyfikowana=='t'
    figure('name','Srednia trafien','numbertitle','off')
    plot(t,sredniatrafien,'-r');
@@ -59,6 +72,19 @@ elseif modyfikowana=='t'
    
    figure('name','Prawdopodobienstwo trafienia','numbertitle','off')
    plot(t,prawdopodobienstwo,'-c'); 
+   
+   figure('name','Suma wszystkich strachow','numbertitle','off')
+   plot(t,sredniatrafien,'-r');
+   hold on;
+   plot(t,sredniapudel,'-b');
+   hold on;
+   plot(t,powtorzenia,'-g');
+   hold on;
+   plot(t,prawdopodobienstwo,'-c');
+   hold on;
+   
+   legend('Srednia trafien','Srednia pudel','Powtorzenia','Prawdopodobienstwo trafienia');
+   
 elseif modyfikowana=='m'
    figure('name','Srednia trafien','numbertitle','off')
    plot(m,sredniatrafien,'-r');
@@ -71,11 +97,24 @@ elseif modyfikowana=='m'
    
    figure('name','Prawdopodobienstwo trafienia','numbertitle','off')
    plot(m,prawdopodobienstwo,'-c'); 
+   
+   figure('name','Suma wszystkich strachow','numbertitle','off')
+   plot(m,sredniatrafien,'-r');
+   hold on;
+   plot(m,sredniapudel,'-b');
+   hold on;
+   plot(m,powtorzenia,'-g');
+   hold on;
+   plot(m,prawdopodobienstwo,'-c');
+   hold on;
+   
+   legend('Srednia trafien','Srednia pudel','Powtorzenia','Prawdopodobienstwo trafienia');
+   
 elseif modyfikowana=='r'
    figure('name','Srednia trafien','numbertitle','off')
    plot(r,sredniatrafien,'-r');
    
-    figure('name','Srednia pudel','numbertitle','off')
+   figure('name','Srednia pudel','numbertitle','off')
    plot(r,sredniapudel,'-b');
    
    figure('name','Srednia powtorzen','numbertitle','off')
@@ -83,6 +122,19 @@ elseif modyfikowana=='r'
    
    figure('name','Prawdopodobienstwo trafienia','numbertitle','off')
    plot(r,prawdopodobienstwo,'-c'); 
+   
+   figure('name','Suma wszystkich strachow','numbertitle','off')
+   plot(r,sredniatrafien,'-r');
+   hold on;
+   plot(r,sredniapudel,'-b');
+   hold on;
+   plot(r,powtorzenia,'-g');
+   hold on;
+   plot(r,prawdopodobienstwo,'-c');
+   hold on;
+   
+   legend('Srednia trafien','Srednia pudel','Powtorzenia','Prawdopodobienstwo trafienia');
+   
 else
     
 end
