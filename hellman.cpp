@@ -101,7 +101,7 @@ bool hellman16::testuj(unsigned short klucz)
     {
         if (tablica[i].sprawdz(C0, klucz))
         {
-            printf("\n%x",klucz);
+            //printf("\n%x",klucz);
             delete [] prime;
             return 1;
             break;
