@@ -121,6 +121,7 @@ void redukcja16::f(unsigned short & mes)
         if (mes&(1 << dane[i]))
             pom|=1<<i;
     }
+    mes=pom;
 }
 
 void redukcja::f(slowo& mes)
