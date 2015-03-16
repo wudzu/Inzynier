@@ -74,6 +74,7 @@ void szyfrowanie(slowo & P, slowo & klucz, slowo & C, int* prime)
 void szyfrowanie16(unsigned short P, unsigned short klucz, unsigned short &C, int* prime)
 {
     unsigned short kluczrundowy=klucz;
+    C=P;
     for (int i=0;i<8;++i)
     {
         przesuniecieprawo16(kluczrundowy, prime[i]);
