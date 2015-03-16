@@ -50,7 +50,7 @@ void permutacja(slowo & mes)
 
 void permutacja16(unsigned short &mes)
 {
-    mes=mes&0x8421 | ((mes &0x0842)>> 3) | ((mes &0x84)>> 6) | ((mes &0x08)>> 9) | ((mes &0x4210)<< 3) | ((mes&0x2100) >> 6) | ((mes&0x1000)>>9);
+    mes=(mes&0x8421) | ((mes &0x0842)<< 3) | ((mes &0x84)<< 6) | ((mes &0x08)<< 9) | ((mes &0x4210)>> 3) | ((mes&0x2100) >> 6) | ((mes&0x1000)>>9);
 }
 
 void szyfrowanie(slowo & P, slowo & klucz, slowo & C, int* prime)
