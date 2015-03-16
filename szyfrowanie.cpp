@@ -33,7 +33,7 @@ void sBoxy( slowo & mes)
 
 void sBoxy16(unsigned short &mes)
 {
-    mes=0xf000&sBox16[mes>>12] | 0x0f00&sBox16[(mes>>8) &0x0f] | 0x00f0&sBox16[(mes>>4) & 0x0f] | 0x000f&sBox16[mes & 0x0f];
+    mes=0xf000&sBox16[mes>>12] | (0x0f00&sBox16[(mes>>8) &0x0f]) | (0x00f0&sBox16[(mes>>4) & 0x0f]) | (0x000f&sBox16[mes & 0x0f]);
 }
 
 void permutacja(slowo & mes)

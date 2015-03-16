@@ -40,7 +40,6 @@ void hellman16::tworz()
 {
     printf("\nPodaj t: ");
     scanf("%d", &t);
-    t+=2;
     printf("\nPodaj m: ");
     scanf("%d", &m);
     printf("\nPodaj r: ");

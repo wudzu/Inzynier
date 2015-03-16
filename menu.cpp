@@ -63,7 +63,7 @@ void tworzTablice()
 
 	//unsigned int t; //ilosc szyfrowan
 	//unsigned int m; //przydzial pamieci
-    unsigned int pom0;
+    //unsigned int pom0;
 
     cout << "Podaj plaintext: ";
     for (int i=0;i<n;++i)

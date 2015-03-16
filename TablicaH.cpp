@@ -132,7 +132,7 @@ void tablicaH16::sortowanie(int left, int right)
     int j = right;
     int x = tablica[(left+right)/2].EP;
 
-    unsigned short pom0;
+    //unsigned short pom0;
 
     do
     {
@@ -163,7 +163,7 @@ void tablicaH::sortowanie(int left, int right)
     int j = right;
     int x = tablica[(left+right)/2].EP.liczba();
 
-    slowo pom0;
+    //slowo pom0;
 
     do
     {
@@ -190,7 +190,7 @@ void tablicaH::sortowanie(int left, int right)
 int tablicaH16::szukanie(unsigned short szukana, int left, int right)
 {
     int middle;
-    int temp;
+    //int temp;
 
       while (left <= right) {
             middle = (left + right)/2;
@@ -208,7 +208,7 @@ int tablicaH16::szukanie(unsigned short szukana, int left, int right)
 int tablicaH::szukanie(slowo szukana, int left, int right)
 {
     int middle;
-    int temp;
+    //int temp;
 
       while (left <= right) {
             middle = (left + right)/2;
