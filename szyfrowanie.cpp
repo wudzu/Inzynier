@@ -3,6 +3,8 @@
 unsigned char sBox0[16]={0x9A,0x39,0x5F,0x00,0x18,0xA1,0x27,0xFE,0xB2,0x63,0xCD,0xE6,0x84,0x4C,0x7B,0xD5};
 unsigned char sBox1[16]={0x30,0x4C,0x21,0xF2,0x07,0x19,0x8A,0x74,0x53,0xC8,0xA6,0xEF,0xBB,0x6D,0xD5,0x9E};
 
+unsigned short sBox16[16]={0x309A,0x4C39,0x215F,0xF200,0x0718,0x19a1,0x8a27,0x74fe,0x53b2,0xc863,0xa6cd,0xefe6,0xbb84,0x6d4c,0xd57b,0x9ed5};
+
 unsigned char sBox01( unsigned char P)
 {
     return (0xF0&(sBox0[P >> 4])) | (0x0F&(sBox0[P &(0x0F)]));
@@ -29,6 +31,11 @@ void sBoxy( slowo & mes)
     }
 }
 
+void sBoxy16(unsigned short &mes)
+{
+    mes=0xf000&sBox16[mes>>12] | 0x0f00&sBox16[(mes>>8) &0x0f] | 0x00f0&sBox16[(mes>>4) & 0x0f] | 0x000f&sBox16[mes & 0x0f];
+}
+
 void permutacja(slowo & mes)
 {
     if (mes.n==2)
@@ -39,6 +46,11 @@ void permutacja(slowo & mes)
         mes.bajt[0]=pom0;
         mes.bajt[1]=pom1;
     }
+}
+
+void permutacja16(unsigned short &mes)
+{
+    mes=mes&0x8421 | ((mes &0x0842)>> 3) | ((mes &0x84)>> 6) | ((mes &0x08)>> 9) | ((mes &0x4210)<< 3) | ((mes&0x2100) >> 6) | ((mes&0x1000)>>9);
 }
 
 void szyfrowanie(slowo & P, slowo & klucz, slowo & C, int* prime)
@@ -57,6 +69,19 @@ void szyfrowanie(slowo & P, slowo & klucz, slowo & C, int* prime)
     //currentRedukcja.f(m);  Przenosze to poza szyfrowanie, potem bedziemy tego potrzebowac
     C=m;
 
+}
+
+void szyfrowanie16(unsigned short P, unsigned short klucz, unsigned short &C, int* prime)
+{
+    unsigned short kluczrundowy=klucz;
+    for (int i=0;i<8;++i)
+    {
+        przesuniecieprawo16(kluczrundowy, prime[i]);
+        C^=kluczrundowy;
+        kluczrundowy=klucz;
+        sBoxy16(C);
+        permutacja16(C);
+    }
 }
 /*
 void R(slowo & mes)
@@ -89,6 +114,13 @@ void przesuniecieprawo (slowo & klucz, unsigned char przes)
     }
     klucz.bajt[n-1]=(klucz.bajt[n-1] >> przes)|pom1;
 
+}
+
+void przesuniecieprawo16 (unsigned short &m, unsigned char przes)
+{
+    przes%=16;
+    unsigned short a= m << (16 - przes);
+    m=(m>>przes) | a;
 }
 /*
 void przesuniecieprawo (unsigned char* klucz, unsigned char przes)

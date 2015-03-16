@@ -40,6 +40,10 @@ void menu()
         //hellman hel0;
         hel.menuHellmanZapis();
         break;
+    case 5:
+        hellman16 hel16;
+        hel16.menuHellman();
+        break;
 
     }
 }
