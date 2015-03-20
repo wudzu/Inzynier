@@ -13,8 +13,9 @@ void menu()
     }
     else
         printf("Brak tablicy w pamieci. ");
-    printf("Co robic? \n 0 - Tworz jedna tablice\n 1 - Szukaj klucza\n 2 - Zapisz tabele do pliku\n 3 - Wiele tablic metoda Hellmana\n");
+    printf("Co robic? \n 0 - Tworz jedna tablice\n 1 - Szukaj klucza\n 2 - Zapisz tabele do pliku\n 3 - Wiele tablic metoda Hellmana\n 4 - Statystyka wielu tablic Hellmana\n");
     scanf("%d", &wybor);
+        hellman hel;
     switch (wybor)
     {
     case 0:
@@ -32,8 +33,16 @@ void menu()
     //    testowanie();
     //break;
     case 3:
-        hellman hel;
+        //hellman hel;
         hel.menuHellman();
+        break;
+    case 4:
+        //hellman hel0;
+        hel.menuHellmanZapis();
+        break;
+    case 5:
+        hellman16 hel16;
+        hel16.menuHellman();
         break;
 
     }
@@ -54,7 +63,7 @@ void tworzTablice()
 
 	//unsigned int t; //ilosc szyfrowan
 	//unsigned int m; //przydzial pamieci
-    unsigned int pom0;
+    //unsigned int pom0;
 
     cout << "Podaj plaintext: ";
     for (int i=0;i<n;++i)

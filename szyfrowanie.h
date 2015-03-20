@@ -40,6 +40,12 @@ struct EPSP
     EPSP(const EPSP &wzor);
 };
 
+struct EPSP16
+{
+    unsigned short SP;
+    unsigned short EP;
+};
+
 struct tablicaH
 {
     private:
@@ -65,6 +71,27 @@ struct tablicaH
     unsigned int getPudla();
 };
 
+struct tablicaH16
+{
+    private:
+    unsigned short plaintext;
+    std::vector<EPSP16> tablica;
+    redukcja16 funkcjaRedukcji;
+    unsigned int t;
+    unsigned int m;
+    unsigned int pudla;
+
+    public:
+    tablicaH16();
+    void wypelnij(unsigned short& daneMessage, unsigned int& daneT, unsigned int& daneM);
+    //void ustawGlowne();
+    void sortowanie(int left, int right);
+    bool sprawdz(unsigned short C0, unsigned short klucz);
+    int szukanie(unsigned short szukana, int left, int right);
+    void pozostale(int& pocz, int& kon);
+    unsigned int getPudla();
+};
+
 struct hellman
 {
     private:
@@ -79,16 +106,42 @@ struct hellman
         hellman();
         ~hellman();
         void menuHellman();
+        void menuHellmanZapis();
         void tworz();
+        void tworz(unsigned char daneN, unsigned int daneT, unsigned int daneM, unsigned int daneR, slowo& plain);
         bool testuj(slowo& klucz);
         int statystyka();
 };
 
+struct hellman16
+{
+    private:
+        std::vector<tablicaH16> tablica;
+        unsigned int t;
+        unsigned int m;
+        unsigned int r;
+        unsigned short plaintext;
+        unsigned int pudla;
+
+    public:
+        hellman16();
+        //~hellman16);
+        void menuHellman();
+        //void menuHellmanZapis();
+        void tworz();
+        void tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR, unsigned short plain);
+        bool testuj(unsigned short klucz);
+        int statystyka();
+};
 
 void szyfrowanie(slowo & P, slowo & klucz, slowo & C, int* prime);
+void szyfrowanie16(unsigned short P, unsigned short klucz, unsigned short &C, int* prime);
 void sBoxy(slowo & mes);
+void sBoxy16(unsigned short & mes);
 void permutacja(slowo & mes);
+void permutacja16(unsigned short &mes);
 void przesuniecieprawo(slowo & klucz, unsigned char przes);
+void przesuniecieprawo16 (unsigned short &m, unsigned char przes);
 //void R(slowo & mes);
 int* liczbypierwsze();
 void Sortowanie( int left, int right);

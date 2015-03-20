@@ -25,6 +25,30 @@ redukcja::redukcja(int n)
 
 }
 
+redukcja16::redukcja16()
+{
+    bool powtorzenia;
+    unsigned short a;
+    for (int i=0;i<16;++i)
+    {
+        powtorzenia=1;
+        while(powtorzenia)
+        {
+            a=rand()%16;
+            powtorzenia=0;
+            for (int j=0;j<i;++j)
+            {
+                if (dane[j]==a)
+                {
+                    powtorzenia=1;
+                    break;
+                }
+            }
+        }
+        dane.push_back(a);
+    }
+}
+
 void redukcja::ustaw(unsigned char n, unsigned char a)
 {
     dane[n]=a;
@@ -62,6 +86,42 @@ void redukcja::reset (int n)
         }
         dane.push_back(a);
     }
+}
+
+void redukcja16::reset()
+{
+    dane.clear();
+    bool powtorzenia;
+    unsigned short a;
+    for (int i=0;i<16;++i)
+    {
+        powtorzenia=1;
+        while(powtorzenia)
+        {
+            a=rand()%16;
+            powtorzenia=0;
+            for (int j=0;j<i;++j)
+            {
+                if (dane[j]==a)
+                {
+                    powtorzenia=1;
+                    break;
+                }
+            }
+        }
+        dane.push_back(a);
+    }
+}
+
+void redukcja16::f(unsigned short & mes)
+{
+    unsigned short pom=0;
+    for (int i=0;i<16;++i)
+    {
+        if (mes&(1 << dane[i]))
+            pom|=1<<i;
+    }
+    mes=pom;
 }
 
 void redukcja::f(slowo& mes)
