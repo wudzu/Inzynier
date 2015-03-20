@@ -93,42 +93,43 @@ void hellman::tworz(unsigned char daneN, unsigned int daneT, unsigned int daneM,
 
 bool hellman16::testuj(unsigned short klucz)
 {
-    int* prime=liczbypierwsze();
     unsigned short C0;
-
-    szyfrowanie16 (plaintext, klucz, C0, prime);
+    unsigned short test1,test2;
+    szyfrowanie16 (plaintext+1,     klucz, test1);
+    szyfrowanie16 (plaintext+256,   klucz, test2);
+    szyfrowanie16 (plaintext, klucz, C0);
     for (int i=0;i<r;++i)
     {
-        if (tablica[i].sprawdz(C0, klucz))
+        if (tablica[i].sprawdz(C0, test1, test2))
         {
             //printf("\n%x",klucz);
-            delete [] prime;
+
             return 1;
             break;
         }
     }
 
-    delete [] prime;
+
     return 0;
 }
 
 bool hellman::testuj(slowo& klucz)
 {
-    int* prime=liczbypierwsze();
+
     slowo C0;
     //bool jest=0;
-    szyfrowanie (plaintext, klucz, C0, prime);
+    szyfrowanie (plaintext, klucz, C0);
     for (int i=0;i<r;++i)
     {
         if (tablica[i].sprawdz(C0, klucz))
         {
-            delete [] prime;
+
             return 1;
             break;
         }
     }
 
-    delete [] prime;
+
     return 0;
 }
 

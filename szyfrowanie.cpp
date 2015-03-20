@@ -3,6 +3,8 @@
 unsigned char sBox0[16]={0x9A,0x39,0x5F,0x00,0x18,0xA1,0x27,0xFE,0xB2,0x63,0xCD,0xE6,0x84,0x4C,0x7B,0xD5};
 unsigned char sBox1[16]={0x30,0x4C,0x21,0xF2,0x07,0x19,0x8A,0x74,0x53,0xC8,0xA6,0xEF,0xBB,0x6D,0xD5,0x9E};
 
+int prime[23]={5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
+
 unsigned short sBox16[16]={0x309A,0x4C39,0x215F,0xF200,0x0718,0x19a1,0x8a27,0x74fe,0x53b2,0xc863,0xa6cd,0xefe6,0xbb84,0x6d4c,0xd57b,0x9ed5};
 
 unsigned char sBox01( unsigned char P)
@@ -53,7 +55,7 @@ void permutacja16(unsigned short &mes)
     mes=(mes&0x8421) | ((mes &0x0842)<< 3) | ((mes &0x84)<< 6) | ((mes &0x08)<< 9) | ((mes &0x4210)>> 3) | ((mes&0x2100) >> 6) | ((mes&0x1000)>>9);
 }
 
-void szyfrowanie(slowo & P, slowo & klucz, slowo & C, int* prime)
+void szyfrowanie(slowo & P, slowo & klucz, slowo & C)
 {
     slowo m=P;
     slowo kluczrundowy=klucz;
@@ -71,7 +73,7 @@ void szyfrowanie(slowo & P, slowo & klucz, slowo & C, int* prime)
 
 }
 
-void szyfrowanie16(unsigned short P, unsigned short klucz, unsigned short &C, int* prime)
+void szyfrowanie16(unsigned short P, unsigned short klucz, unsigned short &C)
 {
     unsigned short kluczrundowy=klucz;
     C=P;

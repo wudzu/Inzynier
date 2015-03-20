@@ -33,7 +33,6 @@ unsigned int tablicaH16::getPudla()
 
 void tablicaH16::wypelnij(unsigned short& daneMessage, unsigned int& daneT, unsigned int& daneM)
 {
-    int* prime=liczbypierwsze();
 
     pudla=0;
     plaintext=daneMessage;
@@ -58,7 +57,7 @@ void tablicaH16::wypelnij(unsigned short& daneMessage, unsigned int& daneT, unsi
 
             for (int k=0;k<t;++k)
             {
-                szyfrowanie16 (plaintext, klucz, C, prime);
+                szyfrowanie16 (plaintext, klucz, C);
                 funkcjaRedukcji.f(C);
                 klucz=C;
             }
@@ -73,13 +72,12 @@ void tablicaH16::wypelnij(unsigned short& daneMessage, unsigned int& daneT, unsi
 	}
 
 	sortowanie( 0,m-1);
-	delete [] prime;
+
 
 }
 
 void tablicaH::wypelnij(slowo& daneMessage, unsigned char& daneN, unsigned int& daneT, unsigned int& daneM)
 {
-    int* prime=liczbypierwsze();
 
     pudla=0;
     plaintext=daneMessage;
@@ -107,7 +105,7 @@ void tablicaH::wypelnij(slowo& daneMessage, unsigned char& daneN, unsigned int& 
 
             for (int k=0;k<t;++k)
             {
-                szyfrowanie (plaintext, klucz, C, prime);
+                szyfrowanie (plaintext, klucz, C);
                 funkcjaRedukcji.f(C);
                 klucz=C;
             }
@@ -122,7 +120,6 @@ void tablicaH::wypelnij(slowo& daneMessage, unsigned char& daneN, unsigned int& 
 	}
 
 	sortowanie( 0,m-1);
-	delete [] prime;
 }
 
 void tablicaH16::sortowanie(int left, int right)
@@ -272,9 +269,8 @@ void tablicaH::pozostale(int& pocz, int& kon)
     }
 }
 
-bool tablicaH16::sprawdz(unsigned short C0, unsigned short klucz)
+bool tablicaH16::sprawdz(unsigned short C0, unsigned short test1, unsigned short test2)
 {
-    int* prime=liczbypierwsze();
     int pozycja;
     int koniec=1;
     unsigned short element, elementpop;
@@ -304,13 +300,16 @@ bool tablicaH16::sprawdz(unsigned short C0, unsigned short klucz)
             odtwarzanie[0]=tablica[pozycja].SP;
             for (int j=1;j<t;++j)
             {
-                szyfrowanie16(plaintext,odtwarzanie[j-1],odtwarzanie[j],prime);
+                szyfrowanie16(plaintext,odtwarzanie[j-1],odtwarzanie[j]);
                 funkcjaRedukcji.f(odtwarzanie[j]);
                 //printf("%d : %d %d\n", j, odtwarzanie[j].bajt[0],odtwarzanie[j].bajt[1]);
             }
             if ((odtwarzanie[t-i+1]== C0) )
             {
-                if (odtwarzanie[t-i]== klucz)
+                unsigned short test01,test02;
+                szyfrowanie16(plaintext+1,odtwarzanie[t-i],test01);
+                szyfrowanie16(plaintext+256,odtwarzanie[t-i],test02);
+                if ((test01 == test1) && (test02 == test2))
                 {
 
                     /*
@@ -319,7 +318,7 @@ bool tablicaH16::sprawdz(unsigned short C0, unsigned short klucz)
                     printf("\n");
                     */
                     delete [] odtwarzanie;
-                    delete [] prime;
+
                     return 1;
                 }
                 else
@@ -329,19 +328,19 @@ bool tablicaH16::sprawdz(unsigned short C0, unsigned short klucz)
             }
         }
         }
-        szyfrowanie16(plaintext, elementpop, element, prime);
+        szyfrowanie16(plaintext, elementpop, element);
         funkcjaRedukcji.f(element);
         elementpop=element;
     }
 
     delete [] odtwarzanie;
-    delete [] prime;
+
     return 0;
 }
 
 bool tablicaH::sprawdz(slowo C0, slowo klucz)
 {
-    int* prime=liczbypierwsze();
+
     int pozycja;
     int koniec=1;
     slowo element(n), elementpop(n);
@@ -371,7 +370,7 @@ bool tablicaH::sprawdz(slowo C0, slowo klucz)
             odtwarzanie[0]=tablica[pozycja].SP;
             for (int j=1;j<t;++j)
             {
-                szyfrowanie(plaintext,odtwarzanie[j-1],odtwarzanie[j],prime);
+                szyfrowanie(plaintext,odtwarzanie[j-1],odtwarzanie[j]);
                 funkcjaRedukcji.f(odtwarzanie[j]);
                 //printf("%d : %d %d\n", j, odtwarzanie[j].bajt[0],odtwarzanie[j].bajt[1]);
             }
@@ -386,7 +385,6 @@ bool tablicaH::sprawdz(slowo C0, slowo klucz)
                     printf("\n");
                     */
                     delete [] odtwarzanie;
-                    delete [] prime;
                     return 1;
                 }
                 else
@@ -396,7 +394,7 @@ bool tablicaH::sprawdz(slowo C0, slowo klucz)
             }
         }
         }
-        szyfrowanie(plaintext, elementpop, element, prime);
+        szyfrowanie(plaintext, elementpop, element);
         funkcjaRedukcji.f(element);
         elementpop=element;
     }
@@ -404,7 +402,7 @@ bool tablicaH::sprawdz(slowo C0, slowo klucz)
     //printf("\n\n Szansa trafienia to %0.000f \n\n ", procent);
 
     delete [] odtwarzanie;
-    delete [] prime;
+
     return 0;
 }
 

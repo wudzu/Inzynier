@@ -13,9 +13,11 @@ void menu()
     }
     else
         printf("Brak tablicy w pamieci. ");
-    printf("Co robic? \n 0 - Tworz jedna tablice\n 1 - Szukaj klucza\n 2 - Zapisz tabele do pliku\n 3 - Wiele tablic metoda Hellmana\n 4 - Statystyka wielu tablic Hellmana\n");
+    printf("Co robic? \n 0 - Tworz jedna tablice\n 1 - Szukaj klucza\n 2 - Zapisz tabele do pliku\n 3 - Wiele tablic metoda Hellmana\n 4 - Statystyka wielu tablic Hellmana\n 5 - Hellman, 16-bitowe zmienne\n 6 - Rivest, 16-bitowe zmienne\n");;
     scanf("%d", &wybor);
         hellman hel;
+        hellman16 hel16;
+        rivest16 riv16;
     switch (wybor)
     {
     case 0:
@@ -41,8 +43,12 @@ void menu()
         hel.menuHellmanZapis();
         break;
     case 5:
-        hellman16 hel16;
+
         hel16.menuHellman();
+        break;
+    case 6:
+
+        riv16.menuRivest();
         break;
 
     }
@@ -50,7 +56,7 @@ void menu()
 
 void tworzTablice()
 {
-    int* prime=liczbypierwsze();
+
 
     printf("Podaj ile bajtow ma slowo:  ");
     scanf("%d", &n);
@@ -97,7 +103,7 @@ void tworzTablice()
 
             for (int k=0;k<t;++k)
             {
-                szyfrowanie (P, klucz, C, prime);
+                szyfrowanie (P, klucz, C);
                 currentRedukcja.f(C);
                 klucz=C;
             }
@@ -108,7 +114,7 @@ void tworzTablice()
 
 	}
 		Sortowanie( 0,m-1);
-		delete [] prime;
+
     return;
 }
 
@@ -142,7 +148,7 @@ void menuKlucza()
 
 bool szukajKlucza(slowo klucz)
 {
-    int* prime=liczbypierwsze();
+
     int pozycja;
     int koniec=1;
     //unsigned int t;
@@ -158,7 +164,7 @@ bool szukajKlucza(slowo klucz)
     for (int i=1;i<t-1;++i)
     {
         //printf("\n%d\n",m);
-        szyfrowanie(P, elementpop, element, prime);
+        szyfrowanie(P, elementpop, element);
         currentRedukcja.f(element);
         elementpop=element;
         pozycja=Szukanie(element,0,m-1);
@@ -176,7 +182,7 @@ bool szukajKlucza(slowo klucz)
             odtwarzanie[0]=tablica[pozycja].SP;
             for (int j=1;j<t;++j)
             {
-                szyfrowanie(P,odtwarzanie[j-1],odtwarzanie[j],prime);
+                szyfrowanie(P,odtwarzanie[j-1],odtwarzanie[j]);
                 currentRedukcja.f(odtwarzanie[j]);
                 //printf("%d : %d %d\n", j, odtwarzanie[j].bajt[0],odtwarzanie[j].bajt[1]);
             }
@@ -263,7 +269,6 @@ void czytoten( int pozycja)
 
 void zapisTablicy()
 {
-    int* prime=liczbypierwsze();
 
     slowo P(n);
     slowo klucz(n);
@@ -312,7 +317,7 @@ void zapisTablicy()
             for (int k=0;k<t;++k)
             {
 
-                szyfrowanie (P, klucz, C, prime);
+                szyfrowanie (P, klucz, C);
                 currentRedukcja.f(C);
                 klucz=C;
                 for (int k=n-1;k>=0;--k)
@@ -321,7 +326,7 @@ void zapisTablicy()
 
         fprintf(plik,"\n");
 	}
-	delete [] prime;
+
 
 		fclose(plik);
 

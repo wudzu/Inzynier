@@ -86,7 +86,29 @@ struct tablicaH16
     void wypelnij(unsigned short& daneMessage, unsigned int& daneT, unsigned int& daneM);
     //void ustawGlowne();
     void sortowanie(int left, int right);
-    bool sprawdz(unsigned short C0, unsigned short klucz);
+    bool sprawdz(unsigned short C0, unsigned short test1, unsigned short test2);
+    int szukanie(unsigned short szukana, int left, int right);
+    void pozostale(int& pocz, int& kon);
+    unsigned int getPudla();
+};
+
+struct tablicaR16
+{
+    private:
+    unsigned short plaintext;
+    std::vector<EPSP16> tablica;
+    std::vector<unsigned int> dlugosc;
+    redukcja16 funkcjaRedukcji;
+    unsigned int t;
+    unsigned int m;
+    unsigned int pudla;
+
+    public:
+    tablicaR16();
+    void wypelnij(unsigned short& daneMessage, unsigned int& daneT, unsigned int& daneM);
+    //void ustawGlowne();
+    void sortowanie(int left, int right);
+    bool sprawdz(unsigned short C0, unsigned short test1, unsigned short test2);
     int szukanie(unsigned short szukana, int left, int right);
     void pozostale(int& pocz, int& kon);
     unsigned int getPudla();
@@ -134,8 +156,29 @@ struct hellman16
         int statystyka();
 };
 
-void szyfrowanie(slowo & P, slowo & klucz, slowo & C, int* prime);
-void szyfrowanie16(unsigned short P, unsigned short klucz, unsigned short &C, int* prime);
+struct rivest16
+{
+    private:
+        std::vector<tablicaR16> tablica;
+        unsigned int t;
+        unsigned int m;
+        unsigned int r;
+        unsigned short plaintext;
+        unsigned int pudla;
+
+    public:
+        rivest16();
+        //~hellman16);
+        void menuRivest();
+        //void menuHellmanZapis();
+        void tworz();
+        void tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR, unsigned short plain);
+        bool testuj(unsigned short klucz);
+        int statystyka();
+};
+
+void szyfrowanie(slowo & P, slowo & klucz, slowo & C);
+void szyfrowanie16(unsigned short P, unsigned short klucz, unsigned short &C);
 void sBoxy(slowo & mes);
 void sBoxy16(unsigned short & mes);
 void permutacja(slowo & mes);
