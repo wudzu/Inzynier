@@ -112,7 +112,7 @@ void rivest16::menuRivestZapis()
     scanf("%d", &pom4);
     srand(pom4);
 
-    printf("Ktora zmienna ma rosnac:\n1 - m\n2 - r\n");
+    printf("Ktora zmienna ma rosnac:\n0 - t\n1 - m\n2 - r\n");
     scanf("%d", &rodzaj);
     printf("O ile ma sie ostatecznie zwiekszyc?\n");
     scanf("%d", &wzrost);
