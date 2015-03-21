@@ -9,7 +9,7 @@ void teczowa16::tworz()
 {
     printf("\nPodaj t: ");
     scanf("%d", &t);
-    printf("\nPodaj m: ");
+    printf("\nPodaj m (wskazane przemnozyc m przez wartosc t): ");
     scanf("%d", &m);
     printf("\nPodaj plaintext (hexadecymalnie): ");
     scanf("%x", &plaintext);
