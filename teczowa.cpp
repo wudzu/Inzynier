@@ -129,7 +129,7 @@ void teczowa16::menuTeczowaZapis()
             pom[2]=pom[1];
         }
 
-        fprintf(output,"Zestaw %d, %d \n",pom[0],pom[2]);
+        fprintf(output,"Zestaw %d, %d .\n",pom[0],pom[2]);
         printf("Zestaw %d, %d\n",pom[0],pom[2]);
         for (int i=0;i<pom6;i++)
         {
