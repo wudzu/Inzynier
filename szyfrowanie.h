@@ -171,7 +171,7 @@ struct hellman16
         hellman16();
         //~hellman16);
         void menuHellman();
-        //void menuHellmanZapis();
+        void menuHellmanZapis();
         void tworz();
         void tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR, unsigned short plain);
         bool testuj(unsigned short klucz);
@@ -192,7 +192,7 @@ struct rivest16
         rivest16();
         //~hellman16);
         void menuRivest();
-        //void menuHellmanZapis();
+        void menuRivestZapis();
         void tworz();
         void tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR, unsigned short plain);
         bool testuj(unsigned short klucz);
@@ -213,7 +213,7 @@ struct teczowa16
         teczowa16();
         //~hellman16);
         void menuTeczowa();
-        //void menuHellmanZapis();
+        void menuTeczowaZapis();
         void tworz();
         void tworz(unsigned int daneT, unsigned int daneM, unsigned short plain);
         bool testuj(unsigned short klucz);
