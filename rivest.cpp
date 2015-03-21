@@ -130,7 +130,7 @@ void rivest16::menuRivestZapis()
     wzrost+=pom[rodzaj];
     while(pom[rodzaj]<wzrost)
     {
-        fprintf(output,"Zestaw %d, %d, %d \n",pom[0],pom[1],pom[2]);
+        fprintf(output,"Zestaw %d, %d, %d .\n",pom[0],pom[1],pom[2]);
         printf("Zestaw %d, %d, %d\n",pom[0],pom[1],pom[2]);
         for (int i=0;i<pom6;i++)
         {
