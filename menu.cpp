@@ -13,7 +13,7 @@ void menu()
     }
     else
         printf("Brak tablicy w pamieci. ");
-    printf("Co robic? \n 0 - Tworz jedna tablice\n 1 - Szukaj klucza\n 2 - Zapisz tabele do pliku\n 3 - Wiele tablic metoda Hellmana\n 4 - Statystyka wielu tablic Hellmana\n 5 - Hellman, 16-bitowe zmienne\n 6 - Rivest, 16-bitowe zmienne\n");;
+    printf("Co robic? \n 0 - Tworz jedna tablice\n 1 - Szukaj klucza\n 2 - Zapisz tabele do pliku\n 3 - Wiele tablic metoda Hellmana\n 4 - Statystyka wielu tablic Hellmana\n 5 - Hellman, 16-bitowe zmienne\n 6 - Rivest, 16-bitowe zmienne\n 7 - Oechslin, 16-bitowe zmienne\n");
     scanf("%d", &wybor);
         hellman hel;
         hellman16 hel16;
@@ -45,15 +45,15 @@ void menu()
         break;
     case 5:
 
-        hel16.menuHellman();
+        hel16.menuHellmanZapis();
         break;
     case 6:
 
-        riv16.menuRivest();
+        riv16.menuRivestZapis();
         break;
 
     case 7:
-        tecz16.menuTeczowa();
+        tecz16.menuTeczowaZapis();
         break;
 
     }
