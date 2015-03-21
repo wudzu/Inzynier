@@ -18,6 +18,7 @@ void menu()
         hellman hel;
         hellman16 hel16;
         rivest16 riv16;
+        teczowa16 tecz16;
     switch (wybor)
     {
     case 0:
@@ -49,6 +50,10 @@ void menu()
     case 6:
 
         riv16.menuRivest();
+        break;
+
+    case 7:
+        tecz16.menuTeczowa();
         break;
 
     }

@@ -92,6 +92,27 @@ struct tablicaH16
     unsigned int getPudla();
 };
 
+struct tablicaT16
+{
+    private:
+    unsigned short plaintext;
+    std::vector<EPSP16> tablica;
+    std::vector<redukcja16> funkcjaRedukcji;
+    unsigned int t;
+    unsigned int m;
+    unsigned int pudla;
+
+    public:
+    tablicaT16();
+    void wypelnij(unsigned short& daneMessage, unsigned int& daneT, unsigned int& daneM);
+    //void ustawGlowne();
+    void sortowanie(int left, int right);
+    bool sprawdz(unsigned short C0, unsigned short test1, unsigned short test2);
+    int szukanie(unsigned short szukana, int left, int right);
+    void pozostale(int& pocz, int& kon);
+    unsigned int getPudla();
+};
+
 struct tablicaR16
 {
     private:
@@ -104,6 +125,7 @@ struct tablicaR16
     unsigned int pudla;
 
     public:
+    int getT();
     tablicaR16();
     void wypelnij(unsigned short& daneMessage, unsigned int& daneT, unsigned int& daneM);
     //void ustawGlowne();
@@ -176,6 +198,29 @@ struct rivest16
         bool testuj(unsigned short klucz);
         int statystyka();
 };
+
+struct teczowa16
+{
+    private:
+        tablicaT16 tablica;
+        unsigned int t;
+        unsigned int m;
+        //unsigned int r;
+        unsigned short plaintext;
+        unsigned int pudla;
+
+    public:
+        teczowa16();
+        //~hellman16);
+        void menuTeczowa();
+        //void menuHellmanZapis();
+        void tworz();
+        void tworz(unsigned int daneT, unsigned int daneM, unsigned short plain);
+        bool testuj(unsigned short klucz);
+        int statystyka();
+};
+
+
 
 void szyfrowanie(slowo & P, slowo & klucz, slowo & C);
 void szyfrowanie16(unsigned short P, unsigned short klucz, unsigned short &C);

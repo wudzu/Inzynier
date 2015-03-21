@@ -32,13 +32,16 @@ void rivest16::tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR,
 
     plaintext=plain;
     tablicaR16 pom1;
-
+    int a=0;
     for (int i=0;i<r;++i)
     {
         pom1.wypelnij(plaintext, t, m);
         tablica.push_back(pom1);
+        if (pom1.getT()>a)
+            a=pom1.getT();
         //printf("Tablica %d -ta stworzona\n",i);
     }
+    t=a;
 }
 
 bool rivest16::testuj(unsigned short klucz)
