@@ -91,3 +91,57 @@ void rivest16::menuRivest()
     printf("\n\n%d\n\n",statystyka());
     printf("%d", pudla);
 }
+
+void rivest16::menuRivestZapis()
+{
+    unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok;
+
+    printf("\nPodaj maksymalne t: ");
+    scanf("%d", &pom[0]);
+
+    printf("\nPodaj m: ");
+    scanf("%d", &pom[1]);
+
+    printf("\nPodaj r: ");
+    scanf("%d", &pom[2]);
+
+    printf("Podaj plaintext (hexadecymalnie): ");
+    scanf("%x", &plaintext);
+
+    printf("Podaj seed liczb losowych: ");
+    scanf("%d", &pom4);
+    srand(pom4);
+
+    printf("Ktora zmienna ma rosnac:\n1 - m\n2 - r\n");
+    scanf("%d", &rodzaj);
+    printf("O ile ma sie ostatecznie zwiekszyc?\n");
+    scanf("%d", &wzrost);
+    printf("Z jakim krokiem?\n");
+    scanf("%d", &krok);
+    printf("Ile testow na zestaw?\n");
+    scanf("%d", &pom6);
+    FILE* output;
+    output=fopen("dane.txt","wt");
+    fprintf(output,"Plaintext testu to ");
+        fprintf(output,"%x",plaintext);
+
+    fprintf(output,"\nSeed liczb losowych to %d\n", pom4);
+    fprintf(output,"\nLiczba zestawow to %d\n", wzrost);
+    wzrost+=pom[rodzaj];
+    while(pom[rodzaj]<wzrost)
+    {
+        fprintf(output,"Zestaw %d, %d, %d\n",pom[0],pom[1],pom[2]);
+        printf("Zestaw %d, %d, %d\n",pom[0],pom[1],pom[2]);
+        for (int i=0;i<pom6;i++)
+        {
+            tworz(pom[0],pom[1],pom[2],plaintext);
+            fprintf(output,"%d\t",statystyka());
+            fprintf(output,"%d\n",pudla);
+            printf("%d\t",statystyka());
+            printf("%d\n",pudla);
+        }
+        pom[rodzaj]+=krok;
+    }
+    fclose(output);
+
+}
