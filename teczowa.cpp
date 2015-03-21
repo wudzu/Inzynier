@@ -25,7 +25,7 @@ void teczowa16::tworz()
 void teczowa16::tworz(unsigned int daneT, unsigned int daneM, unsigned short plain)
 {
 
-    t=daneT+2;
+    t=daneT+1;
     m=daneM;
 
 
