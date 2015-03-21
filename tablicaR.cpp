@@ -146,12 +146,12 @@ bool tablicaR16::sprawdz(unsigned short C0, unsigned short test1, unsigned short
     unsigned short element, elementpop;
 
     unsigned short* odtwarzanie;
-    odtwarzanie= new unsigned short [t];
+    odtwarzanie= new unsigned short [t+1];
     funkcjaRedukcji.f(C0);
     element=elementpop=C0;
 
 
-    for (int i=1;i<t;++i)
+    for (int i=1;i<t+1;++i)
     {
         //printf("\n%d\n",m);
         if (!(element&0xF000))
@@ -178,6 +178,7 @@ bool tablicaR16::sprawdz(unsigned short C0, unsigned short test1, unsigned short
                 funkcjaRedukcji.f(odtwarzanie[j]);
                 //printf("%d : %d %d\n", j, odtwarzanie[j].bajt[0],odtwarzanie[j].bajt[1]);
             }
+            odtwarzanie[t]=tablica[pozycja].EP;
             if ((odtwarzanie[dlugosc[pozycja]-i+1]== C0) )
             {
                 unsigned short test01,test02;

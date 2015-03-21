@@ -58,7 +58,7 @@ void hellman16::tworz()
 void hellman16::tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR, unsigned short plain)
 {
     tablica.clear();
-    t=daneT+2;
+    t=daneT;
     m=daneM;
     r=daneR;
 

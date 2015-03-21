@@ -26,7 +26,7 @@ void rivest16::tworz()
 void rivest16::tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR, unsigned short plain)
 {
     tablica.clear();
-    t=daneT+2;
+    t=daneT;
     m=daneM;
     r=daneR;
 
