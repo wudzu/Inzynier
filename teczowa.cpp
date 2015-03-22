@@ -116,7 +116,7 @@ void teczowa16::menuTeczowaZapis()
         fprintf(output,"%x",plaintext);
 
     fprintf(output,"\nSeed liczb losowych to %d\n", pom4);
-    fprintf(output,"\nLiczba zestawow to %d\n", wzrost);
+    fprintf(output,"\nLiczba zestawow to %d\n", (wzrost/krok));
     wzrost+=pom[rodzaj];
     while(pom[rodzaj]<wzrost)
     {
