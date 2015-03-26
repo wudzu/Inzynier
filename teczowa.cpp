@@ -92,7 +92,7 @@ void teczowa16::menuTeczowaZapis()
     printf("\nPodaj m: ");
     scanf("%d", &pom[1]);
 
-    printf("\nZachowac stosunek rozmiaru macierzy m*t?\n0 - tak\n1 - nie\n");
+    printf("\nZachowac stosunek rozmiaru macierzy m*t?\n0 - nie\n1 - tak\n");
     scanf("%d", &teoria);
 
     printf("Podaj plaintext (hexadecymalnie): ");
@@ -120,7 +120,7 @@ void teczowa16::menuTeczowaZapis()
     wzrost+=pom[rodzaj];
     while(pom[rodzaj]<wzrost)
     {
-        if(!teoria)
+        if(teoria)
         {
             pom[2]=pom[0]*pom[1];
         }
