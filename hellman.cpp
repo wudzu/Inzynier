@@ -301,6 +301,29 @@ void hellman16::menuHellmanZapis()
 
 }
 
+int hellman16::testCzasuTworzenia()
+{
+    clock_t zegar;
+    zegar=clock();
+    for (int i=0;i<100;++i)
+    {
+        tworz(42,42,42,0x1234);
+    }
+    return clock()-zegar;
+}
+
+int hellman16::testCzasuLamania()
+{
+    clock_t zegar;
+    tworz(42,42,42,0x1234);
+    zegar=clock();
+    for (int i=0;i<100;++i)
+    {
+        testuj(i);
+    }
+    return clock()-zegar;
+}
+
 hellman::hellman()
 {
 

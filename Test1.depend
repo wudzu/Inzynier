@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1425735763 source:d:\projekty\inz\inzynier\inzynier\main.cpp
+1425739363 source:d:\projekty\inz\inzynier\inzynier\main.cpp
 	"szyfrowanie.h"
 
-1426941296 d:\projekty\inz\inzynier\inzynier\szyfrowanie.h
+1427625713 d:\projekty\inz\inzynier\inzynier\szyfrowanie.h
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -12,43 +12,44 @@
 	"redukcja.h"
 	"tablicaH.h"
 	"hellman.h"
+	<time.h>
 
-1426895237 d:\projekty\inz\inzynier\inzynier\globals.h
+1426898837 d:\projekty\inz\inzynier\inzynier\globals.h
 	"szyfrowanie.h"
 
-1426895237 d:\projekty\inz\inzynier\inzynier\redukcja.h
+1426898837 d:\projekty\inz\inzynier\inzynier\redukcja.h
 	"szyfrowanie.h"
 
-1425740175 d:\projekty\inz\inzynier\inzynier\tablicah.h
+1425743775 d:\projekty\inz\inzynier\inzynier\tablicah.h
 	"szyfrowanie.h"
 
-1426941296 source:d:\projekty\inz\inzynier\inzynier\menu.cpp
+1426944896 source:d:\projekty\inz\inzynier\inzynier\menu.cpp
 	"szyfrowanie.h"
 
-1426895237 source:d:\projekty\inz\inzynier\inzynier\redukcja.cpp
+1426898837 source:d:\projekty\inz\inzynier\inzynier\redukcja.cpp
 	"szyfrowanie.h"
 
-1426895237 source:d:\projekty\inz\inzynier\inzynier\szyfrowanie.cpp
+1426898837 source:d:\projekty\inz\inzynier\inzynier\szyfrowanie.cpp
 	"szyfrowanie.h"
 
-1425751697 d:\projekty\inz\inzynier\inzynier\hellman.h
+1425755297 d:\projekty\inz\inzynier\inzynier\hellman.h
 	"szyfrowanie.h"
 
-1426948982 source:d:\projekty\inz\inzynier\inzynier\tablicah.cpp
+1426952582 source:d:\projekty\inz\inzynier\inzynier\tablicah.cpp
 	"szyfrowanie.h"
 
-1426941296 source:d:\projekty\inz\inzynier\inzynier\hellman.cpp
+1427625713 source:d:\projekty\inz\inzynier\inzynier\hellman.cpp
 	"szyfrowanie.h"
 
-1426941296 source:d:\projekty\inz\inzynier\inzynier\rivest.cpp
+1427625713 source:d:\projekty\inz\inzynier\inzynier\rivest.cpp
 	"szyfrowanie.h"
 
-1426930684 source:d:\projekty\inz\inzynier\inzynier\tablicar.cpp
+1426952777 source:d:\projekty\inz\inzynier\inzynier\tablicar.cpp
 	"szyfrowanie.h"
 
-1426933454 source:d:\projekty\inz\inzynier\inzynier\tablica16t.cpp
+1426937054 source:d:\projekty\inz\inzynier\inzynier\tablica16t.cpp
 	"szyfrowanie.h"
 
-1426941296 source:d:\projekty\inz\inzynier\inzynier\teczowa.cpp
+1427625713 source:d:\projekty\inz\inzynier\inzynier\teczowa.cpp
 	"szyfrowanie.h"
 

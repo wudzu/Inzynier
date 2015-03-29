@@ -10,6 +10,7 @@
 #include "redukcja.h"
 #include "tablicaH.h"
 #include "hellman.h"
+#include <time.h>
 
 struct slowo;
 struct EPSP;
@@ -176,6 +177,8 @@ struct hellman16
         void tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR, unsigned short plain);
         bool testuj(unsigned short klucz);
         int statystyka();
+        int testCzasuTworzenia();
+        int testCzasuLamania();
 };
 
 struct rivest16
@@ -197,6 +200,8 @@ struct rivest16
         void tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR, unsigned short plain);
         bool testuj(unsigned short klucz);
         int statystyka();
+        int testCzasuTworzenia();
+        int testCzasuLamania();
 };
 
 struct teczowa16
@@ -218,6 +223,8 @@ struct teczowa16
         void tworz(unsigned int daneT, unsigned int daneM, unsigned short plain);
         bool testuj(unsigned short klucz);
         int statystyka();
+        int testCzasuTworzenia();
+        int testCzasuLamania();
 };
 
 

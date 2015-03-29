@@ -14,6 +14,7 @@ void menu()
     else
         printf("Brak tablicy w pamieci. ");
     printf("Co robic? \n 0 - Tworz jedna tablice\n 1 - Szukaj klucza\n 2 - Zapisz tabele do pliku\n 3 - Wiele tablic metoda Hellmana\n 4 - Statystyka wielu tablic Hellmana\n 5 - Hellman, 16-bitowe zmienne\n 6 - Rivest, 16-bitowe zmienne\n 7 - Oechslin, 16-bitowe zmienne\n");
+    printf(" 8 - Test czasu\n");
     scanf("%d", &wybor);
         hellman hel;
         hellman16 hel16;
@@ -55,9 +56,24 @@ void menu()
     case 7:
         tecz16.menuTeczowaZapis();
         break;
+    case 8:
+        int czas[6];
+        czas[0]=hel16.testCzasuLamania();
+        czas[1]=hel16.testCzasuTworzenia();
+        czas[2]=riv16.testCzasuLamania();
+        czas[3]=riv16.testCzasuTworzenia();
+        czas[4]=tecz16.testCzasuLamania();
+        czas[5]=tecz16.testCzasuTworzenia();
 
+        printf("Czas tworzenia tablicy hellmana to %d, a lamania to %d\n",czas[1],czas[0]);
+        printf("Czas tworzenia tablicy rivesta to %d, a lamania to %d\n",czas[3],czas[2]);
+        printf("Czas tworzenia tablicy teczowej to %d, a lamania to %d\n",czas[5],czas[4]);
+
+        break;
     }
 }
+
+
 
 void tworzTablice()
 {

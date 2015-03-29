@@ -82,6 +82,29 @@ void teczowa16::menuTeczowa()
     printf("%d", pudla);
 }
 
+int teczowa16::testCzasuTworzenia()
+{
+    clock_t zegar;
+    zegar=clock();
+    for (int i=0;i<100;++i)
+    {
+        tworz(42,1764,0x1234);
+    }
+    return clock()-zegar;
+}
+
+int teczowa16::testCzasuLamania()
+{
+    clock_t zegar;
+    tworz(42,1764,0x1234);
+    zegar=clock();
+    for (int i=0;i<100;++i)
+    {
+        testuj(i);
+    }
+    return clock()-zegar;
+}
+
 void teczowa16::menuTeczowaZapis()
 {
     unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok,teoria;
