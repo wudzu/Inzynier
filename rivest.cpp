@@ -72,7 +72,7 @@ int rivest16::testCzasuTworzenia()
     zegar=clock();
     for (int i=0;i<100;++i)
     {
-        tworz(100,42,42,0x1234);
+        tworz(42,42,42,0x1234);
     }
     return clock()-zegar;
 }
@@ -80,7 +80,7 @@ int rivest16::testCzasuTworzenia()
 int rivest16::testCzasuLamania()
 {
     clock_t zegar;
-    tworz(100,42,42,0x1234);
+    tworz(42,42,42,0x1234);
     zegar=clock();
     for (int i=0;i<100;++i)
     {

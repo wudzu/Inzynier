@@ -39,13 +39,13 @@ void tablicaR16::wypelnij(unsigned short& daneMessage, unsigned int& daneT, unsi
 
 			pom1.SP=klucz;
 
-            for (aktualny=0;!(aktualny>=t || !(klucz&0xF000));++aktualny)
+            for (aktualny=0;!(aktualny>=t || !(klucz&0xfc00));++aktualny) // miejsce 1.
             {
                 szyfrowanie16 (plaintext, klucz, C);
                 funkcjaRedukcji.f(C);
                 klucz=C;
             }
-            } while (klucz&0xF000);
+            } while (klucz&0xfc00); // miejsce 2.
 
             if (aktualny>pomt)
                 pomt=aktualny;
@@ -154,7 +154,7 @@ bool tablicaR16::sprawdz(unsigned short C0, unsigned short test1, unsigned short
     for (int i=1;i<t+1;++i)
     {
         //printf("\n%d\n",m);
-        if (!(element&0xF000))
+        if (!(element&0xfc00))  // miejsce 3. i ostatnie
         {
         pozycja=szukanie(element,0,m-1);
         if (pozycja!=-1)
