@@ -231,12 +231,16 @@ struct teczowa16
 
 void szyfrowanie(slowo & P, slowo & klucz, slowo & C);
 void szyfrowanie16(unsigned short P, unsigned short klucz, unsigned short &C);
+void szyfrowanie32(unsigned int P, unsigned int klucz, unsigned int &C);
 void sBoxy(slowo & mes);
 void sBoxy16(unsigned short & mes);
+void sBoxy32(unsigned int & mes);
 void permutacja(slowo & mes);
 void permutacja16(unsigned short &mes);
+void permutacja32(unsigned int &mes);
 void przesuniecieprawo(slowo & klucz, unsigned char przes);
 void przesuniecieprawo16 (unsigned short &m, unsigned char przes);
+void przesuniecieprawo32(unsigned int &m, unsigned char przes);
 //void R(slowo & mes);
 int* liczbypierwsze();
 void Sortowanie( int left, int right);
