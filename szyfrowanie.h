@@ -47,6 +47,12 @@ struct EPSP16
     unsigned short EP;
 };
 
+struct EPSP32
+{
+    unsigned int SP;
+    unsigned int EP;
+};
+
 struct tablicaH
 {
     private:
@@ -93,6 +99,27 @@ struct tablicaH16
     unsigned int getPudla();
 };
 
+struct tablicaH32
+{
+    private:
+    unsigned int plaintext;
+    std::vector<EPSP32> tablica;
+    redukcja32 funkcjaRedukcji;
+    unsigned int t;
+    unsigned int m;
+    unsigned int pudla;
+
+    public:
+    tablicaH32();
+    void wypelnij(unsigned int& daneMessage, unsigned int& daneT, unsigned int& daneM);
+    //void ustawGlowne();
+    void sortowanie(int left, int right);
+    bool sprawdz(unsigned int C0, unsigned int test1, unsigned int test2);
+    int szukanie(unsigned int szukana, int left, int right);
+    void pozostale(int& pocz, int& kon);
+    unsigned int getPudla();
+};
+
 struct tablicaT16
 {
     private:
@@ -110,6 +137,27 @@ struct tablicaT16
     void sortowanie(int left, int right);
     bool sprawdz(unsigned short C0, unsigned short test1, unsigned short test2);
     int szukanie(unsigned short szukana, int left, int right);
+    void pozostale(int& pocz, int& kon);
+    unsigned int getPudla();
+};
+
+struct tablicaT32
+{
+    private:
+    unsigned int plaintext;
+    std::vector<EPSP32> tablica;
+    std::vector<redukcja32> funkcjaRedukcji;
+    unsigned int t;
+    unsigned int m;
+    unsigned int pudla;
+
+    public:
+    tablicaT32();
+    void wypelnij(unsigned int& daneMessage, unsigned int& daneT, unsigned int& daneM);
+    //void ustawGlowne();
+    void sortowanie(int left, int right);
+    bool sprawdz(unsigned int C0, unsigned int test1, unsigned int test2);
+    int szukanie(unsigned int szukana, int left, int right);
     void pozostale(int& pocz, int& kon);
     unsigned int getPudla();
 };
@@ -137,6 +185,30 @@ struct tablicaR16
     unsigned int getPudla();
 };
 
+struct tablicaR32
+{
+    private:
+    unsigned int plaintext;
+    std::vector<EPSP32> tablica;
+    std::vector<unsigned int> dlugosc;
+    redukcja32 funkcjaRedukcji;
+    unsigned int t;
+    unsigned int m;
+    unsigned int pudla;
+    unsigned int pRozroznialny;
+
+    public:
+    int getT();
+    tablicaR32();
+    void wypelnij(unsigned int& daneMessage, unsigned int& daneT, unsigned int& daneM, unsigned int zera);
+    //void ustawGlowne();
+    void sortowanie(int left, int right);
+    bool sprawdz(unsigned int C0, unsigned int test1, unsigned int test2);
+    int szukanie(unsigned int szukana, int left, int right);
+    void pozostale(int& pocz, int& kon);
+    unsigned int getPudla();
+};
+
 struct hellman
 {
     private:
@@ -156,6 +228,29 @@ struct hellman
         void tworz(unsigned char daneN, unsigned int daneT, unsigned int daneM, unsigned int daneR, slowo& plain);
         bool testuj(slowo& klucz);
         int statystyka();
+};
+
+struct hellman32
+{
+    private:
+        std::vector<tablicaH32> tablica;
+        unsigned int t;
+        unsigned int m;
+        unsigned int r;
+        unsigned int plaintext;
+        unsigned int pudla;
+
+    public:
+        hellman32();
+        //~hellman16);
+        void menuHellman();
+        void menuHellmanZapis();
+        void tworz();
+        void tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR, unsigned int plain);
+        bool testuj(unsigned int klucz);
+        int statystyka();
+        int testCzasuTworzenia();
+        int testCzasuLamania();
 };
 
 struct hellman16
@@ -204,6 +299,30 @@ struct rivest16
         int testCzasuLamania();
 };
 
+struct rivest32
+{
+    private:
+        std::vector<tablicaR32> tablica;
+        unsigned int t;
+        unsigned int m;
+        unsigned int r;
+        unsigned int plaintext;
+        unsigned int pudla;
+        unsigned int zera;
+
+    public:
+        rivest32();
+        //~hellman16);
+        void menuRivest();
+        void menuRivestZapis();
+        void tworz();
+        void tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR, unsigned int plain, unsigned int zera);
+        bool testuj(unsigned int klucz);
+        int statystyka();
+        int testCzasuTworzenia();
+        int testCzasuLamania();
+};
+
 struct teczowa16
 {
     private:
@@ -227,6 +346,28 @@ struct teczowa16
         int testCzasuLamania();
 };
 
+struct teczowa32
+{
+    private:
+        tablicaT32 tablica;
+        unsigned int t;
+        unsigned int m;
+        //unsigned int r;
+        unsigned int plaintext;
+        unsigned int pudla;
+
+    public:
+        teczowa32();
+        //~hellman16);
+        void menuTeczowa();
+        void menuTeczowaZapis();
+        void tworz();
+        void tworz(unsigned int daneT, unsigned int daneM, unsigned int plain);
+        bool testuj(unsigned int klucz);
+        int statystyka();
+        int testCzasuTworzenia();
+        int testCzasuLamania();
+};
 
 
 void szyfrowanie(slowo & P, slowo & klucz, slowo & C);

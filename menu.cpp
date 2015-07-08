@@ -20,6 +20,9 @@ void menu()
         hellman16 hel16;
         rivest16 riv16;
         teczowa16 tecz16;
+        hellman32 hel32;
+        rivest32 riv32;
+        teczowa32 tecz32;
     switch (wybor)
     {
     case 0:
@@ -70,6 +73,38 @@ void menu()
         printf("Czas tworzenia tablicy teczowej to %d, a lamania to %d\n",czas[5],czas[4]);
 
         break;
+    case 9:
+        printf("Czas lamania rivesta32 to %d\n",riv32.testCzasuLamania());
+        break;
+    case 10:
+        int czas1[6];
+        czas1[0]=hel32.testCzasuLamania();
+        czas1[1]=hel32.testCzasuTworzenia();
+        printf("Czas tworzenia tablicy hellmana to %d, a lamania to %d\n",czas1[1],czas1[0]);
+
+        czas1[2]=riv32.testCzasuLamania();
+        czas1[3]=riv32.testCzasuTworzenia();
+        printf("Czas tworzenia tablicy rivesta to %d, a lamania to %d\n",czas1[3],czas1[2]);
+
+        czas1[4]=tecz32.testCzasuLamania();
+        czas1[5]=tecz32.testCzasuTworzenia();
+        printf("Czas tworzenia tablicy teczowej to %d, a lamania to %d\n",czas1[5],czas1[4]);
+
+        break;
+    case 11:
+        printf("Czas tworzenia tablicy rivesta to %d, a lamania to %d\n",riv32.testCzasuTworzenia(),riv32.testCzasuLamania());
+        break;
+    case 12:
+        riv32.tworz(100000,1626,1626,0x20202020, (0xFFFFFFFF << (32 - 14)));
+        printf("\nTrafienia rivesta: %d \n",riv32.statystyka());
+        tecz32.tworz(1626,1626*1626,0x20202020);
+        printf("\nTrafienia teczowej: %d \n",tecz32.statystyka());
+        hel32.tworz(1626,1626,1626,0x20202020);
+        printf("\nTrafienia hellmana: %d \n",hel32.statystyka());
+
+
+        break;
+
     }
 }
 
