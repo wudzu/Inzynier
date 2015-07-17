@@ -96,12 +96,13 @@ void menu()
         printf("Czas tworzenia tablicy rivesta to %d, a lamania to %d\n",riv32.testCzasuTworzenia(),riv32.testCzasuLamania());
         break;
     case 12:
+        tecz32.tworz(256,256*256,0x20202020);
+        printf("\nTrafienia teczowej: %d \n",tecz32.statystyka());
         hel32.tworz(256,256,256,0x20202020); //1626
         printf("\nTrafienia hellmana: %d \n",hel32.statystyka());
         riv32.tworz(40000,256,256,0x20202020, (0xFFFFFFFF << (32 - 14)));
         printf("\nTrafienia rivesta: %d \n",riv32.statystyka());
-        tecz32.tworz(256,256*256,0x20202020);
-        printf("\nTrafienia teczowej: %d \n",tecz32.statystyka());
+
 
         break;
     case 13:

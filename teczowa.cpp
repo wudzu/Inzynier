@@ -134,10 +134,10 @@ int teczowa16::statystyka()
 int teczowa32::statystyka()
 {
     int trafienia=0;
-    for (int i=0;i<50000;++i)
+    for (int i=0;i<65536;++i)
     {
 
-            if (testuj(i))
+            if (testuj(rand()*rand()))
                 ++trafienia;
 
     }

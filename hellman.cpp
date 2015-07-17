@@ -226,7 +226,7 @@ int hellman32::statystyka()
     for (int i=0;i<65536;++i)
     {
 
-            if (testuj(rand()))
+            if (testuj(rand()*rand()))
                 ++trafienia;
 
     }

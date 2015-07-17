@@ -83,7 +83,7 @@ void rivest32::tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR,
     int a=0;
     for (int i=0;i<r;++i)
     {
-        printf("\t%d",i);
+        //printf("\t%d",i);
         pom1.wypelnij(plaintext, t, m,zera);
         tablica.push_back(pom1);
         if (pom1.getT()>a)
@@ -204,10 +204,10 @@ int rivest16::statystyka()
 int rivest32::statystyka()
 {
     int trafienia=0;
-    for (unsigned int i=0;i<50000;++i)
+    for (int i=0;i<65536;++i)
     {
 
-            if (testuj(rand()))
+            if (testuj(rand()*rand()))
                 ++trafienia;
 
     }
