@@ -23,6 +23,7 @@ void menu()
         hellman32 hel32;
         rivest32 riv32;
         teczowa32 tecz32;
+        unsigned int blabla=0x1f2f4f;
     switch (wybor)
     {
     case 0:
@@ -95,16 +96,34 @@ void menu()
         printf("Czas tworzenia tablicy rivesta to %d, a lamania to %d\n",riv32.testCzasuTworzenia(),riv32.testCzasuLamania());
         break;
     case 12:
-        riv32.tworz(100000,1626,1626,0x20202020, (0xFFFFFFFF << (32 - 14)));
-        printf("\nTrafienia rivesta: %d \n",riv32.statystyka());
-        tecz32.tworz(1626,1626*1626,0x20202020);
-        printf("\nTrafienia teczowej: %d \n",tecz32.statystyka());
-        hel32.tworz(1626,1626,1626,0x20202020);
+        hel32.tworz(256,256,256,0x20202020); //1626
         printf("\nTrafienia hellmana: %d \n",hel32.statystyka());
-
+        riv32.tworz(40000,256,256,0x20202020, (0xFFFFFFFF << (32 - 14)));
+        printf("\nTrafienia rivesta: %d \n",riv32.statystyka());
+        tecz32.tworz(256,256*256,0x20202020);
+        printf("\nTrafienia teczowej: %d \n",tecz32.statystyka());
 
         break;
-
+    case 13:
+        riv32.tworz(40000,1626,1626,0x20202020, (0xFFFFFFFF << (32 - 14)));
+        printf("\nSrednia dlugosc lancucha to: %d\n",riv32.getSredniT());
+        break;
+    case 14:
+        unsigned int bubu0=0x20202020;
+        unsigned int bubu1=1626;
+        unsigned int bubu3=100000;
+        unsigned int bubu2=(0xFFFFFFFF << (32 - 14));
+        unsigned int testow= 200;
+        unsigned long long suma=0;
+        tablicaR32 pom1;
+        for (int i=0;i<testow;++i)
+        {
+            pom1.wypelnij(bubu0,bubu3,bubu1,bubu2);
+            suma+=pom1.getT();
+            printf("\nDlugosc max %d-tej tablicy to: %d",i,pom1.getT());
+        }
+        suma/=testow;
+        printf("\n\nSrednia dlugosc to: %d", suma);
     }
 }
 
