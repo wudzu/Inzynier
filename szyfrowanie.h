@@ -313,6 +313,7 @@ struct rivest32
     public:
         rivest32();
         //~hellman16);
+        unsigned int getSredniT();
         void menuRivest();
         void menuRivestZapis();
         void tworz();

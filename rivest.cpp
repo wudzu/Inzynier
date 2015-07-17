@@ -83,6 +83,7 @@ void rivest32::tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR,
     int a=0;
     for (int i=0;i<r;++i)
     {
+        printf("\t%d",i);
         pom1.wypelnij(plaintext, t, m,zera);
         tablica.push_back(pom1);
         if (pom1.getT()>a)
@@ -344,4 +345,15 @@ void rivest32::menuRivestZapis()
     }
     fclose(output);
 
+}
+
+unsigned int rivest32::getSredniT()
+{
+    unsigned long long temp=0;
+    for (int i=0;i<r;++i)
+    {
+        temp+=tablica[i].getT();
+    }
+    temp/=r;
+    return temp;
 }

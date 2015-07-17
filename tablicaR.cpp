@@ -100,10 +100,16 @@ void tablicaR32::wypelnij(unsigned int& daneMessage, unsigned int& daneT, unsign
 
             do
             {
-            klucz=rand();
-
-			pom1.SP=klucz;
-
+            klucz=rand()*rand();
+            pom1.SP=klucz;
+        /*
+            bool deb1= (0 >=t);
+            bool deb2= klucz&pRozroznialny;
+            printf("\nklucz: %x\n", klucz);
+            printf("pRoz: %x\n", pRozroznialny);
+            printf("Kombo: %x\n", klucz&pRozroznialny);
+            aktualny=0;
+        */
             for (aktualny=0;!(aktualny>=t || !(klucz&pRozroznialny));++aktualny) // miejsce 1.
             {
                 szyfrowanie32 (plaintext, klucz, C);
