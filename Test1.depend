@@ -23,7 +23,7 @@
 1425743775 d:\projekty\inz\inzynier\inzynier\tablicah.h
 	"szyfrowanie.h"
 
-1436997067 source:d:\projekty\inz\inzynier\inzynier\menu.cpp
+1437148877 source:d:\projekty\inz\inzynier\inzynier\menu.cpp
 	"szyfrowanie.h"
 
 1428246391 source:d:\projekty\inz\inzynier\inzynier\redukcja.cpp
@@ -38,10 +38,10 @@
 1429299389 source:d:\projekty\inz\inzynier\inzynier\tablicah.cpp
 	"szyfrowanie.h"
 
-1435963677 source:d:\projekty\inz\inzynier\inzynier\hellman.cpp
+1437148865 source:d:\projekty\inz\inzynier\inzynier\hellman.cpp
 	"szyfrowanie.h"
 
-1437001243 source:d:\projekty\inz\inzynier\inzynier\rivest.cpp
+1437148865 source:d:\projekty\inz\inzynier\inzynier\rivest.cpp
 	"szyfrowanie.h"
 
 1436999525 source:d:\projekty\inz\inzynier\inzynier\tablicar.cpp
@@ -50,6 +50,6 @@
 1429819838 source:d:\projekty\inz\inzynier\inzynier\tablica16t.cpp
 	"szyfrowanie.h"
 
-1435962257 source:d:\projekty\inz\inzynier\inzynier\teczowa.cpp
+1437148865 source:d:\projekty\inz\inzynier\inzynier\teczowa.cpp
 	"szyfrowanie.h"
 

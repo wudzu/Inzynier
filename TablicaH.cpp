@@ -61,7 +61,7 @@ void tablicaH32::wypelnij(unsigned int& daneMessage, unsigned int& daneT, unsign
 
     for(int i=0; i<m; i++)
 	{
-	    klucz=rand();
+	    klucz=rand()*rand();
 
 			pom1.SP=klucz;
 
