@@ -275,7 +275,7 @@ void teczowa16::menuTeczowaZapis()
 
 void teczowa32::menuTeczowaZapis()
 {
-    unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok,teoria;
+    unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok,teoria,pomStat;
 
     printf("\nPodaj t: ");
     scanf("%d", &pom[0]);
@@ -325,9 +325,10 @@ void teczowa32::menuTeczowaZapis()
         for (int i=0;i<pom6;i++)
         {
             tworz(pom[0],pom[2],plaintext);
-            fprintf(output,"%d\t",statystyka());
+            pomStat=statystyka();
+            fprintf(output,"%d\t",pomStat);
             fprintf(output,"%d\n",pudla);
-            printf("%d\t",statystyka());
+            printf("%d\t",pomStat);
             printf("%d\n",pudla);
         }
         pom[rodzaj]+=krok;
