@@ -110,21 +110,14 @@ void menu()
         printf("\nSrednia dlugosc lancucha to: %d\n",riv32.getSredniT());
         break;
     case 14:
-        unsigned int bubu0=0x20202020;
-        unsigned int bubu1=1626;
-        unsigned int bubu3=100000;
-        unsigned int bubu2=(0xFFFFFFFF << (32 - 14));
-        unsigned int testow= 200;
-        unsigned long long suma=0;
-        tablicaR32 pom1;
-        for (int i=0;i<testow;++i)
-        {
-            pom1.wypelnij(bubu0,bubu3,bubu1,bubu2);
-            suma+=pom1.getT();
-            printf("\nDlugosc max %d-tej tablicy to: %d",i,pom1.getT());
-        }
-        suma/=testow;
-        printf("\n\nSrednia dlugosc to: %d", suma);
+        hel32.menuHellmanZapis();
+        break;
+    case 15:
+        riv32.menuRivestZapis();
+        break;
+    case 16:
+        tecz32.menuTeczowaZapis();
+        break;
     }
 }
 

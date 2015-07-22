@@ -308,6 +308,7 @@ void rivest32::menuRivestZapis()
 
     printf("Podaj liczbe zer: ");
     scanf("%d", &zera);
+    zera=(0xFFFFFFFF << (32 - zera));
 
     printf("Podaj seed liczb losowych: ");
     scanf("%d", &pom4);

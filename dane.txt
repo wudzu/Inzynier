@@ -1,6 +1,5 @@
-Plaintext testu to 31 58 
-Seed liczb losowych to 1
-Zestaw 2, 10, 10, 10
-983	978
-991	1001
-994	943
+Plaintext testu to 20202020
+Seed liczb losowych to 123
+
+Liczba zestawow to 0
+Zestaw 256, 256, 256 .
