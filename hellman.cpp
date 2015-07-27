@@ -223,7 +223,7 @@ int hellman::statystyka()
 int hellman32::statystyka()
 {
     int trafienia=0;
-    for (int i=0;i<65536;++i)
+    for (int i=0;i<10000;++i)
     {
 
             if (testuj(rand()*rand()))
