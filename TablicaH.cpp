@@ -45,7 +45,9 @@ void tablicaH32::wypelnij(unsigned int& daneMessage, unsigned int& daneT, unsign
 {
     pudla=0;
     plaintext=daneMessage;
-
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<unsigned int> dis(0,4294967295);
 
     t=daneT;
     m=daneM;
@@ -61,7 +63,7 @@ void tablicaH32::wypelnij(unsigned int& daneMessage, unsigned int& daneT, unsign
 
     for(int i=0; i<m; i++)
 	{
-	    klucz=rand()*rand();
+	    klucz=dis(gen);
 
 			pom1.SP=klucz;
 

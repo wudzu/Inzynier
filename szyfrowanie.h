@@ -11,6 +11,7 @@
 #include "tablicaH.h"
 #include "hellman.h"
 #include <time.h>
+#include <random>
 
 struct slowo;
 struct EPSP;

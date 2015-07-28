@@ -223,10 +223,14 @@ int hellman::statystyka()
 int hellman32::statystyka()
 {
     int trafienia=0;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<unsigned int> dis(0,4294967295);
+
     for (int i=0;i<10000;++i)
     {
 
-            if (testuj(rand()*rand()))
+            if (testuj(dis(gen)))
                 ++trafienia;
 
     }

@@ -2,7 +2,7 @@
 1425739363 source:d:\projekty\inz\inzynier\inzynier\main.cpp
 	"szyfrowanie.h"
 
-1436994657 d:\projekty\inz\inzynier\inzynier\szyfrowanie.h
+1438093328 d:\projekty\inz\inzynier\inzynier\szyfrowanie.h
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -13,6 +13,7 @@
 	"tablicaH.h"
 	"hellman.h"
 	<time.h>
+	<random>
 
 1426898837 d:\projekty\inz\inzynier\inzynier\globals.h
 	"szyfrowanie.h"
@@ -35,10 +36,10 @@
 1425755297 d:\projekty\inz\inzynier\inzynier\hellman.h
 	"szyfrowanie.h"
 
-1437149056 source:d:\projekty\inz\inzynier\inzynier\tablicah.cpp
+1438093383 source:d:\projekty\inz\inzynier\inzynier\tablicah.cpp
 	"szyfrowanie.h"
 
-1437148865 source:d:\projekty\inz\inzynier\inzynier\hellman.cpp
+1438093431 source:d:\projekty\inz\inzynier\inzynier\hellman.cpp
 	"szyfrowanie.h"
 
 1437584573 source:d:\projekty\inz\inzynier\inzynier\rivest.cpp
