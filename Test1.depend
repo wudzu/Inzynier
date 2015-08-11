@@ -54,3 +54,58 @@
 1437584573 source:d:\projekty\inz\inzynier\inzynier\teczowa.cpp
 	"szyfrowanie.h"
 
+1427032186 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\main.cpp
+	"szyfrowanie.h"
+
+1438119568 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\szyfrowanie.h
+	<iostream>
+	<cstdio>
+	<cstdlib>
+	<vector>
+	<math.h>
+	"globals.h"
+	"redukcja.h"
+	"tablicaH.h"
+	"hellman.h"
+	<time.h>
+	<random>
+
+1437989761 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\globals.h
+	"szyfrowanie.h"
+
+1437989761 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\redukcja.h
+	"szyfrowanie.h"
+
+1437989761 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\tablicah.h
+	"szyfrowanie.h"
+
+1437989761 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\hellman.h
+	"szyfrowanie.h"
+
+1438004198 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\menu.cpp
+	"szyfrowanie.h"
+
+1437989761 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\redukcja.cpp
+	"szyfrowanie.h"
+
+1437989761 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\szyfrowanie.cpp
+	"szyfrowanie.h"
+
+1437989761 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\tablicar.cpp
+	"szyfrowanie.h"
+
+1437989761 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\teczowa.cpp
+	"szyfrowanie.h"
+
+1438119568 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\hellman.cpp
+	"szyfrowanie.h"
+
+1437989761 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\rivest.cpp
+	"szyfrowanie.h"
+
+1437989761 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\tablica16t.cpp
+	"szyfrowanie.h"
+
+1438119568 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\tablicah.cpp
+	"szyfrowanie.h"
+
