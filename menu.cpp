@@ -118,6 +118,9 @@ void menu()
     case 16:
         tecz32.menuTeczowaZapis();
         break;
+    case 17:
+        hel32.testowyMenuHellmanZapis();
+        break;
     }
 }
 

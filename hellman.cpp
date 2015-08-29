@@ -508,3 +508,104 @@ hellman::~hellman()
 {
 
 }
+
+void hellman32::dodajM(int dm)
+{
+    for (int i=0;i<r;i++)
+    {
+        tablica[i].dodajM(dm);
+    }
+    m+=dm;
+}
+
+void hellman32::dodajT(int dt)
+{
+    for (int i=0;i<r;i++)
+    {
+        tablica[i].dodajT(dt);
+    }
+    t+=dt;
+}
+
+void hellman32::dodajR(int dr)
+{
+    tablicaH32 pom1;
+    for (int i=0;i<dr;i++)
+    {
+        pom1.wypelnij(plaintext, t, m);
+        tablica.push_back(pom1);
+    }
+    r+=dr;
+}
+
+void hellman32::testowyMenuHellmanZapis()
+{
+    unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok, pomStat;
+
+    printf("\nPodaj t: ");
+    scanf("%d", &pom[0]);
+
+    printf("\nPodaj m: ");
+    scanf("%d", &pom[1]);
+
+    printf("\nPodaj r: ");
+    scanf("%d", &pom[2]);
+
+    printf("Podaj plaintext (hexadecymalnie): ");
+    scanf("%x", &plaintext);
+
+    printf("Podaj seed liczb losowych: ");
+    scanf("%d", &pom4);
+    srand(pom4);
+
+    printf("Ktora zmienna ma rosnac:\n0 - t\n1 - m\n2 - r\n");
+    scanf("%d", &rodzaj);
+    printf("O ile ma sie ostatecznie zwiekszyc?\n");
+    scanf("%d", &wzrost);
+    printf("Z jakim krokiem?\n");
+    scanf("%d", &krok);
+    printf("Ile testow na zestaw?\n");
+    scanf("%d", &pom6);
+    FILE* output;
+    output=fopen("dane.txt","wt");
+    fprintf(output,"Plaintext testu to ");
+        fprintf(output,"%x",plaintext);
+
+    fprintf(output,"\nSeed liczb losowych to %d\n", pom4);
+    fprintf(output,"\nLiczba zestawow to %d\n", (wzrost/krok));
+    wzrost+=pom[rodzaj];
+    std::vector<hellman32> dane;
+    dane.resize(pom6);
+    for (int i=0;i<pom6;i++)
+    {
+        dane[i].tworz(pom[0],pom[1],pom[2],plaintext);
+    }
+    while(pom[rodzaj]<wzrost)
+    {
+        fprintf(output,"Zestaw %d, %d, %d .\n",pom[0],pom[1],pom[2]);
+        printf("Zestaw %d, %d, %d\n",pom[0],pom[1],pom[2]);
+        for (int i=0;i<pom6;i++)
+        {
+            pomStat=dane[i].statystyka();
+            fprintf(output,"%d\t",pomStat);
+            fprintf(output,"%d\n",dane[i].pudla);
+            printf("%d\t",pomStat);
+            printf("%d\n",dane[i].pudla);
+            switch(rodzaj)
+            {
+            case 0:
+                dane[i].dodajT(krok);
+                break;
+            case 1:
+                dane[i].dodajM(krok);
+                break;
+            case 2:
+                dane[i].dodajR(krok);
+                break;
+            }
+        }
+        pom[rodzaj]+=krok;
+    }
+    fclose(output);
+
+}

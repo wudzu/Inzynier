@@ -620,4 +620,71 @@ void tablicaH::wypisz()
     }
 }
 
-//bool tablicaH::
+void tablicaH32::dodajT(int dt)
+{
+    pudla=0;
+    //std::uniform_int_distribution<unsigned int> dis(0,4294967295);
+
+    t+=dt;
+
+    unsigned int C;
+    unsigned int klucz;
+    unsigned int pom0;
+    for(int i=0; i<m; i++)
+	{
+
+			klucz=tablica[i].EP;
+
+            for (int k=0;k<dt;++k)
+            {
+                szyfrowanie32 (plaintext, klucz, C);
+                funkcjaRedukcji.f(C);
+                klucz=C;
+            }
+
+            tablica[i].EP=klucz;
+
+
+
+	}
+
+	sortowanie( 0,m-1);
+}
+
+
+void tablicaH32::dodajM(int dm)
+{
+    pudla=0;
+    std::random_device rd;
+    std::mt19937 gen(rd());
+
+    m+=dm;
+
+    unsigned int C;
+    unsigned int klucz;
+
+    EPSP32 pom1;
+
+    for(int i=0; i<dm; i++)
+	{
+	    klucz=gen();
+
+			pom1.SP=klucz;
+
+            for (int k=0;k<t;++k)
+            {
+                szyfrowanie32 (plaintext, klucz, C);
+                funkcjaRedukcji.f(C);
+                klucz=C;
+            }
+
+            pom1.EP=klucz;
+
+
+        tablica.push_back(pom1);
+
+
+	}
+
+	sortowanie( 0,m-1);
+}

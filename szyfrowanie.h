@@ -119,6 +119,8 @@ struct tablicaH32
     int szukanie(unsigned int szukana, int left, int right);
     void pozostale(int& pocz, int& kon);
     unsigned int getPudla();
+    void dodajT(int dt);
+    void dodajM(int dm);
 };
 
 struct tablicaT16
@@ -239,13 +241,18 @@ struct hellman32
         unsigned int m;
         unsigned int r;
         unsigned int plaintext;
-        unsigned int pudla;
+
 
     public:
+        unsigned int pudla;
         hellman32();
         //~hellman16);
         void menuHellman();
         void menuHellmanZapis();
+        void testowyMenuHellmanZapis();
+        void dodajT(int dt);
+        void dodajR(int dr);
+        void dodajM(int dm);
         void tworz();
         void tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR, unsigned int plain);
         bool testuj(unsigned int klucz);
