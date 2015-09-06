@@ -1,0 +1,10 @@
+Metoda: 5
+Zmienna: 1
+t: 1
+m: 1
+r: 1
+Plaintext: 1
+Seed: 1
+Finalna: 100
+Krok: 1
+Testy: 1
