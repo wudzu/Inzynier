@@ -13,12 +13,17 @@ void menu()
     }
     else
         printf("Brak tablicy w pamieci. ");
-    printf("Co robic? \n 0 - Tworz jedna tablice\n 1 - Szukaj klucza\n 2 - Zapisz tabele do pliku\n 3 - Wiele tablic metoda Hellmana\n 4 - Statystyka wielu tablic Hellmana\n 5 - Hellman, 16-bitowe zmienne\n 6 - Rivest, 16-bitowe zmienne\n");;
+    printf("Co robic? \n 0 - Tworz jedna tablice\n 1 - Szukaj klucza\n 2 - Zapisz tabele do pliku\n 3 - Wiele tablic metoda Hellmana\n 4 - Statystyka wielu tablic Hellmana\n 5 - Hellman, 16-bitowe zmienne\n 6 - Rivest, 16-bitowe zmienne\n 7 - Oechslin, 16-bitowe zmienne\n");
+    printf(" 8 - Test czasu\n");
     scanf("%d", &wybor);
         hellman hel;
         hellman16 hel16;
         rivest16 riv16;
         teczowa16 tecz16;
+        hellman32 hel32;
+        rivest32 riv32;
+        teczowa32 tecz32;
+        unsigned int blabla=0x1f2f4f;
     switch (wybor)
     {
     case 0:
@@ -45,19 +50,81 @@ void menu()
         break;
     case 5:
 
-        hel16.menuHellman();
+        hel16.menuHellmanZapis();
         break;
     case 6:
 
-        riv16.menuRivest();
+        riv16.menuRivestZapis();
         break;
 
     case 7:
-        tecz16.menuTeczowa();
+        tecz16.menuTeczowaZapis();
         break;
+    case 8:
+        int czas[6];
+        czas[0]=hel16.testCzasuLamania();
+        czas[1]=hel16.testCzasuTworzenia();
+        czas[2]=riv16.testCzasuLamania();
+        czas[3]=riv16.testCzasuTworzenia();
+        czas[4]=tecz16.testCzasuLamania();
+        czas[5]=tecz16.testCzasuTworzenia();
 
+        printf("Czas tworzenia tablicy hellmana to %d, a lamania to %d\n",czas[1],czas[0]);
+        printf("Czas tworzenia tablicy rivesta to %d, a lamania to %d\n",czas[3],czas[2]);
+        printf("Czas tworzenia tablicy teczowej to %d, a lamania to %d\n",czas[5],czas[4]);
+
+        break;
+    case 9:
+        printf("Czas lamania rivesta32 to %d\n",riv32.testCzasuLamania());
+        break;
+    case 10:
+        int czas1[6];
+        czas1[0]=hel32.testCzasuLamania();
+        czas1[1]=hel32.testCzasuTworzenia();
+        printf("Czas tworzenia tablicy hellmana to %d, a lamania to %d\n",czas1[1],czas1[0]);
+
+        czas1[2]=riv32.testCzasuLamania();
+        czas1[3]=riv32.testCzasuTworzenia();
+        printf("Czas tworzenia tablicy rivesta to %d, a lamania to %d\n",czas1[3],czas1[2]);
+
+        czas1[4]=tecz32.testCzasuLamania();
+        czas1[5]=tecz32.testCzasuTworzenia();
+        printf("Czas tworzenia tablicy teczowej to %d, a lamania to %d\n",czas1[5],czas1[4]);
+
+        break;
+    case 11:
+        printf("Czas tworzenia tablicy rivesta to %d, a lamania to %d\n",riv32.testCzasuTworzenia(),riv32.testCzasuLamania());
+        break;
+    case 12:
+        tecz32.tworz(256,256*256,0x20202020);
+        printf("\nTrafienia teczowej: %d \n",tecz32.statystyka());
+        hel32.tworz(256,256,256,0x20202020); //1626
+        printf("\nTrafienia hellmana: %d \n",hel32.statystyka());
+        riv32.tworz(40000,256,256,0x20202020, (0xFFFFFFFF << (32 - 14)));
+        printf("\nTrafienia rivesta: %d \n",riv32.statystyka());
+
+
+        break;
+    case 13:
+        riv32.tworz(40000,1626,1626,0x20202020, (0xFFFFFFFF << (32 - 14)));
+        printf("\nSrednia dlugosc lancucha to: %d\n",riv32.getSredniT());
+        break;
+    case 14:
+        hel32.menuHellmanZapis();
+        break;
+    case 15:
+        riv32.menuRivestZapis();
+        break;
+    case 16:
+        tecz32.menuTeczowaZapis();
+        break;
+    case 17:
+        hel32.testowyMenuHellmanZapis();
+        break;
     }
 }
+
+
 
 void tworzTablice()
 {

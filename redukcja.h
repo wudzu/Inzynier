@@ -26,6 +26,17 @@ private:
     std::vector<unsigned char> dane;
 };
 
+struct redukcja32
+{
+public:
+    redukcja32();
+    void reset();
+    void f(unsigned int &mes);
+
+private:
+    std::vector<unsigned char> dane;
+};
+
 void testowanie();
 
 #endif // REDUKCJA_H_INCLUDED
