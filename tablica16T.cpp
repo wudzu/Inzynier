@@ -101,7 +101,7 @@ void tablicaT32::wypelnij(unsigned int& daneMessage, unsigned int& daneT, unsign
 
     for(int i=0; i<m; i++)
 	{
-	    klucz=rand()*rand();
+	    klucz=getRand32();
 
 			pom1.SP=klucz;
 

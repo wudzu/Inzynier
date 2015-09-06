@@ -207,7 +207,7 @@ int rivest32::statystyka()
     for (int i=0;i<65536;++i)
     {
 
-            if (testuj(rand()*rand()))
+            if (testuj(getRand32()))
                 ++trafienia;
 
     }

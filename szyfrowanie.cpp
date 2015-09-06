@@ -320,3 +320,8 @@ void Sortowanie(int left, int right)
     if(left<j) Sortowanie(left,j);
     if(right>i) Sortowanie(i,right);
 }
+
+unsigned int getRand32()
+{
+    return (rand()<<16) | (rand()&0xFFFF);
+}

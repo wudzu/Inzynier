@@ -404,4 +404,6 @@ bool szukajKlucza( slowo klucz);
 void zapisTablicy();
 int Szukanie( slowo szukana, int left, int right);
 
+unsigned int getRand32();
+
 #endif // SZYFROWANIE_H_INCLUDED
