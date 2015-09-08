@@ -100,7 +100,7 @@ void tablicaR32::wypelnij(unsigned int& daneMessage, unsigned int& daneT, unsign
 
             do
             {
-            klucz=rand()*rand();
+            klucz=getRand32();
             pom1.SP=klucz;
         /*
             bool deb1= (0 >=t);
