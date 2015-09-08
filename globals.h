@@ -16,5 +16,6 @@ extern std::vector<EPSP> tablica;
 extern unsigned char sBox01(unsigned char wejscie);
 extern unsigned char sBox23(unsigned char wejscie);
 extern bool jestTablica;
+//extern int prime[25];
 
 #endif // GLOBALS_H_INCLUDED

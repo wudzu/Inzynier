@@ -1,0 +1,111 @@
+# depslib dependency file v1.0
+1425739363 source:d:\projekty\inz\inzynier\inzynier\main.cpp
+	"szyfrowanie.h"
+
+1441537835 d:\projekty\inz\inzynier\inzynier\szyfrowanie.h
+	<iostream>
+	<cstdio>
+	<cstdlib>
+	<vector>
+	<math.h>
+	"globals.h"
+	"redukcja.h"
+	"tablicaH.h"
+	"hellman.h"
+	<time.h>
+	<random>
+
+1426898837 d:\projekty\inz\inzynier\inzynier\globals.h
+	"szyfrowanie.h"
+
+1428246401 d:\projekty\inz\inzynier\inzynier\redukcja.h
+	"szyfrowanie.h"
+
+1425743775 d:\projekty\inz\inzynier\inzynier\tablicah.h
+	"szyfrowanie.h"
+
+1440853431 source:d:\projekty\inz\inzynier\inzynier\menu.cpp
+	"szyfrowanie.h"
+
+1428246391 source:d:\projekty\inz\inzynier\inzynier\redukcja.cpp
+	"szyfrowanie.h"
+
+1441537835 source:d:\projekty\inz\inzynier\inzynier\szyfrowanie.cpp
+	"szyfrowanie.h"
+
+1425755297 d:\projekty\inz\inzynier\inzynier\hellman.h
+	"szyfrowanie.h"
+
+1441537835 source:d:\projekty\inz\inzynier\inzynier\tablicah.cpp
+	"szyfrowanie.h"
+
+1441537918 source:d:\projekty\inz\inzynier\inzynier\hellman.cpp
+	"szyfrowanie.h"
+
+1441537949 source:d:\projekty\inz\inzynier\inzynier\rivest.cpp
+	"szyfrowanie.h"
+
+1441537835 source:d:\projekty\inz\inzynier\inzynier\tablicar.cpp
+	"szyfrowanie.h"
+
+1441537835 source:d:\projekty\inz\inzynier\inzynier\tablica16t.cpp
+	"szyfrowanie.h"
+
+1437584573 source:d:\projekty\inz\inzynier\inzynier\teczowa.cpp
+	"szyfrowanie.h"
+
+1427032186 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\main.cpp
+	"szyfrowanie.h"
+
+1438119568 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\szyfrowanie.h
+	<iostream>
+	<cstdio>
+	<cstdlib>
+	<vector>
+	<math.h>
+	"globals.h"
+	"redukcja.h"
+	"tablicaH.h"
+	"hellman.h"
+	<time.h>
+	<random>
+
+1437989761 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\globals.h
+	"szyfrowanie.h"
+
+1437989761 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\redukcja.h
+	"szyfrowanie.h"
+
+1437989761 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\tablicah.h
+	"szyfrowanie.h"
+
+1437989761 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\hellman.h
+	"szyfrowanie.h"
+
+1438004198 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\menu.cpp
+	"szyfrowanie.h"
+
+1437989761 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\redukcja.cpp
+	"szyfrowanie.h"
+
+1437989761 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\szyfrowanie.cpp
+	"szyfrowanie.h"
+
+1437989761 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\tablicar.cpp
+	"szyfrowanie.h"
+
+1437989761 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\teczowa.cpp
+	"szyfrowanie.h"
+
+1438119568 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\hellman.cpp
+	"szyfrowanie.h"
+
+1437989761 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\rivest.cpp
+	"szyfrowanie.h"
+
+1437989761 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\tablica16t.cpp
+	"szyfrowanie.h"
+
+1438119568 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\tablicah.cpp
+	"szyfrowanie.h"
+
