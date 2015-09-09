@@ -23,8 +23,6 @@ void teczowa16::tworz()
     scanf("%d", &a);
     srand(a);
     tworz(t,m,plaintext);
-
-
 }
 
 void teczowa32::tworz()
@@ -40,34 +38,24 @@ void teczowa32::tworz()
     scanf("%d", &a);
     srand(a);
     tworz(t,m,plaintext);
-
-
 }
 
 void teczowa16::tworz(unsigned int daneT, unsigned int daneM, unsigned short plain)
 {
-
     t=daneT+1;
     m=daneM;
 
-
     plaintext=plain;
     tablica.wypelnij(plaintext,t,m);
-
-
 }
 
 void teczowa32::tworz(unsigned int daneT, unsigned int daneM, unsigned int plain)
 {
-
     t=daneT+1;
     m=daneM;
 
-
     plaintext=plain;
     tablica.wypelnij(plaintext,t,m);
-
-
 }
 
 bool teczowa16::testuj(unsigned short klucz)
@@ -78,16 +66,10 @@ bool teczowa16::testuj(unsigned short klucz)
     szyfrowanie16 (plaintext+256,   klucz, test2);
     szyfrowanie16 (plaintext, klucz, C0);
 
-
-        if (tablica.sprawdz(C0, test1, test2))
-        {
-            //printf("\n%x",klucz);
-
-            return 1;
-
-        }
-
-
+    if (tablica.sprawdz(C0, test1, test2))
+    {
+        return 1;
+    }
 
     return 0;
 }
@@ -96,20 +78,15 @@ bool teczowa32::testuj(unsigned int klucz)
 {
     unsigned int C0;
     unsigned int test1,test2;
+
     szyfrowanie32 (plaintext+1,     klucz, test1);
     szyfrowanie32 (plaintext+256,   klucz, test2);
     szyfrowanie32 (plaintext, klucz, C0);
 
-
-        if (tablica.sprawdz(C0, test1, test2))
-        {
-            //printf("\n%x",klucz);
-
-            return 1;
-
-        }
-
-
+    if (tablica.sprawdz(C0, test1, test2))
+    {
+        return 1;
+    }
 
     return 0;
 }
@@ -119,13 +96,9 @@ int teczowa16::statystyka()
     int trafienia=0;
     for (int i=0;i<65536;++i)
     {
-
-            if (testuj(i))
-                ++trafienia;
-
+        if (testuj(i))
+            ++trafienia;
     }
-
-
     pudla=tablica.getPudla();
 
     return trafienia;
@@ -136,13 +109,9 @@ int teczowa32::statystyka()
     int trafienia=0;
     for (int i=0;i<65536;++i)
     {
-
-            if (testuj(rand()*rand()))
-                ++trafienia;
-
+        if (testuj(rand()*rand()))
+            ++trafienia;
     }
-
-
     pudla=tablica.getPudla();
 
     return trafienia;

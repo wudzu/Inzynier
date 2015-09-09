@@ -26,7 +26,6 @@ void tablicaR16::wypelnij(unsigned short& daneMessage, unsigned int& daneT, unsi
     pudla=0;
     plaintext=daneMessage;
 
-
     t=daneT;
     m=daneM;
 
@@ -42,9 +41,8 @@ void tablicaR16::wypelnij(unsigned short& daneMessage, unsigned int& daneT, unsi
 
     for(int i=0; i<m; i++)
 	{
-
-            do
-            {
+        do
+        {
             klucz=rand();
 
 			pom1.SP=klucz;
@@ -55,29 +53,23 @@ void tablicaR16::wypelnij(unsigned short& daneMessage, unsigned int& daneT, unsi
                 funkcjaRedukcji.f(C);
                 klucz=C;
             }
-            } while (klucz&0xfc00); // miejsce 2.
+        } while (klucz&0xfc00); // miejsce 2.
 
-            if (aktualny>pomt)
-                pomt=aktualny;
+        if (aktualny>pomt)
+            pomt=aktualny;
 
-            pom1.EP=klucz;
-
+        pom1.EP=klucz;
 
         dlugosc.push_back(aktualny);
         tablica.push_back(pom1);
-
-
 	}
 	t=pomt;
 
 	sortowanie( 0,m-1);
-
-
 }
 
 void tablicaR32::wypelnij(unsigned int& daneMessage, unsigned int& daneT, unsigned int& daneM, unsigned int zera)
 {
-
     pudla=0;
     plaintext=daneMessage;
     pRozroznialny=zera;
@@ -98,42 +90,30 @@ void tablicaR32::wypelnij(unsigned int& daneMessage, unsigned int& daneT, unsign
     for(int i=0; i<m; i++)
 	{
 
-            do
-            {
+        do
+        {
             klucz=getRand32();
             pom1.SP=klucz;
-        /*
-            bool deb1= (0 >=t);
-            bool deb2= klucz&pRozroznialny;
-            printf("\nklucz: %x\n", klucz);
-            printf("pRoz: %x\n", pRozroznialny);
-            printf("Kombo: %x\n", klucz&pRozroznialny);
-            aktualny=0;
-        */
+
             for (aktualny=0;!(aktualny>=t || !(klucz&pRozroznialny));++aktualny) // miejsce 1.
             {
                 szyfrowanie32 (plaintext, klucz, C);
                 funkcjaRedukcji.f(C);
                 klucz=C;
             }
-            } while (klucz&pRozroznialny); // miejsce 2.
+        } while (klucz&pRozroznialny); // miejsce 2.
 
-            if (aktualny>pomt)
-                pomt=aktualny;
+        if (aktualny>pomt)
+            pomt=aktualny;
 
-            pom1.EP=klucz;
-
+        pom1.EP=klucz;
 
         dlugosc.push_back(aktualny);
         tablica.push_back(pom1);
-
-
 	}
 	t=pomt;
 
 	sortowanie( 0,m-1);
-
-
 }
 
 void tablicaR16::sortowanie(int left, int right)
@@ -142,8 +122,6 @@ void tablicaR16::sortowanie(int left, int right)
     int i = left;
     int j = right;
     int x = tablica[(left+right)/2].EP;
-
-    //unsigned short pom0;
 
     do
     {
@@ -175,8 +153,6 @@ void tablicaR32::sortowanie(int left, int right)
     int j = right;
     unsigned int x = tablica[(left+right)/2].EP;
 
-    //unsigned short pom0;
-
     do
     {
         while(tablica[i].EP>x )
@@ -203,7 +179,6 @@ void tablicaR32::sortowanie(int left, int right)
 int tablicaR16::szukanie(unsigned short szukana, int left, int right)
 {
     int middle;
-    //int temp;
 
       while (left <= right) {
             middle = (left + right)/2;
@@ -221,7 +196,6 @@ int tablicaR16::szukanie(unsigned short szukana, int left, int right)
 int tablicaR32::szukanie(unsigned int szukana, int left, int right)
 {
     int middle;
-    //int temp;
 
       while (left <= right) {
             middle = (left + right)/2;
@@ -298,57 +272,41 @@ bool tablicaR16::sprawdz(unsigned short C0, unsigned short test1, unsigned short
 
     for (int i=1;i<t+1;++i)
     {
-        //printf("\n%d\n",m);
         if (!(element&0xfc00))  // miejsce 3. i ostatnie
         {
-        pozycja=szukanie(element,0,m-1);
-        if (pozycja!=-1)
-        {
-
-        //printf("\n%d %d", &tablica[pozycja].EP.bajt[0], &tablica[pozycja].EP.bajt[1]);
-        pozostale(pozycja,koniec);
-        for (;pozycja<=koniec;pozycja++)
-        {
-            if(dlugosc[pozycja]>=i)
+            pozycja=szukanie(element,0,m-1);
+            if (pozycja!=-1)
             {
-
-            //printf("%d %d\n", klucz.bajt[1],klucz.bajt[0]);
-            //printf("%d %d\n", tablica[pozycja].SP.bajt[0], tablica[pozycja].SP.bajt[1]);
-            //printf("%d %d\n\n", tablica[pozycja].EP.bajt[0], tablica[pozycja].EP.bajt[1]);
-
-            odtwarzanie[0]=tablica[pozycja].SP;
-            for (int j=1;j<dlugosc[pozycja];++j)
-            {
-                szyfrowanie16(plaintext,odtwarzanie[j-1],odtwarzanie[j]);
-                funkcjaRedukcji.f(odtwarzanie[j]);
-                //printf("%d : %d %d\n", j, odtwarzanie[j].bajt[0],odtwarzanie[j].bajt[1]);
-            }
-            odtwarzanie[t]=tablica[pozycja].EP;
-            if ((odtwarzanie[dlugosc[pozycja]-i+1]== C0) )
-            {
-                unsigned short test01,test02;
-                szyfrowanie16(plaintext+1,odtwarzanie[dlugosc[pozycja]-i],test01);
-                szyfrowanie16(plaintext+256,odtwarzanie[dlugosc[pozycja]-i],test02);
-                if ((test01 == test1) && (test02 == test2))
+                pozostale(pozycja,koniec);
+                for (;pozycja<=koniec;pozycja++)
                 {
-
-                    /*
-                    for (int b=n-1;b>=0;--b)
-                        printf("%d ", (odtwarzanie[t-i].bajt[b]));
-                    printf("\n");
-                    */
-                    delete [] odtwarzanie;
-
-                    return 1;
-                }
-                else
-                {
-                    ++pudla;
+                    if(dlugosc[pozycja]>=i)
+                    {
+                        odtwarzanie[0]=tablica[pozycja].SP;
+                        for (int j=1;j<dlugosc[pozycja];++j)
+                        {
+                            szyfrowanie16(plaintext,odtwarzanie[j-1],odtwarzanie[j]);
+                            funkcjaRedukcji.f(odtwarzanie[j]);
+                        }
+                        odtwarzanie[t]=tablica[pozycja].EP;
+                        if ((odtwarzanie[dlugosc[pozycja]-i+1]== C0) )
+                        {
+                            unsigned short test01,test02;
+                            szyfrowanie16(plaintext+1,odtwarzanie[dlugosc[pozycja]-i],test01);
+                            szyfrowanie16(plaintext+256,odtwarzanie[dlugosc[pozycja]-i],test02);
+                            if ((test01 == test1) && (test02 == test2))
+                            {
+                                delete [] odtwarzanie;
+                                return 1;
+                            }
+                            else
+                            {
+                                ++pudla;
+                            }
+                        }
+                    }
                 }
             }
-        }
-        }
-        }
         }
         szyfrowanie16(plaintext, elementpop, element);
         funkcjaRedukcji.f(element);
@@ -374,57 +332,41 @@ bool tablicaR32::sprawdz(unsigned int C0, unsigned int test1, unsigned int test2
 
     for (int i=1;i<t+1;++i)
     {
-        //printf("\n%d\n",m);
         if (!(element&pRozroznialny))  // miejsce 3. i ostatnie
         {
-        pozycja=szukanie(element,0,m-1);
-        if (pozycja!=-1)
-        {
-
-        //printf("\n%d %d", &tablica[pozycja].EP.bajt[0], &tablica[pozycja].EP.bajt[1]);
-        pozostale(pozycja,koniec);
-        for (;pozycja<=koniec;pozycja++)
-        {
-            if(dlugosc[pozycja]>=i)
+            pozycja=szukanie(element,0,m-1);
+            if (pozycja!=-1)
             {
-
-            //printf("%d %d\n", klucz.bajt[1],klucz.bajt[0]);
-            //printf("%d %d\n", tablica[pozycja].SP.bajt[0], tablica[pozycja].SP.bajt[1]);
-            //printf("%d %d\n\n", tablica[pozycja].EP.bajt[0], tablica[pozycja].EP.bajt[1]);
-
-            odtwarzanie[0]=tablica[pozycja].SP;
-            for (int j=1;j<dlugosc[pozycja];++j)
-            {
-                szyfrowanie32(plaintext,odtwarzanie[j-1],odtwarzanie[j]);
-                funkcjaRedukcji.f(odtwarzanie[j]);
-                //printf("%d : %d %d\n", j, odtwarzanie[j].bajt[0],odtwarzanie[j].bajt[1]);
-            }
-            odtwarzanie[t]=tablica[pozycja].EP;
-            if ((odtwarzanie[dlugosc[pozycja]-i+1]== C0) )
-            {
-                unsigned int test01,test02;
-                szyfrowanie32(plaintext+1,odtwarzanie[dlugosc[pozycja]-i],test01);
-                szyfrowanie32(plaintext+256,odtwarzanie[dlugosc[pozycja]-i],test02);
-                if ((test01 == test1) && (test02 == test2))
+                pozostale(pozycja,koniec);
+                for (;pozycja<=koniec;pozycja++)
                 {
-
-                    /*
-                    for (int b=n-1;b>=0;--b)
-                        printf("%d ", (odtwarzanie[t-i].bajt[b]));
-                    printf("\n");
-                    */
-                    delete [] odtwarzanie;
-
-                    return 1;
-                }
-                else
-                {
-                    ++pudla;
+                    if(dlugosc[pozycja]>=i)
+                    {
+                        odtwarzanie[0]=tablica[pozycja].SP;
+                        for (int j=1;j<dlugosc[pozycja];++j)
+                        {
+                            szyfrowanie32(plaintext,odtwarzanie[j-1],odtwarzanie[j]);
+                            funkcjaRedukcji.f(odtwarzanie[j]);
+                        }
+                        odtwarzanie[t]=tablica[pozycja].EP;
+                        if ((odtwarzanie[dlugosc[pozycja]-i+1]== C0) )
+                        {
+                            unsigned int test01,test02;
+                            szyfrowanie32(plaintext+1,odtwarzanie[dlugosc[pozycja]-i],test01);
+                            szyfrowanie32(plaintext+256,odtwarzanie[dlugosc[pozycja]-i],test02);
+                            if ((test01 == test1) && (test02 == test2))
+                            {
+                                delete [] odtwarzanie;
+                                return 1;
+                            }
+                            else
+                            {
+                                ++pudla;
+                            }
+                        }
+                    }
                 }
             }
-        }
-        }
-        }
         }
         szyfrowanie32(plaintext, elementpop, element);
         funkcjaRedukcji.f(element);

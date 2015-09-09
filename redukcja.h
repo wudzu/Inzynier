@@ -3,18 +3,6 @@
 
 #include "szyfrowanie.h"
 
-struct redukcja
-{
-public:
-    redukcja(int n);
-    void reset (int n);
-    void f(slowo& mes);
-    void ustaw(unsigned char n, unsigned char a);
-    void ustaw(unsigned char* tab, int n);
-private:
-    std::vector<unsigned char> dane;
-};
-
 struct redukcja16
 {
 public:

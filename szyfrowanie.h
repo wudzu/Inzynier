@@ -13,33 +13,22 @@
 #include <time.h>
 #include <random>
 
-struct slowo;
-struct EPSP;
-struct tablicaH;
-struct hellman;
-
-struct slowo
+class Menu
 {
-    unsigned char* bajt;
-    unsigned char n;
-    slowo();
-    slowo(unsigned char a);
-    slowo & operator= (const slowo &b);
-    ~slowo() {delete [] bajt;};
-    slowo & operator^ (const slowo &b);
-    slowo & operator^=(const slowo &b);
-    bool operator == (const slowo &b);
-    slowo (const slowo& wzor);
-    int liczba();
-    void wypiszB();
-};
+public:
+    Menu();
+    ~Menu();
+    void menu();
+private:
+    void hell16();
+    void rive16();
+    void tecz16();
 
-struct EPSP
-{
-    slowo EP;
-    slowo SP;
-    EPSP(unsigned char a);
-    EPSP(const EPSP &wzor);
+    void hell32();
+    void rive32();
+    void tecz32();
+
+
 };
 
 struct EPSP16
@@ -52,31 +41,6 @@ struct EPSP32
 {
     unsigned int SP;
     unsigned int EP;
-};
-
-struct tablicaH
-{
-    private:
-    slowo plaintext;
-    std::vector<EPSP> tablica;
-    redukcja funkcjaRedukcji;
-    unsigned char n;
-    unsigned int t;
-    unsigned int m;
-    unsigned int pudla;
-
-    public:
-    tablicaH();
-    tablicaH(int n);
-    ~tablicaH();
-    void wypelnij(slowo& daneMessage, unsigned char& daneN, unsigned int& daneT, unsigned int& daneM);
-    //void ustawGlowne();
-    void sortowanie(int left, int right);
-    bool sprawdz(slowo C0, slowo klucz);
-    int szukanie(slowo szukana, int left, int right);
-    void pozostale(int& pocz, int& kon);
-    void wypisz();
-    unsigned int getPudla();
 };
 
 struct tablicaH16
@@ -212,27 +176,6 @@ struct tablicaR32
     unsigned int getPudla();
 };
 
-struct hellman
-{
-    private:
-        std::vector<tablicaH> tablica;
-        unsigned char n;
-        unsigned int t;
-        unsigned int m;
-        unsigned int r;
-        slowo plaintext;
-        unsigned int pudla;
-    public:
-        hellman();
-        ~hellman();
-        void menuHellman();
-        void menuHellmanZapis();
-        void tworz();
-        void tworz(unsigned char daneN, unsigned int daneT, unsigned int daneM, unsigned int daneR, slowo& plain);
-        bool testuj(slowo& klucz);
-        int statystyka();
-};
-
 struct hellman32
 {
     private:
@@ -338,7 +281,6 @@ struct teczowa16
         tablicaT16 tablica;
         unsigned int t;
         unsigned int m;
-        //unsigned int r;
         unsigned short plaintext;
         unsigned int pudla;
 
@@ -361,7 +303,6 @@ struct teczowa32
         tablicaT32 tablica;
         unsigned int t;
         unsigned int m;
-        //unsigned int r;
         unsigned int plaintext;
         unsigned int pudla;
 
@@ -379,30 +320,19 @@ struct teczowa32
 };
 
 
-void szyfrowanie(slowo & P, slowo & klucz, slowo & C);
+
 void szyfrowanie16(unsigned short P, unsigned short klucz, unsigned short &C);
 void szyfrowanie32(unsigned int P, unsigned int klucz, unsigned int &C);
-void sBoxy(slowo & mes);
 void sBoxy16(unsigned short & mes);
 void sBoxy32(unsigned int & mes);
-void permutacja(slowo & mes);
 void permutacja16(unsigned short &mes);
 void permutacja32(unsigned int &mes);
-void przesuniecieprawo(slowo & klucz, unsigned char przes);
 void przesuniecieprawo16 (unsigned short &m, unsigned char przes);
 void przesuniecieprawo32(unsigned int &m, unsigned char przes);
-//void R(slowo & mes);
 int* liczbypierwsze();
-void Sortowanie( int left, int right);
-bool test(slowo testowany, slowo klucz);
 
 void menu();
-void menuKlucza();
-void tworzTablice();
-void reszta(int& pocz, int& kon);
-bool szukajKlucza( slowo klucz);
-void zapisTablicy();
-int Szukanie( slowo szukana, int left, int right);
+
 
 unsigned int getRand32();
 

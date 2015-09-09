@@ -35,7 +35,6 @@
 		<Unit filename="TablicaH.cpp" />
 		<Unit filename="globals.h" />
 		<Unit filename="hellman.cpp" />
-		<Unit filename="hellman.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="menu.cpp" />
 		<Unit filename="redukcja.cpp" />
@@ -44,7 +43,6 @@
 		<Unit filename="szyfrowanie.cpp" />
 		<Unit filename="szyfrowanie.h" />
 		<Unit filename="tablica16T.cpp" />
-		<Unit filename="tablicaH.h" />
 		<Unit filename="tablicaR.cpp" />
 		<Unit filename="teczowa.cpp" />
 		<Extensions>

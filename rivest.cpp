@@ -25,7 +25,6 @@ void rivest16::tworz()
     scanf("%d", &a);
     srand(a);
     tworz(t,m,r,plaintext);
-
 }
 
 void rivest32::tworz()
@@ -46,7 +45,6 @@ void rivest32::tworz()
     scanf("%d", &a);
     srand(a);
     tworz(t,m,r,plaintext,zera);
-
 }
 
 void rivest16::tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR, unsigned short plain)
@@ -65,7 +63,6 @@ void rivest16::tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR,
         tablica.push_back(pom1);
         if (pom1.getT()>a)
             a=pom1.getT();
-        //printf("Tablica %d -ta stworzona\n",i);
     }
     t=a;
 }
@@ -81,14 +78,13 @@ void rivest32::tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR,
     plaintext=plain;
     tablicaR32 pom1;
     int a=0;
+
     for (int i=0;i<r;++i)
     {
-        //printf("\t%d",i);
         pom1.wypelnij(plaintext, t, m,zera);
         tablica.push_back(pom1);
         if (pom1.getT()>a)
             a=pom1.getT();
-        //printf("Tablica %d -ta stworzona\n",i);
     }
     t=a;
 }
@@ -97,20 +93,18 @@ bool rivest16::testuj(unsigned short klucz)
 {
     unsigned short C0;
     unsigned short test1,test2;
+
     szyfrowanie16 (plaintext+1,     klucz, test1);
     szyfrowanie16 (plaintext+256,   klucz, test2);
     szyfrowanie16 (plaintext, klucz, C0);
+
     for (int i=0;i<r;++i)
     {
         if (tablica[i].sprawdz(C0, test1, test2))
         {
-            //printf("\n%x",klucz);
-
             return 1;
-            break;
         }
     }
-
 
     return 0;
 }
@@ -119,20 +113,18 @@ bool rivest32::testuj(unsigned int klucz)
 {
     unsigned int C0;
     unsigned int test1,test2;
+
     szyfrowanie32 (plaintext+1,     klucz, test1);
     szyfrowanie32 (plaintext+256,   klucz, test2);
     szyfrowanie32 (plaintext, klucz, C0);
+
     for (int i=0;i<r;++i)
     {
         if (tablica[i].sprawdz(C0, test1, test2))
         {
-            //printf("\n%x",klucz);
-
             return 1;
-            break;
         }
     }
-
 
     return 0;
 }
@@ -151,6 +143,7 @@ int rivest16::testCzasuTworzenia()
 int rivest32::testCzasuTworzenia()
 {
     clock_t zegar;
+
     zegar=clock();
     for (int i=0;i<100;++i)
     {
@@ -162,6 +155,7 @@ int rivest32::testCzasuTworzenia()
 int rivest16::testCzasuLamania()
 {
     clock_t zegar;
+
     tworz(42,42,42,0x1234);
     zegar=clock();
     for (int i=0;i<100;++i)
@@ -174,6 +168,7 @@ int rivest16::testCzasuLamania()
 int rivest32::testCzasuLamania()
 {
     clock_t zegar;
+
     tworz(100000,1626,1626,0x20202020, (0xFFFFFFFF << (32 - 14)));
     zegar=clock();
     for (int i=0;i<100;++i)
@@ -188,10 +183,8 @@ int rivest16::statystyka()
     int trafienia=0;
     for (int i=0;i<65536;++i)
     {
-
             if (testuj(i))
                 ++trafienia;
-
     }
     pudla=0;
     for (int i=0;i<r;++i)
@@ -206,10 +199,8 @@ int rivest32::statystyka()
     int trafienia=0;
     for (int i=0;i<65536;++i)
     {
-
             if (testuj(getRand32()))
                 ++trafienia;
-
     }
     pudla=0;
     for (int i=0;i<r;++i)
