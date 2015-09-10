@@ -77,7 +77,7 @@ void Menu::tecz16()
 void Menu::hell32()
 {
     hellman32 h32;
-    h32.menuHellmanZapis();
+    h32.testowyMenuHellmanZapis();
 }
 
 void Menu::rive32()
