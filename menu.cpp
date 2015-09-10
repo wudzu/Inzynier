@@ -15,6 +15,9 @@ Menu::~Menu()
 
 void Menu::menu()
 {
+    plik=fopen("temp.txt","rt");
+    unsigned char wybor=0;
+    fscanf(plik,"Metoda: %d\n", &wybor);/*
     printf("\n\n");
     printf("����������������");
     printf("\n\n");
@@ -28,27 +31,26 @@ void Menu::menu()
     printf("3 - hellman 32 bitowy\n");
     printf("4 - rivest 32 bitowy\n");
     printf("5 - teczowa 32 bitowy\n");
-    unsigned char wybor=0;
 
-    scanf("%d", &wybor);
+    scanf("%d", &wybor);*/
     switch (wybor)
     {
-    case 0:
+    case 1:
         hell16();
         break;
-    case 1:
+    case 2:
         rive16();
         break;
-    case 2:
+    case 3:
         tecz16();
         break;
-    case 3:
+    case 4:
         hell32();
         break;
-    case 4:
+    case 5:
         rive32();
         break;
-    case 5:
+    case 6:
         tecz32();
         break;
     }
@@ -94,6 +96,7 @@ void Menu::tecz32()
 void menu()
 {
     unsigned char wybor=0;
+    fscanf(plik,"Metoda: %d\n", &wybor);
     printf("\n\n------------------\n\n");
 
     printf("Co robic? \n 0 - Tworz jedna tablice\n 1 - Szukaj klucza\n 2 - Zapisz tabele do pliku\n 3 - Wiele tablic metoda Hellmana\n 4 - Statystyka wielu tablic Hellmana\n 5 - Hellman, 16-bitowe zmienne\n 6 - Rivest, 16-bitowe zmienne\n 7 - Oechslin, 16-bitowe zmienne\n");

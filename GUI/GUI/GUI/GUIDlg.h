@@ -50,4 +50,7 @@ public:
 	afx_msg void OnEnChangeEdit8();
 	afx_msg void OnEnChangeEdit9();
 	afx_msg void OnBnClickedOk();
+	afx_msg void OnEnChangeEdit10();
+	afx_msg void OnBnClickedRadio11();
+	afx_msg void OnBnClickedRadio12();
 };

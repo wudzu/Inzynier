@@ -235,6 +235,21 @@ void hellman16::menuHellmanZapis()
 {
     unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok;
 
+    fscanf(plik,"Zmienna: %d\n", &rodzaj);
+    fscanf(plik,"t: %d\n", &pom[0]);
+    fscanf(plik,"m: %d\n", &pom[1]);
+    fscanf(plik,"r: %d\n", &pom[2]);
+    fscanf(plik,"Plaintext: %d\n", &plaintext);
+    fscanf(plik,"Seed: %d\n",&pom4);
+    fscanf(plik,"Finalna: %d\n", &wzrost);
+    fscanf(plik,"Krok: %d\n",&krok);
+    fscanf(plik,"Testy: %d\n",&pom6);
+
+    wzrost=wzrost-pom[rodzaj];
+
+    fclose(plik);
+
+/*
     printf("\nPodaj t: ");
     scanf("%d", &pom[0]);
 
@@ -258,11 +273,11 @@ void hellman16::menuHellmanZapis()
     printf("Z jakim krokiem?\n");
     scanf("%d", &krok);
     printf("Ile testow na zestaw?\n");
-    scanf("%d", &pom6);
+    scanf("%d", &pom6);*/
     FILE* output;
     output=fopen("dane.txt","wt");
     fprintf(output,"Plaintext testu to ");
-        fprintf(output,"%x",plaintext);
+        fprintf(output,"%d",plaintext);
 
     fprintf(output,"\nSeed liczb losowych to %d\n", pom4);
     fprintf(output,"\nLiczba zestawow to %d\n", (wzrost/krok));
@@ -364,6 +379,20 @@ void hellman32::testowyMenuHellmanZapis()
 {
     unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok, pomStat;
 
+    fscanf(plik,"Zmienna: %d\n", &rodzaj);
+    fscanf(plik,"t: %d\n", &pom[0]);
+    fscanf(plik,"m: %d\n", &pom[1]);
+    fscanf(plik,"r: %d\n", &pom[2]);
+    fscanf(plik,"Plaintext: %d\n", &plaintext);
+    fscanf(plik,"Seed: %d\n",&pom4);
+    fscanf(plik,"Finalna: %d\n", &wzrost);
+    fscanf(plik,"Krok: %d\n",&krok);
+    fscanf(plik,"Testy: %d\n",&pom6);
+
+    wzrost=wzrost-pom[rodzaj];
+
+    fclose(plik);
+    /*
     printf("\nPodaj t: ");
     scanf("%d", &pom[0]);
 
@@ -387,11 +416,11 @@ void hellman32::testowyMenuHellmanZapis()
     printf("Z jakim krokiem?\n");
     scanf("%d", &krok);
     printf("Ile testow na zestaw?\n");
-    scanf("%d", &pom6);
+    scanf("%d", &pom6);*/
     FILE* output;
     output=fopen("dane.txt","wt");
     fprintf(output,"Plaintext testu to ");
-        fprintf(output,"%x",plaintext);
+        fprintf(output,"%d",plaintext);
 
     fprintf(output,"\nSeed liczb losowych to %d\n", pom4);
     fprintf(output,"\nLiczba zestawow to %d\n", (wzrost/krok));

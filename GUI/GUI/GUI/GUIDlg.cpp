@@ -11,7 +11,7 @@
 #define new DEBUG_NEW
 #endif
 
-CString metoda, zmienna, t, m, r, plaintext, seed, finalna, krok, testy;
+CString metoda, zmienna, t, m, r, plaintext, seed, finalna, krok, testy, zera, tablica;
 // CAboutDlg dialog used for App About
 
 class CAboutDlg : public CDialogEx
@@ -83,6 +83,9 @@ BEGIN_MESSAGE_MAP(CGUIDlg, CDialogEx)
 	ON_EN_CHANGE(IDC_EDIT8, &CGUIDlg::OnEnChangeEdit8)
 	ON_EN_CHANGE(IDC_EDIT9, &CGUIDlg::OnEnChangeEdit9)
 	ON_BN_CLICKED(IDOK, &CGUIDlg::OnBnClickedOk)
+	ON_EN_CHANGE(IDC_EDIT10, &CGUIDlg::OnEnChangeEdit10)
+	ON_BN_CLICKED(IDC_RADIO11, &CGUIDlg::OnBnClickedRadio11)
+	ON_BN_CLICKED(IDC_RADIO12, &CGUIDlg::OnBnClickedRadio12)
 END_MESSAGE_MAP()
 
 
@@ -175,6 +178,12 @@ HCURSOR CGUIDlg::OnQueryDragIcon()
 
 void CGUIDlg::OnBnClickedRadio1()
 {
+	((CButton*) GetDlgItem(IDC_RADIO11))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO12))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO11))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO12))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT10))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT10))->SetWindowText(0);
 	((CButton*) GetDlgItem(IDC_RADIO7))->EnableWindow(TRUE);
 	((CButton*) GetDlgItem(IDC_RADIO8))->EnableWindow(FALSE);
 	((CButton*) GetDlgItem(IDC_RADIO8))->SetCheck(FALSE);	
@@ -188,6 +197,12 @@ void CGUIDlg::OnBnClickedRadio1()
 
 void CGUIDlg::OnBnClickedRadio2()
 {
+	((CButton*) GetDlgItem(IDC_RADIO11))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO12))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO11))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO12))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT10))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT10))->SetWindowText(0);
 	((CButton*) GetDlgItem(IDC_RADIO7))->EnableWindow(FALSE);
 	((CButton*) GetDlgItem(IDC_RADIO7))->SetCheck(FALSE);	
 	((CButton*) GetDlgItem(IDC_RADIO8))->EnableWindow(TRUE);
@@ -201,6 +216,10 @@ void CGUIDlg::OnBnClickedRadio2()
 
 void CGUIDlg::OnBnClickedRadio3()
 {
+	((CButton*) GetDlgItem(IDC_RADIO11))->EnableWindow(TRUE);
+	((CButton*) GetDlgItem(IDC_RADIO12))->EnableWindow(TRUE);
+	((CButton*) GetDlgItem(IDC_EDIT10))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT10))->SetWindowText(0);
 	((CButton*) GetDlgItem(IDC_RADIO7))->EnableWindow(TRUE);
 	((CButton*) GetDlgItem(IDC_RADIO8))->EnableWindow(FALSE);
 	((CButton*) GetDlgItem(IDC_RADIO8))->SetCheck(FALSE);	
@@ -217,6 +236,12 @@ void CGUIDlg::OnBnClickedRadio3()
 
 void CGUIDlg::OnBnClickedRadio4()
 {
+	((CButton*) GetDlgItem(IDC_RADIO11))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO12))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO11))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO12))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT10))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT10))->SetWindowText(0);
 	((CButton*) GetDlgItem(IDC_RADIO7))->EnableWindow(TRUE);
 	((CButton*) GetDlgItem(IDC_RADIO8))->EnableWindow(FALSE);
 	((CButton*) GetDlgItem(IDC_RADIO8))->SetCheck(FALSE);	
@@ -230,6 +255,11 @@ void CGUIDlg::OnBnClickedRadio4()
 
 void CGUIDlg::OnBnClickedRadio5()
 {
+	((CButton*) GetDlgItem(IDC_RADIO11))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO12))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO11))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO12))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT10))->EnableWindow(TRUE);
 	((CButton*) GetDlgItem(IDC_RADIO7))->EnableWindow(FALSE);
 	((CButton*) GetDlgItem(IDC_RADIO7))->SetCheck(FALSE);	
 	((CButton*) GetDlgItem(IDC_RADIO8))->EnableWindow(TRUE);
@@ -243,6 +273,10 @@ void CGUIDlg::OnBnClickedRadio5()
 
 void CGUIDlg::OnBnClickedRadio6()
 {
+	((CButton*) GetDlgItem(IDC_RADIO11))->EnableWindow(TRUE);
+	((CButton*) GetDlgItem(IDC_RADIO12))->EnableWindow(TRUE);
+	((CButton*) GetDlgItem(IDC_EDIT10))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT10))->SetWindowText(0);
 	((CButton*) GetDlgItem(IDC_RADIO7))->EnableWindow(TRUE);
 	((CButton*) GetDlgItem(IDC_RADIO8))->EnableWindow(FALSE);
 	((CButton*) GetDlgItem(IDC_RADIO8))->SetCheck(FALSE);	
@@ -279,6 +313,19 @@ void CGUIDlg::OnBnClickedRadio10()
 {
 	// TODO: Add your control notification handler code here
 }
+
+
+void CGUIDlg::OnBnClickedRadio11()
+{
+	// TODO: Add your control notification handler code here
+}
+
+
+void CGUIDlg::OnBnClickedRadio12()
+{
+	// TODO: Add your control notification handler code here
+}
+
 
 
 void CGUIDlg::OnEnChangeEdit1()
@@ -336,6 +383,10 @@ void CGUIDlg::OnEnChangeEdit9()
 		GetDlgItemText(IDC_EDIT9,testy);
 }
 
+void CGUIDlg::OnEnChangeEdit10()
+{
+		GetDlgItemText(IDC_EDIT10,zera);
+}
 
 void CGUIDlg::OnBnClickedOk()
 {
@@ -351,6 +402,8 @@ void CGUIDlg::OnBnClickedOk()
 		metoda="5";
 	else if(IsDlgButtonChecked(IDC_RADIO6) == BST_CHECKED)
 		metoda="6";
+	else
+		metoda="1";
 
 	if(IsDlgButtonChecked(IDC_RADIO7) == BST_CHECKED || IsDlgButtonChecked(IDC_RADIO8) == BST_CHECKED )
 		zmienna="0";
@@ -358,6 +411,15 @@ void CGUIDlg::OnBnClickedOk()
 		zmienna="1";
 	else if(IsDlgButtonChecked(IDC_RADIO10) == BST_CHECKED)
 		zmienna="2";
+	else
+		zmienna="0";
+
+	if(IsDlgButtonChecked(IDC_RADIO11) == BST_CHECKED)
+		tablica="1";
+	else if(IsDlgButtonChecked(IDC_RADIO12) == BST_CHECKED)
+		tablica="0";
+	else
+		tablica="0";
 
 	if(t.IsEmpty())
 		t="1";	
@@ -375,6 +437,8 @@ void CGUIDlg::OnBnClickedOk()
 		krok="1";
 	if(testy.IsEmpty())
 		testy="1";
+	if(zera.IsEmpty())
+		zera="1";
 
 	CStdioFile plik;
 	if(plik.Open(_T("temp.txt"), CFile::modeCreate|CFile::modeWrite))
@@ -409,8 +473,18 @@ void CGUIDlg::OnBnClickedOk()
 		plik.WriteString(_T("Testy: "));
 		plik.WriteString(testy);
 		plik.WriteString(_T("\n"));
+		plik.WriteString(_T("Zera: "));
+		plik.WriteString(zera);
+		plik.WriteString(_T("\n"));
+		plik.WriteString(_T("Tablica: "));
+		plik.WriteString(tablica);
+		plik.WriteString(_T("\n"));
 	}
 
-	//ShellExecute(0,NULL,_T("EXE.exe"), NULL, NULL, SW_SHOWNORMAL);
+	ShellExecute(0,NULL,_T("krypto.exe"), NULL, NULL, SW_SHOWNORMAL);
 	CDialogEx::OnOK();
 }
+
+
+
+
