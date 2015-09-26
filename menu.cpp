@@ -16,8 +16,14 @@ Menu::~Menu()
 void Menu::menu()
 {
     plik=fopen("temp.txt","rt");
-    unsigned char wybor=0;
-    fscanf(plik,"Metoda: %d\n", &wybor);/*
+    unsigned char wybor=0, tryb=0;
+    fscanf(plik,"Tryb: %d\n", &tryb);
+    fscanf(plik,"Metoda: %d\n", &wybor);
+
+    if(tryb==0)
+        FPGA();
+
+    /*
     printf("\n\n");
     printf("����������������");
     printf("\n\n");
@@ -54,6 +60,34 @@ void Menu::menu()
         tecz32();
         break;
     }
+}
+
+void Menu::FPGA()
+{
+    unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok;
+
+    fscanf(plik,"Zmienna: %d\n", &rodzaj);
+    fscanf(plik,"t: %d\n", &pom[0]);
+    fscanf(plik,"m: %d\n", &pom[1]);
+    fscanf(plik,"r: %d\n", &pom[2]);
+    fscanf(plik,"Plaintext: %d\n", &plaintext);
+    fscanf(plik,"Seed: %d\n",&pom4);
+    fscanf(plik,"Finalna: %d\n", &wzrost);
+    fscanf(plik,"Krok: %d\n",&krok);
+    fscanf(plik,"Testy: %d\n",&pom6);
+    fclose(plik);
+
+    FILE* FPGAin;
+    FPGAin=fopen("FPGAin.txt","wt");
+    fprintf(FPGAin,"Plaintext in: ");
+    fprintf(FPGAin,"%d\n",plaintext);
+
+     // tu szyfrowanie
+     // zapis par?
+
+    fprintf(FPGAin,"Plaintext out: ");
+    fprintf(FPGAin,"%d\n",C);
+    fclose(FPGAin);
 }
 
 void Menu::hell16()

@@ -1,0 +1,13 @@
+Metoda: 1
+Zmienna: 0
+t: 1
+m: 1
+r: 1
+Plaintext: 1
+Seed: 1
+Finalna: 100
+Krok: 1
+Testy: 1
+Zera: 1
+Tablica: 0
+Tryb: 1

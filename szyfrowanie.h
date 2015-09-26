@@ -20,6 +20,8 @@ public:
     ~Menu();
     void menu();
 private:
+    void FPGA();
+
     void hell16();
     void rive16();
     void tecz16();

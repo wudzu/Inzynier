@@ -1,6 +1,0 @@
-Plaintext testu to 1
-Seed liczb losowych to 1
-
-Liczba zestawow to 1
-Zestaw 1, 1, 1 .
-1	1

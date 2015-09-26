@@ -53,4 +53,6 @@ public:
 	afx_msg void OnEnChangeEdit10();
 	afx_msg void OnBnClickedRadio11();
 	afx_msg void OnBnClickedRadio12();
+	afx_msg void OnBnClickedRadio13();
+	afx_msg void OnBnClickedRadio14();
 };
