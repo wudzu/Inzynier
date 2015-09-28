@@ -1,11 +1,12 @@
+Tryb: 1
 Metoda: 4
 Zmienna: 0
-t: 1726
+t: 1776
 m: 1626
 r: 1626
 Plaintext: 50505050
 Seed: 665
-Finalna: 1826
+Finalna: 1876
 Krok: 50
 Testy: 1
 Zera: 1

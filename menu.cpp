@@ -21,7 +21,10 @@ void Menu::menu()
     fscanf(plik,"Metoda: %d\n", &wybor);
 
     if(tryb==0)
+    {
         FPGA();
+    }
+
 
     /*
     printf("\n\n");
@@ -64,7 +67,7 @@ void Menu::menu()
 
 void Menu::FPGA()
 {
-    unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok;
+   /* unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok;
 
     fscanf(plik,"Zmienna: %d\n", &rodzaj);
     fscanf(plik,"t: %d\n", &pom[0]);
@@ -87,7 +90,7 @@ void Menu::FPGA()
 
     fprintf(FPGAin,"Plaintext out: ");
     fprintf(FPGAin,"%d\n",C);
-    fclose(FPGAin);
+    fclose(FPGAin);*/
 }
 
 void Menu::hell16()
