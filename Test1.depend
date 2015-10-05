@@ -58,7 +58,7 @@
 1441886372 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\main.cpp
 	"szyfrowanie.h"
 
-1443279044 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\szyfrowanie.h
+1444058860 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\szyfrowanie.h
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -71,7 +71,7 @@
 	<time.h>
 	<random>
 
-1441886372 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\globals.h
+1444058860 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\globals.h
 	"szyfrowanie.h"
 
 1441886372 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\redukcja.h

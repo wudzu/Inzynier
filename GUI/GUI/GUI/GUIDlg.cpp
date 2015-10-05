@@ -11,7 +11,7 @@
 #define new DEBUG_NEW
 #endif
 
-CString metoda, zmienna, t, m, r, plaintext, seed, finalna, krok, testy, zera, tablica, tryb;
+CString metoda, zmienna, trivest, tnormalny, m, r, plaintext, seed, finalna, krok, testy, zera, tablica, tryb;
 // CAboutDlg dialog used for App About
 
 class CAboutDlg : public CDialogEx
@@ -88,6 +88,8 @@ BEGIN_MESSAGE_MAP(CGUIDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_RADIO12, &CGUIDlg::OnBnClickedRadio12)
 	ON_BN_CLICKED(IDC_RADIO13, &CGUIDlg::OnBnClickedRadio13)
 	ON_BN_CLICKED(IDC_RADIO14, &CGUIDlg::OnBnClickedRadio14)
+	ON_BN_CLICKED(IDC_BUTTON1, &CGUIDlg::OnBnClickedButton1)
+	ON_BN_CLICKED(IDCANCEL, &CGUIDlg::OnBnClickedCancel)
 END_MESSAGE_MAP()
 
 
@@ -396,15 +398,15 @@ void CGUIDlg::OnBnClickedRadio14()
 
 void CGUIDlg::OnEnChangeEdit1()
 {
-	if(IsDlgButtonChecked(IDC_RADIO2) != BST_CHECKED || IsDlgButtonChecked(IDC_RADIO4) != BST_CHECKED)
-		GetDlgItemText(IDC_EDIT1,t);
+	//if(IsDlgButtonChecked(IDC_RADIO2) != BST_CHECKED || IsDlgButtonChecked(IDC_RADIO4) != BST_CHECKED)
+		GetDlgItemText(IDC_EDIT1,tnormalny);
 }
 
 
 void CGUIDlg::OnEnChangeEdit2()
 {
-	if(IsDlgButtonChecked(IDC_RADIO2) == BST_CHECKED || IsDlgButtonChecked(IDC_RADIO4) == BST_CHECKED)
-		GetDlgItemText(IDC_EDIT2,t);
+	//if(IsDlgButtonChecked(IDC_RADIO2) == BST_CHECKED || IsDlgButtonChecked(IDC_RADIO4) == BST_CHECKED)
+		GetDlgItemText(IDC_EDIT2,trivest);
 }
 
 
@@ -494,8 +496,8 @@ void CGUIDlg::OnBnClickedOk()
 	else
 		tryb="1";
 
-	if(t.IsEmpty())
-		t="1";	
+	if(trivest.IsEmpty() && tnormalny.IsEmpty())
+		trivest="1"; tnormalny="1";	
 	if(m.IsEmpty())
 		m="1";
 	if(r.IsEmpty())
@@ -515,7 +517,8 @@ void CGUIDlg::OnBnClickedOk()
 
 	CStdioFile plik;
 	if(plik.Open(_T("temp.txt"), CFile::modeCreate|CFile::modeWrite))
-	{
+	{	
+		plik.WriteString(_T("Poczatek: 0\n"));
 		plik.WriteString(_T("Tryb: "));
 		plik.WriteString(tryb);
 		plik.WriteString(_T("\n"));
@@ -526,7 +529,10 @@ void CGUIDlg::OnBnClickedOk()
 		plik.WriteString(zmienna);
 		plik.WriteString(_T("\n"));
 		plik.WriteString(_T("t: "));
-		plik.WriteString(t);
+		if(trivest.IsEmpty())
+			plik.WriteString(tnormalny);
+		else
+			plik.WriteString(trivest);
 		plik.WriteString(_T("\n"));
 		plik.WriteString(_T("m: "));
 		plik.WriteString(m);
@@ -555,6 +561,7 @@ void CGUIDlg::OnBnClickedOk()
 		plik.WriteString(_T("Tablica: "));
 		plik.WriteString(tablica);
 		plik.WriteString(_T("\n"));
+		plik.WriteString(_T("Wykonano: 0\n"));
 	}
 
 	ShellExecute(0,NULL,_T("krypto.exe"), NULL, NULL, SW_SHOWNORMAL);
@@ -562,4 +569,14 @@ void CGUIDlg::OnBnClickedOk()
 }
 
 
+void CGUIDlg::OnBnClickedButton1()
+{
+	ShellExecute(0,NULL,_T("krypto.exe"), NULL, NULL, SW_SHOWNORMAL);
+	CDialogEx::OnOK();
+}
 
+
+void CGUIDlg::OnBnClickedCancel()
+{
+	CDialogEx::OnCancel();
+}
