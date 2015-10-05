@@ -227,9 +227,9 @@ void rivest32::menuRivest()
 }
 
 
-void rivest16::menuRivestZapis()
+void rivest16::menuRivestZapis(Menu* globalMenu)
 {
-    unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok;
+    unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok,wyk;
 
     fscanf(plik,"Zmienna: %d\n", &rodzaj);
     fscanf(plik,"t: %d\n", &pom[0]);
@@ -240,6 +240,10 @@ void rivest16::menuRivestZapis()
     fscanf(plik,"Finalna: %d\n", &wzrost);
     fscanf(plik,"Krok: %d\n",&krok);
     fscanf(plik,"Testy: %d\n",&pom6);
+    fscanf(plik,"Zera: %d\n",&wyk);
+    fscanf(plik,"Tablica: %d\n",&wyk);
+    fscanf(plik,"Wykonano: %d\n",&wyk);
+
     wzrost=wzrost-pom[rodzaj];
 
     fclose(plik);
@@ -270,34 +274,55 @@ void rivest16::menuRivestZapis()
     printf("Ile testow na zestaw?\n");
     scanf("%d", &pom6);*/
     FILE* output;
-    output=fopen("dane.txt","wt");
-    fprintf(output,"Plaintext testu to ");
-        fprintf(output,"%d",plaintext);
+    srand(pom4);
 
-    fprintf(output,"\nSeed liczb losowych to %d\n", pom4);
-    fprintf(output,"\nLiczba zestawow to %d\n", (wzrost/krok));
+    if (globalMenu->getPoczatek())
+    {
+        output = fopen("dane.txt","at");
+    }
+    else
+    {
+        output=fopen("dane.txt","wt");
+        fprintf(output,"Plaintext testu to ");
+        fprintf(output,"%d",plaintext);
+        fprintf(output,"\nSeed liczb losowych to %d\n", pom4);
+        fprintf(output,"\nLiczba zestawow to %d\n", (wzrost/krok));
+
+    }
+
+    globalMenu->started(plaintext,pom4,wzrost+pom[rodzaj],krok,0,0,pom6,rodzaj);
+
     wzrost+=pom[rodzaj];
     while(pom[rodzaj]<wzrost)
     {
-        fprintf(output,"Zestaw %d, %d, %d .\n",pom[0],pom[1],pom[2]);
-        printf("Zestaw %d, %d, %d\n",pom[0],pom[1],pom[2]);
-        for (int i=0;i<pom6;i++)
+        if (wyk == 0)
+        {
+            fprintf(output,"Zestaw %d, %d, %d .\n",pom[0],pom[1],pom[2]);
+            printf("Zestaw %d, %d, %d\n",pom[0],pom[1],pom[2]);
+            wyk=1;
+            globalMenu->update(pom[0],pom[1],pom[2],rand(),1);
+        }
+
+        for (int i=wyk;i<=pom6;i++)
         {
             tworz(pom[0],pom[1],pom[2],plaintext);
             fprintf(output,"%d\t",statystyka());
             fprintf(output,"%d\n",pudla);
             printf("%d\t",statystyka());
             printf("%d\n",pudla);
+            globalMenu->update(pom[0],pom[1],pom[2],rand(),i+1);
         }
+        wyk=0;
         pom[rodzaj]+=krok;
+        globalMenu->update(pom[0],pom[1],pom[2],rand(),0);
     }
     fclose(output);
 
 }
 
-void rivest32::menuRivestZapis()
+void rivest32::menuRivestZapis(Menu* globalMenu)
 {
-    unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok,pomStat;
+    unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok,pomStat,wyk;
 
     fscanf(plik,"Zmienna: %d\n", &rodzaj);
     fscanf(plik,"t: %d\n", &pom[0]);
@@ -309,6 +334,8 @@ void rivest32::menuRivestZapis()
     fscanf(plik,"Krok: %d\n",&krok);
     fscanf(plik,"Testy: %d\n",&pom6);
     fscanf(plik,"Zera: %d\n",&zera);
+    fscanf(plik,"Tablica: %d\n",&wyk);
+    fscanf(plik,"Wykonano: %d\n",&wyk);
     wzrost=wzrost-pom[rodzaj];
 
     fclose(plik);
@@ -342,18 +369,36 @@ void rivest32::menuRivestZapis()
     printf("Ile testow na zestaw?\n");
     scanf("%d", &pom6);*/
     FILE* output;
-    output=fopen("dane.txt","wt");
-    fprintf(output,"Plaintext testu to ");
-        fprintf(output,"%d",plaintext);
+    srand(pom4);
 
-    fprintf(output,"\nSeed liczb losowych to %d\n", pom4);
-    fprintf(output,"\nLiczba zestawow to %d\n", (wzrost/krok));
+    if (globalMenu->getPoczatek())
+    {
+        output = fopen("dane.txt","at");
+    }
+    else
+    {
+        output=fopen("dane.txt","wt");
+        fprintf(output,"Plaintext testu to ");
+        fprintf(output,"%d",plaintext);
+        fprintf(output,"\nSeed liczb losowych to %d\n", pom4);
+        fprintf(output,"\nLiczba zestawow to %d\n", (wzrost/krok));
+
+    }
+    globalMenu->started(plaintext,pom4,wzrost+pom[rodzaj],krok,zera,0,pom6,rodzaj);
+
+
     wzrost+=pom[rodzaj];
     while(pom[rodzaj]<wzrost)
     {
-        fprintf(output,"Zestaw %d, %d, %d .\n",pom[0],pom[1],pom[2]);
-        printf("Zestaw %d, %d, %d\n",pom[0],pom[1],pom[2]);
-        for (int i=0;i<pom6;i++)
+        if (wyk == 0)
+        {
+            fprintf(output,"Zestaw %d, %d, %d .\n",pom[0],pom[1],pom[2]);
+            printf("Zestaw %d, %d, %d\n",pom[0],pom[1],pom[2]);
+            wyk=1;
+            globalMenu->update(pom[0],pom[1],pom[2],rand(),1);
+        }
+
+        for (int i=wyk;i<=pom6;i++)
         {
             tworz(pom[0],pom[1],pom[2],plaintext,zera);
             pomStat=statystyka();
@@ -361,8 +406,11 @@ void rivest32::menuRivestZapis()
             fprintf(output,"%d\n",pudla);
             printf("%d\t",pomStat);
             printf("%d\n",pudla);
+            globalMenu->update(pom[0],pom[1],pom[2],rand(),i+1);
         }
+        wyk=0;
         pom[rodzaj]+=krok;
+        globalMenu->update(pom[0],pom[1],pom[2],rand(),0);
     }
     fclose(output);
 

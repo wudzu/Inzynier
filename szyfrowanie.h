@@ -19,6 +19,10 @@ public:
     Menu();
     ~Menu();
     void menu();
+    void update(int t, int m, int r, int seed, int wykonano);
+    void started(unsigned int p,unsigned int s,unsigned int f,unsigned int k, unsigned int ze, unsigned int ta, unsigned int te, unsigned int zm);
+    bool getPoczatek();
+    unsigned int getWykonano();
 private:
     void FPGA();
 
@@ -29,6 +33,23 @@ private:
     void hell32();
     void rive32();
     void tecz32();
+
+    void upStan();
+    int tryb;
+    int metoda;
+    int zmienna;
+    int t;
+    int m;
+    int r;
+    unsigned int plaintext;
+    unsigned int seed;
+    unsigned int finalna;
+    unsigned int krok;
+    unsigned int testy;
+    unsigned int zera;
+    unsigned int tablica;
+    unsigned int poczatek;
+    unsigned int wykonano;
 
 
 };
@@ -194,7 +215,7 @@ struct hellman32
         //~hellman16);
         void menuHellman();
         void menuHellmanZapis();
-        void testowyMenuHellmanZapis();
+        void testowyMenuHellmanZapis(Menu* globalMenu);
         void dodajT(int dt);
         void dodajR(int dr);
         void dodajM(int dm);
@@ -220,7 +241,7 @@ struct hellman16
         hellman16();
         //~hellman16);
         void menuHellman();
-        void menuHellmanZapis();
+        void menuHellmanZapis(Menu* globalMenu);
         void tworz();
         void tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR, unsigned short plain);
         bool testuj(unsigned short klucz);
@@ -243,7 +264,7 @@ struct rivest16
         rivest16();
         //~hellman16);
         void menuRivest();
-        void menuRivestZapis();
+        void menuRivestZapis(Menu* globalMenu);
         void tworz();
         void tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR, unsigned short plain);
         bool testuj(unsigned short klucz);
@@ -268,7 +289,7 @@ struct rivest32
         //~hellman16);
         unsigned int getSredniT();
         void menuRivest();
-        void menuRivestZapis();
+        void menuRivestZapis(Menu* globalMenu);
         void tworz();
         void tworz(unsigned int daneT, unsigned int daneM, unsigned int daneR, unsigned int plain, unsigned int zera);
         bool testuj(unsigned int klucz);
@@ -290,7 +311,7 @@ struct teczowa16
         teczowa16();
         //~hellman16);
         void menuTeczowa();
-        void menuTeczowaZapis();
+        void menuTeczowaZapis(Menu* globalMenu);
         void tworz();
         void tworz(unsigned int daneT, unsigned int daneM, unsigned short plain);
         bool testuj(unsigned short klucz);
@@ -312,7 +333,7 @@ struct teczowa32
         teczowa32();
         //~hellman16);
         void menuTeczowa();
-        void menuTeczowaZapis();
+        void menuTeczowaZapis(Menu* globalMenu);
         void tworz();
         void tworz(unsigned int daneT, unsigned int daneM, unsigned int plain);
         bool testuj(unsigned int klucz);
@@ -333,7 +354,7 @@ void przesuniecieprawo16 (unsigned short &m, unsigned char przes);
 void przesuniecieprawo32(unsigned int &m, unsigned char przes);
 int* liczbypierwsze();
 
-void menu();
+//void menu();
 
 
 unsigned int getRand32();

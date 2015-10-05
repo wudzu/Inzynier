@@ -1,4 +1,5 @@
 #include "szyfrowanie.h"
+#include "globals.h"
 
 hellman16::hellman16()
 {
@@ -231,9 +232,9 @@ void hellman32::menuHellmanZapis()
 
 }
 
-void hellman16::menuHellmanZapis()
+void hellman16::menuHellmanZapis(Menu* globalMenu)
 {
-    unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok;
+    unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok,wyk;
 
     fscanf(plik,"Zmienna: %d\n", &rodzaj);
     fscanf(plik,"t: %d\n", &pom[0]);
@@ -244,6 +245,11 @@ void hellman16::menuHellmanZapis()
     fscanf(plik,"Finalna: %d\n", &wzrost);
     fscanf(plik,"Krok: %d\n",&krok);
     fscanf(plik,"Testy: %d\n",&pom6);
+    fscanf(plik,"Zera: %d\n",&wyk);
+    fscanf(plik,"Tablica: %d\n",&wyk);
+    fscanf(plik,"Wykonano: %d\n",&wyk);
+
+    unsigned int finalna = wzrost;
 
     wzrost=wzrost-pom[rodzaj];
 
@@ -274,27 +280,49 @@ void hellman16::menuHellmanZapis()
     scanf("%d", &krok);
     printf("Ile testow na zestaw?\n");
     scanf("%d", &pom6);*/
-    FILE* output;
-    output=fopen("dane.txt","wt");
-    fprintf(output,"Plaintext testu to ");
-        fprintf(output,"%d",plaintext);
 
-    fprintf(output,"\nSeed liczb losowych to %d\n", pom4);
-    fprintf(output,"\nLiczba zestawow to %d\n", (wzrost/krok));
+    FILE* output;
+    srand(pom4);
+
+    if (globalMenu->getPoczatek())
+    {
+        output = fopen("dane.txt","at");
+    }
+    else
+    {
+        output=fopen("dane.txt","wt");
+        fprintf(output,"Plaintext testu to ");
+        fprintf(output,"%d",plaintext);
+        fprintf(output,"\nSeed liczb losowych to %d\n", pom4);
+        fprintf(output,"\nLiczba zestawow to %d\n", (wzrost/krok));
+
+    }
+    globalMenu->started(plaintext,pom4,finalna,krok,0,0,pom6,rodzaj);
+
+
     wzrost+=pom[rodzaj];
     while(pom[rodzaj]<wzrost)
     {
-        fprintf(output,"Zestaw %d, %d, %d .\n",pom[0],pom[1],pom[2]);
-        printf("Zestaw %d, %d, %d\n",pom[0],pom[1],pom[2]);
-        for (int i=0;i<pom6;i++)
+        if (wyk == 0)
+        {
+            fprintf(output,"Zestaw %d, %d, %d .\n",pom[0],pom[1],pom[2]);
+            printf("Zestaw %d, %d, %d\n",pom[0],pom[1],pom[2]);
+            wyk=1;
+            globalMenu->update(pom[0],pom[1],pom[2],rand(),1);
+        }
+        for (int i=wyk;i<=pom6;i++)
         {
             tworz(pom[0],pom[1],pom[2],plaintext);
-            fprintf(output,"%d\t",statystyka());
+            int staty=statystyka();
+            fprintf(output,"%d\t",staty);
             fprintf(output,"%d\n",pudla);
-            printf("%d\t",statystyka());
+            printf("%d\t",staty);
             printf("%d\n",pudla);
+            globalMenu->update(pom[0],pom[1],pom[2],rand(),i+1);
         }
+        wyk=0;
         pom[rodzaj]+=krok;
+        globalMenu->update(pom[0],pom[1],pom[2],rand(),0);
     }
     fclose(output);
 
@@ -375,9 +403,9 @@ void hellman32::dodajR(int dr)
     r+=dr;
 }
 
-void hellman32::testowyMenuHellmanZapis()
+void hellman32::testowyMenuHellmanZapis(Menu* globalMenu)
 {
-    unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok, pomStat;
+    unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok, pomStat,wyk;
 
     fscanf(plik,"Zmienna: %d\n", &rodzaj);
     fscanf(plik,"t: %d\n", &pom[0]);
@@ -388,9 +416,14 @@ void hellman32::testowyMenuHellmanZapis()
     fscanf(plik,"Finalna: %d\n", &wzrost);
     fscanf(plik,"Krok: %d\n",&krok);
     fscanf(plik,"Testy: %d\n",&pom6);
+    fscanf(plik,"Zera: %d\n",&wyk);
+    fscanf(plik,"Tablica: %d\n",&wyk);
+    fscanf(plik,"Wykonano: %d",&wyk);
 
     wzrost=wzrost-pom[rodzaj];
 
+    if (wyk != 0)
+        wyk-=1;
     fclose(plik);
     /*
     printf("\nPodaj t: ");
@@ -418,12 +451,24 @@ void hellman32::testowyMenuHellmanZapis()
     printf("Ile testow na zestaw?\n");
     scanf("%d", &pom6);*/
     FILE* output;
-    output=fopen("dane.txt","wt");
-    fprintf(output,"Plaintext testu to ");
-        fprintf(output,"%d",plaintext);
+    srand(pom4);
 
-    fprintf(output,"\nSeed liczb losowych to %d\n", pom4);
-    fprintf(output,"\nLiczba zestawow to %d\n", (wzrost/krok));
+    if (globalMenu->getPoczatek())
+    {
+        output = fopen("dane.txt","at");
+    }
+    else
+    {
+        output=fopen("dane.txt","wt");
+        fprintf(output,"Plaintext testu to ");
+        fprintf(output,"%d",plaintext);
+        fprintf(output,"\nSeed liczb losowych to %d\n", pom4);
+        fprintf(output,"\nLiczba zestawow to %d\n", (wzrost/krok));
+
+    }
+
+    globalMenu->started(plaintext,pom4,wzrost+pom[rodzaj],krok,0,0,pom6,rodzaj);
+
     wzrost+=pom[rodzaj];
     std::vector<hellman32> dane;
     dane.resize(pom6);
@@ -431,17 +476,10 @@ void hellman32::testowyMenuHellmanZapis()
     {
         dane[i].tworz(pom[0],pom[1],pom[2],plaintext);
     }
-    while(pom[rodzaj]<wzrost)
+    if (wyk > 1)
     {
-        fprintf(output,"Zestaw %d, %d, %d .\n",pom[0],pom[1],pom[2]);
-        printf("Zestaw %d, %d, %d\n",pom[0],pom[1],pom[2]);
-        for (int i=0;i<pom6;i++)
+        for (int i=0;i<wyk-1;i++)
         {
-            pomStat=dane[i].statystyka();
-            fprintf(output,"%d\t",pomStat);
-            fprintf(output,"%d\n",dane[i].pudla);
-            printf("%d\t",pomStat);
-            printf("%d\n",dane[i].pudla);
             switch(rodzaj)
             {
             case 0:
@@ -455,7 +493,42 @@ void hellman32::testowyMenuHellmanZapis()
                 break;
             }
         }
+    }
+
+    while(pom[rodzaj]<wzrost)
+    {
+
+        if (wyk == 0)
+        {
+            fprintf(output,"Zestaw %d, %d, %d .\n",pom[0],pom[1],pom[2]);
+            printf("Zestaw %d, %d, %d\n",pom[0],pom[1],pom[2]);
+            wyk=1;
+            globalMenu->update(pom[0],pom[1],pom[2],rand(),1);
+        }
+        for (int i=wyk;i<=pom6;i++)
+        {
+            pomStat=dane[i-1].statystyka();
+            fprintf(output,"%d\t",pomStat);
+            fprintf(output,"%d\n",dane[i-1].pudla);
+            printf("%d\t",pomStat);
+            printf("%d\n",dane[i-1].pudla);
+            switch(rodzaj)
+            {
+            case 0:
+                dane[i-1].dodajT(krok);
+                break;
+            case 1:
+                dane[i-1].dodajM(krok);
+                break;
+            case 2:
+                dane[i-1].dodajR(krok);
+                break;
+            }
+            globalMenu->update(pom[0],pom[1],pom[2],rand(),i+1);
+        }
+        wyk=0;
         pom[rodzaj]+=krok;
+        globalMenu->update(pom[0],pom[1],pom[2],rand(),0);
     }
     fclose(output);
 

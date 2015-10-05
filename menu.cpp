@@ -3,6 +3,7 @@
 using namespace std;
 
 
+
 Menu::Menu()
 {
 
@@ -16,9 +17,10 @@ Menu::~Menu()
 void Menu::menu()
 {
     plik=fopen("temp.txt","rt");
-    unsigned char wybor=0, tryb=0;
+    //unsigned char wybor=0, tryb=0;
+    fscanf(plik,"Poczatek: %d\n", &poczatek);
     fscanf(plik,"Tryb: %d\n", &tryb);
-    fscanf(plik,"Metoda: %d\n", &wybor);
+    fscanf(plik,"Metoda: %d\n", &metoda);
 
     if(tryb==0)
     {
@@ -42,7 +44,7 @@ void Menu::menu()
     printf("5 - teczowa 32 bitowy\n");
 
     scanf("%d", &wybor);*/
-    switch (wybor)
+    switch (metoda)
     {
     case 1:
         hell16();
@@ -96,40 +98,40 @@ void Menu::FPGA()
 void Menu::hell16()
 {
     hellman16 h16;
-    h16.menuHellmanZapis();
+    h16.menuHellmanZapis(this);
 }
 
 void Menu::rive16()
 {
     rivest16 r16;
-    r16.menuRivestZapis();
+    r16.menuRivestZapis(this);
 }
 
 void Menu::tecz16()
 {
     teczowa16 t16;
-    t16.menuTeczowaZapis();
+    t16.menuTeczowaZapis(this);
 }
 
 void Menu::hell32()
 {
     hellman32 h32;
-    h32.testowyMenuHellmanZapis();
+    h32.testowyMenuHellmanZapis(this);
 }
 
 void Menu::rive32()
 {
     rivest32 r32;
-    r32.menuRivestZapis();
+    r32.menuRivestZapis(this);
 }
 
 void Menu::tecz32()
 {
     teczowa32 t32;
-    t32.menuTeczowaZapis();
+    t32.menuTeczowaZapis(this);
 }
 
-
+/*
 void menu()
 {
     unsigned char wybor=0;
@@ -223,9 +225,65 @@ void menu()
         break;
     }
 }
-
+*/
 void czytoten( int pozycja)
 {
 
 }
 
+void Menu::upStan()
+{
+    FILE* output;
+    output=fopen("temp.txt","wt");
+    fprintf(output,"Poczatek: %d\n", poczatek);
+    fprintf(output,"Tryb: %d\n", tryb);
+    fprintf(output,"Metoda: %d\n", metoda);
+    fprintf(output,"Zmienna: %d\n", zmienna);
+    fprintf(output,"t: %d\n", t);
+    fprintf(output,"m: %d\n", m);
+    fprintf(output,"r: %d\n", r);
+    fprintf(output,"Plaintext: %d\n", plaintext);
+    fprintf(output,"Seed: %d\n", seed);
+    fprintf(output,"Finalna: %d\n", finalna);
+    fprintf(output,"Krok: %d\n", krok);
+    fprintf(output,"Testy: %d\n", testy);
+    fprintf(output,"Zera: %d\n", t);
+    fprintf(output,"Tablica: %d\n", t);
+    fprintf(output,"Wykonano: %d\n", wykonano);
+
+    fclose(output);
+}
+
+void Menu::started(unsigned int p,unsigned int s,unsigned int f,unsigned int k, unsigned int ze, unsigned int ta, unsigned int te, unsigned int zm)
+{
+    poczatek=1;
+    plaintext=p;
+    seed=s;
+    finalna=f;
+    krok=k;
+    testy=te;
+    zera=ze;
+    tablica=ta;
+    zmienna=zm;
+}
+
+bool Menu::getPoczatek()
+{
+    return poczatek;
+}
+
+unsigned int Menu::getWykonano()
+{
+    return wykonano;
+}
+
+void Menu::update(int dt, int dm, int dr, int dseed, int dwykonano)
+{
+    t=dt;
+    m=dm;
+    r=dr;
+    seed=dseed;
+    wykonano=dwykonano;
+    upStan();
+
+}
