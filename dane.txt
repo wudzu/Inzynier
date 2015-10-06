@@ -1,4 +1,5 @@
-Plaintext testu to 123
-Seed liczb losowych to 123
+Plaintext testu to 50505050
+Seed liczb losowych to 665
 
-Liczba zestawow to 0
+Liczba zestawow to 40
+Zestaw 1, 1626, 1626 .

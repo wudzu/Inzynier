@@ -496,8 +496,8 @@ void CGUIDlg::OnBnClickedOk()
 	else
 		tryb="1";
 
-	if(trivest.IsEmpty() && tnormalny.IsEmpty())
-		trivest="1"; tnormalny="1";	
+	/*if(trivest.IsEmpty() && tnormalny.IsEmpty())
+		trivest="1"; tnormalny="1";	*/
 	if(m.IsEmpty())
 		m="1";
 	if(r.IsEmpty())
@@ -529,10 +529,12 @@ void CGUIDlg::OnBnClickedOk()
 		plik.WriteString(zmienna);
 		plik.WriteString(_T("\n"));
 		plik.WriteString(_T("t: "));
-		if(trivest.IsEmpty())
-			plik.WriteString(tnormalny);
-		else
+		if(trivest.IsEmpty() && tnormalny.IsEmpty())
+			plik.WriteString(_T("1"));
+		else if (tnormalny.IsEmpty() && !(trivest.IsEmpty()))
 			plik.WriteString(trivest);
+		else if (trivest.IsEmpty() && !(tnormalny.IsEmpty()))
+			plik.WriteString(tnormalny);
 		plik.WriteString(_T("\n"));
 		plik.WriteString(_T("m: "));
 		plik.WriteString(m);
