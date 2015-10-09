@@ -11,7 +11,7 @@
 #define new DEBUG_NEW
 #endif
 
-CString metoda, zmienna, trivest, tnormalny, m, r, plaintext, seed, finalna, krok, testy, zera, tablica, tryb;
+CString metoda, zmienna, trivest, tnormalny, m, r, plaintext, seed, finalna, krok, testy, zera, tablica, tryb, COM;
 // CAboutDlg dialog used for App About
 
 class CAboutDlg : public CDialogEx
@@ -90,6 +90,7 @@ BEGIN_MESSAGE_MAP(CGUIDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_RADIO14, &CGUIDlg::OnBnClickedRadio14)
 	ON_BN_CLICKED(IDC_BUTTON1, &CGUIDlg::OnBnClickedButton1)
 	ON_BN_CLICKED(IDCANCEL, &CGUIDlg::OnBnClickedCancel)
+	ON_EN_CHANGE(IDC_EDIT11, &CGUIDlg::OnEnChangeEdit11)
 END_MESSAGE_MAP()
 
 
@@ -333,7 +334,7 @@ void CGUIDlg::OnBnClickedRadio12()
 
 void CGUIDlg::OnBnClickedRadio13()
 {
-	((CButton*) GetDlgItem(IDC_RADIO1))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO1))->EnableWindow(TRUE);
 	((CButton*) GetDlgItem(IDC_RADIO2))->EnableWindow(FALSE);
 	((CButton*) GetDlgItem(IDC_RADIO3))->EnableWindow(FALSE);
 	((CButton*) GetDlgItem(IDC_RADIO4))->EnableWindow(FALSE);
@@ -345,7 +346,46 @@ void CGUIDlg::OnBnClickedRadio13()
 	((CButton*) GetDlgItem(IDC_RADIO10))->EnableWindow(FALSE);
 	((CButton*) GetDlgItem(IDC_RADIO11))->EnableWindow(FALSE);
 	((CButton*) GetDlgItem(IDC_RADIO12))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_BUTTON1))->EnableWindow(FALSE);
 
+	((CButton*) GetDlgItem(IDC_RADIO1))->SetCheck(TRUE);
+	((CButton*) GetDlgItem(IDC_RADIO2))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO3))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO4))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO5))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO6))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO7))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO8))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO9))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO10))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO11))->SetCheck(FALSE);
+	((CButton*) GetDlgItem(IDC_RADIO12))->SetCheck(FALSE);
+
+	((CButton*) GetDlgItem(IDC_EDIT1))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT1))->SetWindowText(0);
+	((CButton*) GetDlgItem(IDC_EDIT2))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT2))->SetWindowText(0);
+	((CButton*) GetDlgItem(IDC_EDIT3))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT3))->SetWindowText(0);
+	((CButton*) GetDlgItem(IDC_EDIT4))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT4))->SetWindowText(0);
+
+	((CButton*) GetDlgItem(IDC_EDIT6))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT6))->SetWindowText(0);
+	((CButton*) GetDlgItem(IDC_EDIT7))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT7))->SetWindowText(0);
+	((CButton*) GetDlgItem(IDC_EDIT8))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT8))->SetWindowText(0);
+	((CButton*) GetDlgItem(IDC_EDIT9))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT9))->SetWindowText(0);
+	((CButton*) GetDlgItem(IDC_EDIT10))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT10))->SetWindowText(0);
+	((CButton*) GetDlgItem(IDC_EDIT11))->EnableWindow(TRUE);
+}
+
+
+void CGUIDlg::OnBnClickedRadio14()
+{
 	((CButton*) GetDlgItem(IDC_RADIO1))->SetCheck(FALSE);
 	((CButton*) GetDlgItem(IDC_RADIO2))->SetCheck(FALSE);
 	((CButton*) GetDlgItem(IDC_RADIO3))->SetCheck(FALSE);
@@ -359,21 +399,6 @@ void CGUIDlg::OnBnClickedRadio13()
 	((CButton*) GetDlgItem(IDC_RADIO11))->SetCheck(FALSE);
 	((CButton*) GetDlgItem(IDC_RADIO12))->SetCheck(FALSE);
 
-	((CButton*) GetDlgItem(IDC_EDIT2))->EnableWindow(FALSE);
-	((CButton*) GetDlgItem(IDC_EDIT2))->SetWindowText(0);
-	((CButton*) GetDlgItem(IDC_EDIT7))->EnableWindow(FALSE);
-	((CButton*) GetDlgItem(IDC_EDIT7))->SetWindowText(0);
-	((CButton*) GetDlgItem(IDC_EDIT8))->EnableWindow(FALSE);
-	((CButton*) GetDlgItem(IDC_EDIT8))->SetWindowText(0);
-	((CButton*) GetDlgItem(IDC_EDIT9))->EnableWindow(FALSE);
-	((CButton*) GetDlgItem(IDC_EDIT9))->SetWindowText(0);
-	((CButton*) GetDlgItem(IDC_EDIT10))->EnableWindow(FALSE);
-	((CButton*) GetDlgItem(IDC_EDIT10))->SetWindowText(0);
-}
-
-
-void CGUIDlg::OnBnClickedRadio14()
-{
 	((CButton*) GetDlgItem(IDC_RADIO1))->EnableWindow(TRUE);
 	((CButton*) GetDlgItem(IDC_RADIO2))->EnableWindow(TRUE);
 	((CButton*) GetDlgItem(IDC_RADIO3))->EnableWindow(TRUE);
@@ -387,12 +412,19 @@ void CGUIDlg::OnBnClickedRadio14()
 	((CButton*) GetDlgItem(IDC_RADIO11))->EnableWindow(TRUE);
 	((CButton*) GetDlgItem(IDC_RADIO12))->EnableWindow(TRUE);
 
+	((CButton*) GetDlgItem(IDC_EDIT1))->EnableWindow(TRUE);
 	((CButton*) GetDlgItem(IDC_EDIT2))->EnableWindow(TRUE);
+	((CButton*) GetDlgItem(IDC_EDIT3))->EnableWindow(TRUE);
 	((CButton*) GetDlgItem(IDC_EDIT4))->EnableWindow(TRUE);
+	((CButton*) GetDlgItem(IDC_EDIT5))->EnableWindow(TRUE);
+	((CButton*) GetDlgItem(IDC_EDIT6))->EnableWindow(TRUE);
 	((CButton*) GetDlgItem(IDC_EDIT7))->EnableWindow(TRUE);
 	((CButton*) GetDlgItem(IDC_EDIT8))->EnableWindow(TRUE);
 	((CButton*) GetDlgItem(IDC_EDIT9))->EnableWindow(TRUE);
 	((CButton*) GetDlgItem(IDC_EDIT10))->EnableWindow(TRUE);
+	((CButton*) GetDlgItem(IDC_BUTTON1))->EnableWindow(TRUE);
+	((CButton*) GetDlgItem(IDC_EDIT11))->EnableWindow(FALSE);
+	((CButton*) GetDlgItem(IDC_EDIT11))->SetWindowText(0);
 }
 
 
@@ -456,7 +488,14 @@ void CGUIDlg::OnEnChangeEdit10()
 		GetDlgItemText(IDC_EDIT10,zera);
 }
 
+void CGUIDlg::OnEnChangeEdit11()
+{
+		GetDlgItemText(IDC_EDIT11,COM);
+}
+
 void CGUIDlg::OnBnClickedOk()
+{
+if(IsDlgButtonChecked(IDC_RADIO14)== BST_CHECKED)
 {
 	if(IsDlgButtonChecked(IDC_RADIO1) == BST_CHECKED)
 		metoda="1";
@@ -564,10 +603,37 @@ void CGUIDlg::OnBnClickedOk()
 		plik.WriteString(tablica);
 		plik.WriteString(_T("\n"));
 		plik.WriteString(_T("Wykonano: 0\n"));
+		plik.Close();
 	}
 
 	ShellExecute(0,NULL,_T("krypto.exe"), NULL, NULL, SW_SHOWNORMAL);
 	CDialogEx::OnOK();
+}
+else if (IsDlgButtonChecked(IDC_RADIO13)== BST_CHECKED)
+{
+	if(plaintext.IsEmpty())
+		plaintext="1";
+	if(COM.IsEmpty())
+		COM="3";
+
+	CStdioFile plik;
+	CStdioFile plik2;
+	if(plik.Open(_T("FPGA.txt"), CFile::modeCreate|CFile::modeWrite))
+	{
+		plik.WriteString(plaintext);
+		plik.Close();
+	}
+	if(plik2.Open(_T("FPGA.bat"), CFile::modeCreate|CFile::modeWrite))
+	{
+		plik2.WriteString(_T("COPY /b \"FPGA.txt\" COM"));
+		plik2.WriteString(COM);
+		plik2.WriteString(_T(":"));
+		plik2.Close();
+	}
+	ShellExecute(0,NULL,_T("FPGA.bat"), NULL, NULL, SW_SHOWNORMAL);
+	//remove("FPGA.bat");
+	CDialogEx::OnOK();
+}
 }
 
 
@@ -582,3 +648,6 @@ void CGUIDlg::OnBnClickedCancel()
 {
 	CDialogEx::OnCancel();
 }
+
+
+
