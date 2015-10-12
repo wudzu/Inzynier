@@ -621,10 +621,14 @@ else if (IsDlgButtonChecked(IDC_RADIO13)== BST_CHECKED)
 	if(plik.Open(_T("FPGA.txt"), CFile::modeCreate|CFile::modeWrite))
 	{
 		plik.WriteString(plaintext);
+		plik.WriteString(_T("x"));
 		plik.Close();
 	}
 	if(plik2.Open(_T("FPGA.bat"), CFile::modeCreate|CFile::modeWrite))
 	{
+		plik2.WriteString(_T("mode COM "));
+		plik2.WriteString(COM);
+		plik2.WriteString(_T(" :9600,o,8,1\n"));
 		plik2.WriteString(_T("COPY /b \"FPGA.txt\" COM"));
 		plik2.WriteString(COM);
 		plik2.WriteString(_T(":"));
@@ -635,6 +639,7 @@ else if (IsDlgButtonChecked(IDC_RADIO13)== BST_CHECKED)
 	CDialogEx::OnOK();
 }
 }
+
 
 
 void CGUIDlg::OnBnClickedButton1()
