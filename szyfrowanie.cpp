@@ -62,16 +62,23 @@ void permutacja32(unsigned int &mes)
 
 void szyfrowanie16(unsigned short P, unsigned short klucz, unsigned short &C)
 {
-    unsigned short kluczrundowy=klucz;
+    unsigned short kluczRundowy=klucz;
     C=P;
     for (int i=0;i<8;++i)
     {
-        przesuniecieprawo16(kluczrundowy, prime[i]);
-        C^=kluczrundowy;
-        kluczrundowy=klucz;
+        printf("Runda %d\n",i);
+        przesuniecieprawo16(kluczRundowy, prime[i]);
+        printf("Message rundy: %x\n", C);
+        C^=kluczRundowy;
+        printf("Klucz rundy: %x\n",kluczRundowy);
+        printf("Message po XOR: %x\n", C);
+        kluczRundowy=klucz;
         sBoxy16(C);
+        printf("Message po Sboxach: %x\n",C);
         permutacja16(C);
+        printf("Message po permutacji: %x\n",C);
     }
+    printf("Zaszyfrowne : %x\n", C);
 }
 
 void szyfrowanie32(unsigned int P, unsigned int klucz, unsigned int &C)

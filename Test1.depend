@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1441820743 source:d:\projekty\inz\inzynier\inzynier\main.cpp
+1444487580 source:d:\projekty\inz\inzynier\inzynier\main.cpp
 	"szyfrowanie.h"
 
 1444052890 d:\projekty\inz\inzynier\inzynier\szyfrowanie.h
@@ -30,7 +30,7 @@
 1441819229 source:d:\projekty\inz\inzynier\inzynier\redukcja.cpp
 	"szyfrowanie.h"
 
-1441825007 source:d:\projekty\inz\inzynier\inzynier\szyfrowanie.cpp
+1444482118 source:d:\projekty\inz\inzynier\inzynier\szyfrowanie.cpp
 	"szyfrowanie.h"
 
 1441748756 d:\projekty\inz\inzynier\inzynier\hellman.h
@@ -39,7 +39,7 @@
 1441824494 source:d:\projekty\inz\inzynier\inzynier\tablicah.cpp
 	"szyfrowanie.h"
 
-1444061482 source:d:\projekty\inz\inzynier\inzynier\hellman.cpp
+1444062079 source:d:\projekty\inz\inzynier\inzynier\hellman.cpp
 	"szyfrowanie.h"
 	"globals.h"
 
