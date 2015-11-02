@@ -6,13 +6,13 @@
 #include "GUI.h"
 #include "GUIDlg.h"
 #include "afxdialogex.h"
-
+#include <afxtempl.h>
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
 CString metoda, zmienna, trivest, tnormalny, m, r, plaintext, seed, finalna, krok, testy, zera, tablica, tryb, COM;
-// CAboutDlg dialog used for App About
+// CAboutDlg dialog used for App About	
 
 class CAboutDlg : public CDialogEx
 {
@@ -616,23 +616,71 @@ else if (IsDlgButtonChecked(IDC_RADIO13)== BST_CHECKED)
 	if(COM.IsEmpty())
 		COM="3";
 
-	CStdioFile plik;
+	CStdioFile plik1;
 	CStdioFile plik2;
-	if(plik.Open(_T("FPGA.txt"), CFile::modeCreate|CFile::modeWrite))
+	CStdioFile plik3;
+	CStdioFile plik4;
+	CStdioFile plik5;
+	if(plik1.Open(_T("FPGA1.txt"), CFile::modeCreate|CFile::modeWrite))
 	{
-		plik.WriteString(plaintext);
-		plik.WriteString(_T("x"));
-		plik.Close();
+		CString temp1(plaintext.GetAt(0));
+		plik1.WriteString(temp1);
+		plik1.Close();
 	}
-	if(plik2.Open(_T("FPGA.bat"), CFile::modeCreate|CFile::modeWrite))
+	if(plik2.Open(_T("FPGA2.txt"), CFile::modeCreate|CFile::modeWrite))
 	{
-		plik2.WriteString(_T("mode COM "));
-		plik2.WriteString(COM);
-		plik2.WriteString(_T(" :9600,o,8,1\n"));
-		plik2.WriteString(_T("COPY /b \"FPGA.txt\" COM"));
-		plik2.WriteString(COM);
-		plik2.WriteString(_T(":"));
+		CString temp2(plaintext.GetAt(1));
+		plik2.WriteString(temp2);
 		plik2.Close();
+	}
+	if(plik3.Open(_T("FPGA3.txt"), CFile::modeCreate|CFile::modeWrite))
+	{
+		CString temp3(plaintext.GetAt(2));
+		plik3.WriteString(temp3);
+		plik3.Close();
+	}
+	if(plik4.Open(_T("FPGA4.txt"), CFile::modeCreate|CFile::modeWrite))
+	{
+		CString temp4(plaintext.GetAt(3));
+		plik4.WriteString(temp4);
+		plik4.WriteString(_T("x"));
+		plik4.Close();
+	}
+	if(plik5.Open(_T("FPGA.bat"), CFile::modeCreate|CFile::modeWrite))
+	{
+		CString temp1(plaintext.GetAt(0));
+		CString temp2(plaintext.GetAt(1));
+		CString temp3(plaintext.GetAt(2));
+		CString temp4(plaintext.GetAt(3));
+
+		plik5.WriteString(_T("mode COM "));
+		plik5.WriteString(COM);
+		plik5.WriteString(_T(" :9600,o,8,1\n"));
+		plik5.WriteString(_T("COPY /b \"FPGA1.txt\" COM"));
+		plik5.WriteString(COM);
+		plik5.WriteString(_T(":\n"));
+
+		plik5.WriteString(_T("mode COM "));
+		plik5.WriteString(COM);
+		plik5.WriteString(_T(" :9600,o,8,1\n"));
+		plik5.WriteString(_T("COPY /b \"FPGA2.txt\" COM"));
+		plik5.WriteString(COM);
+		plik5.WriteString(_T(":\n"));
+
+		plik5.WriteString(_T("mode COM "));
+		plik5.WriteString(COM);
+		plik5.WriteString(_T(" :9600,o,8,1\n"));
+		plik5.WriteString(_T("COPY /b \"FPGA3.txt\" COM"));
+		plik5.WriteString(COM);
+		plik5.WriteString(_T(":\n"));
+	
+		plik5.WriteString(_T("mode COM "));
+		plik5.WriteString(COM);
+		plik5.WriteString(_T(" :9600,o,8,1\n"));
+		plik5.WriteString(_T("COPY /b \"FPGA4.txt\" COM"));
+		plik5.WriteString(COM);
+		plik5.WriteString(_T(":\n"));
+		plik5.Close();
 	}
 	ShellExecute(0,NULL,_T("FPGA.bat"), NULL, NULL, SW_SHOWNORMAL);
 	//remove("FPGA.bat");
