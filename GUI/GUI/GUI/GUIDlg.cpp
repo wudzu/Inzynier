@@ -653,30 +653,18 @@ else if (IsDlgButtonChecked(IDC_RADIO13)== BST_CHECKED)
 		CString temp3(plaintext.GetAt(2));
 		CString temp4(plaintext.GetAt(3));
 
-		plik5.WriteString(_T("mode COM "));
+		plik5.WriteString(_T("mode COM"));
 		plik5.WriteString(COM);
-		plik5.WriteString(_T(" :9600,o,8,1\n"));
+		plik5.WriteString(_T(":9600,o,8,1\n"));
 		plik5.WriteString(_T("COPY /b \"FPGA1.txt\" COM"));
 		plik5.WriteString(COM);
 		plik5.WriteString(_T(":\n"));
-
-		plik5.WriteString(_T("mode COM "));
-		plik5.WriteString(COM);
-		plik5.WriteString(_T(" :9600,o,8,1\n"));
 		plik5.WriteString(_T("COPY /b \"FPGA2.txt\" COM"));
 		plik5.WriteString(COM);
 		plik5.WriteString(_T(":\n"));
-
-		plik5.WriteString(_T("mode COM "));
-		plik5.WriteString(COM);
-		plik5.WriteString(_T(" :9600,o,8,1\n"));
 		plik5.WriteString(_T("COPY /b \"FPGA3.txt\" COM"));
 		plik5.WriteString(COM);
 		plik5.WriteString(_T(":\n"));
-	
-		plik5.WriteString(_T("mode COM "));
-		plik5.WriteString(COM);
-		plik5.WriteString(_T(" :9600,o,8,1\n"));
 		plik5.WriteString(_T("COPY /b \"FPGA4.txt\" COM"));
 		plik5.WriteString(COM);
 		plik5.WriteString(_T(":\n"));
