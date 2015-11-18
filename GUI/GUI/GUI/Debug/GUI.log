@@ -1,13 +1,12 @@
-﻿Build started 2015-11-03 18:19:02.
+﻿Build started 2015-11-16 18:51:44.
      1>Project "C:\Users\Jędrzej\Desktop\Kryptoanaliza\Inzynier\GUI\GUI\GUI\GUI.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\GUI.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          All outputs are up-to-date.
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\GUI.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt GUIDlg.cpp
-         GUIDlg.cpp
-       ResourceCompile:
          All outputs are up-to-date.
+       ResourceCompile:
+         c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /l"0x0409" /IDebug\ /nologo /fo"Debug\GUI.res" GUI.rc 
        ManifestResourceCompile:
          All outputs are up-to-date.
        Link:
@@ -29,4 +28,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:05.08
+Time Elapsed 00:00:02.39

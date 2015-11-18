@@ -1,0 +1,7 @@
+Plaintext testu to 50505050
+Seed liczb losowych to 665
+
+Liczba zestawow to 2
+Zestaw 1426, 1626, 1626 .
+4100	25770
+Zestaw 1476, 1626, 1626 .
