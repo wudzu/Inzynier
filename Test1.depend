@@ -55,10 +55,10 @@
 1444061482 source:d:\projekty\inz\inzynier\inzynier\teczowa.cpp
 	"szyfrowanie.h"
 
-1441886372 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\main.cpp
+1441882772 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\main.cpp
 	"szyfrowanie.h"
 
-1444058860 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\szyfrowanie.h
+1448028679 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\szyfrowanie.h
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -70,43 +70,46 @@
 	"hellman.h"
 	<time.h>
 	<random>
+	<stdio.h>
+	<stdlib.h>
 
-1444058860 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\globals.h
+1444055260 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\globals.h
 	"szyfrowanie.h"
 
-1441886372 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\redukcja.h
+1441882772 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\redukcja.h
 	"szyfrowanie.h"
 
-1441822297 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\tablicah.h
+1441818697 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\tablicah.h
 	"szyfrowanie.h"
 
-1441822296 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\hellman.h
+1441818696 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\hellman.h
 	"szyfrowanie.h"
 
-1441889032 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\menu.cpp
+1448228463 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\menu.cpp
 	"szyfrowanie.h"
 
-1441886372 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\redukcja.cpp
+1441882772 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\redukcja.cpp
 	"szyfrowanie.h"
 
-1441886372 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\szyfrowanie.cpp
+1441882772 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\szyfrowanie.cpp
 	"szyfrowanie.h"
 
-1441886372 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\tablicar.cpp
+1441882772 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\tablicar.cpp
 	"szyfrowanie.h"
 
-1441886797 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\teczowa.cpp
+1444055260 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\teczowa.cpp
 	"szyfrowanie.h"
 
-1441886543 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\hellman.cpp
+1448192196 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\hellman.cpp
+	"szyfrowanie.h"
+	"globals.h"
+
+1444055260 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\rivest.cpp
 	"szyfrowanie.h"
 
-1441886745 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\rivest.cpp
+1441882772 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\tablica16t.cpp
 	"szyfrowanie.h"
 
-1441886372 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\tablica16t.cpp
-	"szyfrowanie.h"
-
-1441886372 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\tablicah.cpp
+1441882772 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\tablicah.cpp
 	"szyfrowanie.h"
 

@@ -1,0 +1,8 @@
+Poczatek: 0
+Tryb: 0
+Metoda: 7
+Zmienna: 0
+t: 0
+m: 0
+r: 0
+Plaintext: 2ba2

@@ -22,10 +22,10 @@ void Menu::menu()
     fscanf(plik,"Tryb: %d\n", &tryb);
     fscanf(plik,"Metoda: %d\n", &metoda);
 
-    if(tryb==0)
+    /*if(tryb==0)
     {
         FPGA();
-    }
+    }*/
 
 
     /*
@@ -64,35 +64,90 @@ void Menu::menu()
     case 6:
         tecz32();
         break;
+    case 7:
+        FPGA();
+        break;
     }
 }
 
 void Menu::FPGA()
 {
-   /* unsigned int pom[3],pom4,pom6,rodzaj,wzrost,krok;
-
-    fscanf(plik,"Zmienna: %d\n", &rodzaj);
-    fscanf(plik,"t: %d\n", &pom[0]);
-    fscanf(plik,"m: %d\n", &pom[1]);
-    fscanf(plik,"r: %d\n", &pom[2]);
+    unsigned short pom, klucz;
+    klucz=0x607d;
+    char wynik[4];
+    fscanf(plik,"Zmienna: %d\n", &pom);
+    fscanf(plik,"t: %d\n", &pom);
+    fscanf(plik,"m: %d\n", &pom);
+    fscanf(plik,"r: %d\n", &pom);
     fscanf(plik,"Plaintext: %d\n", &plaintext);
-    fscanf(plik,"Seed: %d\n",&pom4);
-    fscanf(plik,"Finalna: %d\n", &wzrost);
-    fscanf(plik,"Krok: %d\n",&krok);
-    fscanf(plik,"Testy: %d\n",&pom6);
     fclose(plik);
+   // plaintext=0xabb1;
+   cout<<&plaintext<<endl;
+    FILE* FPGAin1;
+    FILE* FPGAin2;
+    FILE* FPGAin3;
+    FILE* FPGAin4;
+    FILE* FPGAin5;
+    FILE* FPGAin6;
+    FILE* FPGAin7;
+    FILE* FPGAin8;
+    FILE* FPGAin9;
+    FILE* FPGAin10;
+    FILE* FPGAin11;
+    FILE* FPGAin12;
 
-    FILE* FPGAin;
-    FPGAin=fopen("FPGAin.txt","wt");
-    fprintf(FPGAin,"Plaintext in: ");
-    fprintf(FPGAin,"%d\n",plaintext);
+    szyfrowanie16(plaintext,klucz,pom);
+    sprintf(wynik,"%x",pom);
+    FPGAin1=fopen("FPGA5.txt","wt");
+    fprintf(FPGAin1,"%c",wynik[0]);
+    fclose(FPGAin1);
+    FPGAin2=fopen("FPGA6.txt","wt");
+    fprintf(FPGAin2,"%c",wynik[1]);
+    fclose(FPGAin2);
+    FPGAin3=fopen("FPGA7.txt","wt");
+    fprintf(FPGAin3,"%c",wynik[2]);
+    fclose(FPGAin3);
+    FPGAin4=fopen("FPGA8.txt","wt");
+    fprintf(FPGAin4,"%c",wynik[3]);
+    fprintf(FPGAin4,"x");
+    fclose(FPGAin4);
+    cout<<wynik<<endl;
 
-     // tu szyfrowanie
-     // zapis par?
+    plaintext = plaintext^0x00ff;
+    szyfrowanie16(plaintext,klucz,pom);
+    sprintf(wynik,"%x",pom);
+    FPGAin5=fopen("FPGA9.txt","wt");
+    fprintf(FPGAin5,"%c",wynik[0]);
+    fclose(FPGAin5);
+    FPGAin6=fopen("FPGA10.txt","wt");
+    fprintf(FPGAin6,"%c",wynik[1]);
+    fclose(FPGAin6);
+    FPGAin7=fopen("FPGA11.txt","wt");
+    fprintf(FPGAin7,"%c",wynik[2]);
+    fclose(FPGAin7);
+    FPGAin8=fopen("FPGA12.txt","wt");
+    fprintf(FPGAin8, "%c",wynik[3]);
+    fprintf(FPGAin8,"x");
+    fclose(FPGAin8);
+    cout<<wynik<<endl;
 
-    fprintf(FPGAin,"Plaintext out: ");
-    fprintf(FPGAin,"%d\n",C);
-    fclose(FPGAin);*/
+    plaintext = plaintext ^ 0xffff;
+    szyfrowanie16(plaintext,klucz,pom);
+    sprintf(wynik,"%x",pom);
+    FPGAin9=fopen("FPGA13.txt","wt");
+    fprintf(FPGAin9,"%c",wynik[0]);
+    fclose(FPGAin9);
+    FPGAin10=fopen("FPGA14.txt","wt");
+    fprintf(FPGAin10,"%c",wynik[1]);
+    fclose(FPGAin10);
+    FPGAin11=fopen("FPGA15.txt","wt");
+    fprintf(FPGAin11,"%c",wynik[2]);
+    fclose(FPGAin11);
+    FPGAin12=fopen("FPGA16.txt","wt");
+    fprintf(FPGAin12,"%c",wynik[3]);
+    fprintf(FPGAin12,"x");
+    fclose(FPGAin12);
+    cout<<wynik<<endl;
 }
 
 void Menu::hell16()

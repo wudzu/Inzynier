@@ -12,6 +12,8 @@
 #include "hellman.h"
 #include <time.h>
 #include <random>
+#include <stdio.h>
+#include <stdlib.h>
 
 class Menu
 {

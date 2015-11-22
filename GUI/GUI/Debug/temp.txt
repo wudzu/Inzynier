@@ -1,0 +1,3 @@
+Poczatek: 0
+Tryb: 0
+Metoda: 7
