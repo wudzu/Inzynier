@@ -5,4 +5,4 @@ Zmienna: 0
 t: 0
 m: 0
 r: 0
-Plaintext: 2ba2
+Plaintext: abba

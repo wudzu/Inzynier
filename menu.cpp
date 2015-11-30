@@ -73,16 +73,15 @@ void Menu::menu()
 void Menu::FPGA()
 {
     unsigned short pom, klucz;
-    klucz=0x607d;
+    klucz=0x0fac;
     char wynik[4];
     fscanf(plik,"Zmienna: %d\n", &pom);
     fscanf(plik,"t: %d\n", &pom);
     fscanf(plik,"m: %d\n", &pom);
     fscanf(plik,"r: %d\n", &pom);
-    fscanf(plik,"Plaintext: %d\n", &plaintext);
+    fscanf(plik,"Plaintext: %x\n", &plaintext);
     fclose(plik);
-   // plaintext=0xabb1;
-   cout<<&plaintext<<endl;
+
     FILE* FPGAin1;
     FILE* FPGAin2;
     FILE* FPGAin3;
@@ -95,7 +94,8 @@ void Menu::FPGA()
     FILE* FPGAin10;
     FILE* FPGAin11;
     FILE* FPGAin12;
-
+   //cout<<plaintext<<endl;
+   printf("%x\n",plaintext);
     szyfrowanie16(plaintext,klucz,pom);
     sprintf(wynik,"%x",pom);
     FPGAin1=fopen("FPGA5.txt","wt");
