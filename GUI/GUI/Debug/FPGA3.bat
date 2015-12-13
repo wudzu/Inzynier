@@ -1,5 +1,0 @@
-mode COM1:9600,o,8,1
-COPY /b "FPGA9.txt" COM1:
-COPY /b "FPGA10.txt" COM1:
-COPY /b "FPGA11.txt" COM1:
-COPY /b "FPGA12.txt" COM1:

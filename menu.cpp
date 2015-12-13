@@ -75,14 +75,76 @@ void Menu::FPGA()
     unsigned short pom, klucz;
     klucz=0x0fac;
     char wynik[4];
+    char pobrane;
+    bool flagapobrania=0;
+    char nazwa[4]="COM";
+    unsigned short numer;
     fscanf(plik,"Zmienna: %d\n", &pom);
     fscanf(plik,"t: %d\n", &pom);
     fscanf(plik,"m: %d\n", &pom);
     fscanf(plik,"r: %d\n", &pom);
     fscanf(plik,"Plaintext: %x\n", &plaintext);
+    fscanf(plik,"COM: %s\n",&nazwa[3]);
     fclose(plik);
 
-    FILE* FPGAin1;
+    //system("pause");
+
+    konfiguracjaportu.BaudRate=9600;
+    konfiguracjaportu.StopBits=ONESTOPBIT;
+    konfiguracjaportu.Parity=PARITY_ODD;
+    konfiguracjaportu.ByteSize=DATABITS_8;
+
+
+    serialport = CreateFile(nazwa,GENERIC_READ | GENERIC_WRITE,0,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
+//petla start
+    cout<<plaintext<<endl;
+    sprintf(wynik,"%x",plaintext);
+    WriteFile(serialport,wynik,4,&wyslanebajty,NULL);
+    WriteFile(serialport,"x",1,&wyslanebajty,NULL);
+
+    printf("%x\n",plaintext);
+    szyfrowanie16(plaintext,klucz,pom);
+    sprintf(wynik,"%x",pom);
+    cout<<wynik<<endl;
+    WriteFile(serialport,wynik,4,&wyslanebajty,NULL);
+    WriteFile(serialport,"x",1,&wyslanebajty,NULL);
+
+    plaintext = plaintext^0x00ff;
+    szyfrowanie16(plaintext,klucz,pom);
+    sprintf(wynik,"%x",pom);
+    cout<<wynik<<endl;
+    WriteFile(serialport,wynik,4,&wyslanebajty,NULL);
+    WriteFile(serialport,"x",1,&wyslanebajty,NULL);
+
+    plaintext = plaintext ^ 0xffff;
+    szyfrowanie16(plaintext,klucz,pom);
+    sprintf(wynik,"%x",pom);
+    cout<<wynik<<endl;
+    WriteFile(serialport,wynik,4,&wyslanebajty,NULL);
+    WriteFile(serialport,"x",1,&wyslanebajty,NULL);
+
+    timeout.ReadIntervalTimeout=20000;
+    timeout.ReadTotalTimeoutConstant=20000;
+    timeout.ReadTotalTimeoutMultiplier=20000;
+
+    while(1)
+    {
+        flagapobrania=ReadFile(serialport,&pobrane,1,&odebranebajty,NULL);
+        printf("%x\n",pobrane);
+        //system("pause");
+        if(pobrane>0xfffffff00)
+            break;
+    }
+
+       // flagapobrania=ReadFile(serialport,&pobrane,rozmiarodebranych,&odebranebajty,NULL);
+
+  //  cout<<pobrane<<endl<<endl;
+   // flagapobrania=0;
+    printf("%x",pobrane);
+
+
+    CloseHandle(serialport);
+  /*  FILE* FPGAin1;
     FILE* FPGAin2;
     FILE* FPGAin3;
     FILE* FPGAin4;
@@ -147,7 +209,7 @@ void Menu::FPGA()
     fprintf(FPGAin12,"%c",wynik[3]);
     fprintf(FPGAin12,"x");
     fclose(FPGAin12);
-    cout<<wynik<<endl;
+    cout<<wynik<<endl;*/
 }
 
 void Menu::hell16()

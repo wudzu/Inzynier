@@ -14,6 +14,7 @@
 #include <random>
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 
 class Menu
 {
@@ -25,6 +26,12 @@ public:
     void started(unsigned int p,unsigned int s,unsigned int f,unsigned int k, unsigned int ze, unsigned int ta, unsigned int te, unsigned int zm);
     bool getPoczatek();
     unsigned int getWykonano();
+    HANDLE serialport;
+    DCB konfiguracjaportu;
+    DWORD wyslanebajty;
+    DWORD odebranebajty;
+    DWORD rozmiarodebranych;
+    COMMTIMEOUTS timeout;
 private:
     void FPGA();
 

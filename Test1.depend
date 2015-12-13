@@ -58,7 +58,7 @@
 1441882772 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\main.cpp
 	"szyfrowanie.h"
 
-1448028679 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\szyfrowanie.h
+1450016317 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\szyfrowanie.h
 	<iostream>
 	<cstdio>
 	<cstdlib>
@@ -72,6 +72,7 @@
 	<random>
 	<stdio.h>
 	<stdlib.h>
+	<windows.h>
 
 1444055260 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\globals.h
 	"szyfrowanie.h"
@@ -85,7 +86,7 @@
 1441818696 c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\hellman.h
 	"szyfrowanie.h"
 
-1448903766 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\menu.cpp
+1450025075 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\menu.cpp
 	"szyfrowanie.h"
 
 1441882772 source:c:\users\jêdrzej\desktop\kryptoanaliza\inzynier\redukcja.cpp

@@ -5,4 +5,5 @@ Zmienna: 0
 t: 0
 m: 0
 r: 0
-Plaintext: 0xabba
+Plaintext: 2334
+COM: 4
