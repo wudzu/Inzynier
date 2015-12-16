@@ -6,4 +6,4 @@ t: 0
 m: 0
 r: 0
 Plaintext: 2334
-COM: 4
+COM: 3

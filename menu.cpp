@@ -72,10 +72,11 @@ void Menu::menu()
 
 void Menu::FPGA()
 {
+    FILE* FPGAin;
     unsigned short pom, klucz;
     klucz=0x0fac;
     char wynik[4];
-    char pobrane;
+    unsigned char pobrane[4];
     bool flagapobrania=0;
     char nazwa[4]="COM";
     unsigned short numer;
@@ -87,13 +88,14 @@ void Menu::FPGA()
     fscanf(plik,"COM: %s\n",&nazwa[3]);
     fclose(plik);
 
-    //system("pause");
+    FPGAin=fopen("wyjsciowe.txt","wt");
+
+
 
     konfiguracjaportu.BaudRate=9600;
     konfiguracjaportu.StopBits=ONESTOPBIT;
     konfiguracjaportu.Parity=PARITY_ODD;
     konfiguracjaportu.ByteSize=DATABITS_8;
-
 
     serialport = CreateFile(nazwa,GENERIC_READ | GENERIC_WRITE,0,0,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,0);
 //petla start
@@ -123,93 +125,21 @@ void Menu::FPGA()
     WriteFile(serialport,wynik,4,&wyslanebajty,NULL);
     WriteFile(serialport,"x",1,&wyslanebajty,NULL);
 
-    timeout.ReadIntervalTimeout=20000;
-    timeout.ReadTotalTimeoutConstant=20000;
-    timeout.ReadTotalTimeoutMultiplier=20000;
-
-    while(1)
+    while(pobrane[0]==NULL)
     {
-        flagapobrania=ReadFile(serialport,&pobrane,1,&odebranebajty,NULL);
-        printf("%x\n",pobrane);
-        //system("pause");
-        if(pobrane>0xfffffff00)
-            break;
+         flagapobrania=ReadFile(serialport,&pobrane[0],1,&odebranebajty,NULL);
     }
+         flagapobrania=ReadFile(serialport,&pobrane[1],1,&odebranebajty,NULL);
+         flagapobrania=ReadFile(serialport,&pobrane[2],1,&odebranebajty,NULL);
+         flagapobrania=ReadFile(serialport,&pobrane[3],1,&odebranebajty,NULL);
 
-       // flagapobrania=ReadFile(serialport,&pobrane,rozmiarodebranych,&odebranebajty,NULL);
+    printf("%x\n%x\n%x\n%x\n",(pobrane[0]-1),(pobrane[1]-1),(pobrane[2]-1),(pobrane[3]-1));
 
-  //  cout<<pobrane<<endl<<endl;
-   // flagapobrania=0;
-    printf("%x",pobrane);
+    fprintf(FPGAin,"%x%x%x%x",(pobrane[3]-1),(pobrane[2]-1),(pobrane[1]-1),(pobrane[0]-1));
 
 
+    fclose(FPGAin);
     CloseHandle(serialport);
-  /*  FILE* FPGAin1;
-    FILE* FPGAin2;
-    FILE* FPGAin3;
-    FILE* FPGAin4;
-    FILE* FPGAin5;
-    FILE* FPGAin6;
-    FILE* FPGAin7;
-    FILE* FPGAin8;
-    FILE* FPGAin9;
-    FILE* FPGAin10;
-    FILE* FPGAin11;
-    FILE* FPGAin12;
-   //cout<<plaintext<<endl;
-   printf("%x\n",plaintext);
-    szyfrowanie16(plaintext,klucz,pom);
-    sprintf(wynik,"%x",pom);
-    FPGAin1=fopen("FPGA5.txt","wt");
-    fprintf(FPGAin1,"%c",wynik[0]);
-    fclose(FPGAin1);
-    FPGAin2=fopen("FPGA6.txt","wt");
-    fprintf(FPGAin2,"%c",wynik[1]);
-    fclose(FPGAin2);
-    FPGAin3=fopen("FPGA7.txt","wt");
-    fprintf(FPGAin3,"%c",wynik[2]);
-    fclose(FPGAin3);
-    FPGAin4=fopen("FPGA8.txt","wt");
-    fprintf(FPGAin4,"%c",wynik[3]);
-    fprintf(FPGAin4,"x");
-    fclose(FPGAin4);
-    cout<<wynik<<endl;
-
-    plaintext = plaintext^0x00ff;
-    szyfrowanie16(plaintext,klucz,pom);
-    sprintf(wynik,"%x",pom);
-    FPGAin5=fopen("FPGA9.txt","wt");
-    fprintf(FPGAin5,"%c",wynik[0]);
-    fclose(FPGAin5);
-    FPGAin6=fopen("FPGA10.txt","wt");
-    fprintf(FPGAin6,"%c",wynik[1]);
-    fclose(FPGAin6);
-    FPGAin7=fopen("FPGA11.txt","wt");
-    fprintf(FPGAin7,"%c",wynik[2]);
-    fclose(FPGAin7);
-    FPGAin8=fopen("FPGA12.txt","wt");
-    fprintf(FPGAin8, "%c",wynik[3]);
-    fprintf(FPGAin8,"x");
-    fclose(FPGAin8);
-    cout<<wynik<<endl;
-
-    plaintext = plaintext ^ 0xffff;
-    szyfrowanie16(plaintext,klucz,pom);
-    sprintf(wynik,"%x",pom);
-    FPGAin9=fopen("FPGA13.txt","wt");
-    fprintf(FPGAin9,"%c",wynik[0]);
-    fclose(FPGAin9);
-    FPGAin10=fopen("FPGA14.txt","wt");
-    fprintf(FPGAin10,"%c",wynik[1]);
-    fclose(FPGAin10);
-    FPGAin11=fopen("FPGA15.txt","wt");
-    fprintf(FPGAin11,"%c",wynik[2]);
-    fclose(FPGAin11);
-    FPGAin12=fopen("FPGA16.txt","wt");
-    fprintf(FPGAin12,"%c",wynik[3]);
-    fprintf(FPGAin12,"x");
-    fclose(FPGAin12);
-    cout<<wynik<<endl;*/
 }
 
 void Menu::hell16()
